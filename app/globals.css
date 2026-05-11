@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --sand-50: #faf5ec;
+  --sand-100: #f1e8d4;
+  --sand-200: #e8dcc4;
+  --sand-300: #d4b886;
+  --sand-400: #c19a5b;
+  --ochre-500: #b8651f;
+  --ochre-600: #8b4513;
+  --nile-700: #1a3a52;
+  --nile-800: #122a3d;
+  --nile-900: #0a1825;
+  --ink: #18130c;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-sand-50: var(--sand-50);
+  --color-sand-100: var(--sand-100);
+  --color-sand-200: var(--sand-200);
+  --color-sand-300: var(--sand-300);
+  --color-sand-400: var(--sand-400);
+  --color-ochre-500: var(--ochre-500);
+  --color-ochre-600: var(--ochre-600);
+  --color-nile-700: var(--nile-700);
+  --color-nile-800: var(--nile-800);
+  --color-nile-900: var(--nile-900);
+  --color-ink: var(--ink);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  background: var(--sand-50);
+  color: var(--ink);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+}
+
+.font-display {
+  font-family: var(--font-serif), Georgia, serif;
+  font-feature-settings: "lnum", "ss01";
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: var(--ochre-500);
+  color: var(--sand-50);
+}
+
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.dune {
+  background:
+    radial-gradient(1200px 600px at 80% -20%, rgba(184, 101, 31, 0.18), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(26, 58, 82, 0.12), transparent 60%),
+    linear-gradient(180deg, var(--sand-50), var(--sand-100));
+}
+
+.divider-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(24, 19, 12, 0.25), transparent);
+}
+
+.kicker {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.hover-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s ease;
+}
+.hover-underline:hover {
+  background-size: 100% 1px;
 }
