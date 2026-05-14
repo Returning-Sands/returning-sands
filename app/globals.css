@@ -1,88 +1,98 @@
 @import "tailwindcss";
 
 :root {
-  --sand-50: #faf5ec;
-  --sand-100: #f1e8d4;
-  --sand-200: #e8dcc4;
+  --paper-50: #f1ebde;
+  --paper-100: #e8dcc4;
+  --paper-200: #d4c4a3;
+  --ink: #1a1715;
+  --night: #0c0c0c;
+  --night-lift: #1a1a1a;
   --sand-300: #d4b886;
   --sand-400: #c19a5b;
   --ochre-500: #b8651f;
   --ochre-600: #8b4513;
   --nile-700: #1a3a52;
-  --nile-800: #122a3d;
   --nile-900: #0a1825;
-  --ink: #18130c;
 }
 
 @theme inline {
-  --color-sand-50: var(--sand-50);
-  --color-sand-100: var(--sand-100);
-  --color-sand-200: var(--sand-200);
+  --color-paper-50: var(--paper-50);
+  --color-paper-100: var(--paper-100);
+  --color-paper-200: var(--paper-200);
+  --color-ink: var(--ink);
+  --color-night: var(--night);
+  --color-night-lift: var(--night-lift);
   --color-sand-300: var(--sand-300);
   --color-sand-400: var(--sand-400);
   --color-ochre-500: var(--ochre-500);
   --color-ochre-600: var(--ochre-600);
   --color-nile-700: var(--nile-700);
-  --color-nile-800: var(--nile-800);
   --color-nile-900: var(--nile-900);
-  --color-ink: var(--ink);
   --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
 }
 
-html,
-body {
-  background: var(--sand-50);
-  color: var(--ink);
+html {
+  background: var(--night);
 }
 
 body {
+  background: var(--night);
+  color: var(--paper-50);
   font-family: var(--font-sans), system-ui, sans-serif;
   font-feature-settings: "ss01", "cv11";
 }
 
 .font-display {
   font-family: var(--font-serif), Georgia, serif;
-  font-feature-settings: "lnum", "ss01";
-  letter-spacing: -0.02em;
+  font-feature-settings: "lnum", "ss01", "liga", "dlig";
+  letter-spacing: -0.015em;
+}
+
+.font-display-italic {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-feature-settings: "lnum", "ss01", "liga", "dlig";
+}
+
+.font-grotesk {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  font-stretch: condensed;
 }
 
 ::selection {
   background: var(--ochre-500);
-  color: var(--sand-50);
-}
-
-.grain {
-  position: relative;
-}
-.grain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.06;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-}
-
-.dune {
-  background:
-    radial-gradient(1200px 600px at 80% -20%, rgba(184, 101, 31, 0.18), transparent 60%),
-    radial-gradient(900px 500px at -10% 30%, rgba(26, 58, 82, 0.12), transparent 60%),
-    linear-gradient(180deg, var(--sand-50), var(--sand-100));
-}
-
-.divider-rule {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(24, 19, 12, 0.25), transparent);
+  color: var(--paper-50);
 }
 
 .kicker {
   font-family: var(--font-sans), system-ui, sans-serif;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 500;
+}
+
+.kicker-sm {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.62rem;
+  font-weight: 500;
+}
+
+.dropcap::first-letter {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-size: 2.4em;
+  line-height: 0.8;
+  float: left;
+  padding-right: 0.08em;
+  padding-top: 0.05em;
+  font-weight: 400;
+  font-feature-settings: "dlig", "swsh", "salt";
 }
 
 .hover-underline {
@@ -94,4 +104,31 @@ body {
 }
 .hover-underline:hover {
   background-size: 100% 1px;
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.divider-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+  opacity: 0.2;
+}
+
+.sidebar-blend {
+  mix-blend-mode: difference;
+  color: #ffffff;
+}
+
+@media (max-width: 1023px) {
+  .sidebar-blend {
+    mix-blend-mode: normal;
+  }
 }

@@ -14,21 +14,21 @@ const serif = Cormorant_Garamond({
   variable: "--font-serif",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://returningsands.org"),
   title: "Returning Sands — A Sudanese Cultural Heritage Campaign & Film",
   description:
     "A campaign and short documentary by Paris Quetzal Sistilli and Yusef Bushara, protecting Sudanese cultural memory through events in Cairo (Dec 2026) and London (early 2027).",
+  metadataBase: new URL("https://returningsands.org"),
   openGraph: {
     title: "Returning Sands",
     description:
       "A Sudanese cultural heritage campaign and short documentary — events in Cairo and London, 2026–2027.",
     type: "website",
     url: "https://returningsands.org",
-    siteName: "Returning Sands",
   },
   twitter: {
     card: "summary_large_image",
@@ -46,9 +46,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${serif.variable} h-full antialiased`}
+      className={`${sans.variable} ${serif.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-sand-50 text-ink">
+      <body className="bg-night text-paper-50">
         {children}
         <Analytics />
         <SpeedInsights />
