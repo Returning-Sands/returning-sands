@@ -46,9 +46,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${serif.variable} antialiased`}
+      className={`${sans.variable} ${serif.variable} h-full antialiased`}
     >
-      <body className="bg-night text-paper-50">
+      <body className="min-h-full flex flex-col bg-sand-50 text-ink">
         {children}
         <Analytics />
         <SpeedInsights />
