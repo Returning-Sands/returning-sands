@@ -78,7 +78,6 @@ const partners = [
   "P21 Gallery",
   "Blue Shield International",
   "Kalam Aflam",
-  "Sudan Memory",
 ];
 
 export default function Home() {
