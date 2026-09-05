@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal, WordStagger } from "./Reveal";
-import { StampBadge, Postmark, PerfSeam } from "./Stamp";
+import { StampBadge, StampWatermark, Postmark, PerfSeam } from "./Stamp";
 
 const producers = [
   {
@@ -271,6 +271,12 @@ function Hero() {
         tilt="7deg"
         className="hidden sm:block absolute top-28 right-6 sm:right-10 z-10"
       />
+      <StampBadge
+        variant="magazine"
+        size={190}
+        tilt="-6deg"
+        className="hidden md:block absolute top-28 left-6 lg:left-10 z-10"
+      />
       <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-10 pt-40 pb-20 sm:pb-28">
         <Reveal className="kicker-anim kicker text-sand-300 mb-6 flex items-center gap-3">
           <span className="stamp-chip">A Sudanese Cultural Heritage Campaign · 2026 – 2027</span>
@@ -445,14 +451,28 @@ function Campaign() {
 
 function Goals() {
   return (
-    <section className="bg-sand-50">
+    <section className="relative overflow-hidden bg-sand-50">
       <PerfSeam />
-      <div className="mx-auto max-w-7xl px-6 sm:px-10 py-24 sm:py-32">
-        <Reveal className="reveal-lg">
-          <p className="kicker kicker-anim text-ochre-600 mb-6">Goals of the Project</p>
-          <h2 className="font-display text-4xl sm:text-5xl leading-[0.95] mb-14 max-w-3xl rule-draw pb-6">
-            Five threads holding the work together.
-          </h2>
+      <StampWatermark
+        variant="sudan"
+        size={520}
+        tilt="9deg"
+        className="-top-24 -right-24 hidden lg:block"
+      />
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-10 py-24 sm:py-32">
+        <Reveal className="reveal-lg flex items-start justify-between gap-6">
+          <div className="flex-1">
+            <p className="kicker kicker-anim text-ochre-600 mb-6">Goals of the Project</p>
+            <h2 className="font-display text-4xl sm:text-5xl leading-[0.95] mb-14 max-w-3xl rule-draw pb-6">
+              Five threads holding the work together.
+            </h2>
+          </div>
+          <StampBadge
+            variant="magazine"
+            size={140}
+            tilt="4deg"
+            className="hidden sm:block mt-2"
+          />
         </Reveal>
         <ol className="grid gap-px bg-ink/15 rounded-2xl overflow-hidden md:grid-cols-2">
           {goals.map((g, i) => (
@@ -632,16 +652,25 @@ function DirectorsNote() {
 
 function Events() {
   return (
-    <section id="events" className="relative bg-nile-900 text-sand-50 grain">
+    <section id="events" className="relative overflow-hidden bg-nile-900 text-sand-50 grain">
       <PerfSeam dark />
+      <StampBadge
+        variant="magazine"
+        size={170}
+        tilt="5deg"
+        className="hidden lg:block absolute top-24 right-10 z-10 opacity-90"
+      />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-          <Reveal className="reveal-lg">
-            <p className="kicker kicker-anim text-sand-300 mb-4">Events</p>
-            <h2 className="font-display text-5xl sm:text-6xl leading-[0.95]">
-              Three cities,
-              <span className="italic text-sand-300"> one thread.</span>
-            </h2>
+          <Reveal className="reveal-lg flex items-start gap-5">
+            <Postmark animate className="text-sand-300 mt-1 shrink-0" label="" />
+            <div>
+              <p className="kicker kicker-anim text-sand-300 mb-4">Events</p>
+              <h2 className="font-display text-5xl sm:text-6xl leading-[0.95]">
+                Three cities,
+                <span className="italic text-sand-300"> one thread.</span>
+              </h2>
+            </div>
           </Reveal>
           <Reveal as="p" className="max-w-md text-sand-100/80 leading-relaxed reveal" delay={140}>
             Each city combines exhibitions, academic panels, and fundraising
@@ -696,15 +725,23 @@ function OralHistory() {
       <PerfSeam />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="grid gap-14 md:grid-cols-12 items-center">
-          <Reveal className="md:col-span-5 relative aspect-[4/5] overflow-hidden rounded-2xl bg-ink reveal-lg parallax">
-            <Image
-              src="/img/woman.jpg"
-              alt="Archival portrait — memory and adornment"
-              fill
-              sizes="(max-width: 768px) 100vw, 40vw"
-              className="object-cover object-center zoom-in"
+          <div className="md:col-span-5 relative">
+            <Reveal className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-ink reveal-lg parallax">
+              <Image
+                src="/img/woman.jpg"
+                alt="Archival portrait — memory and adornment"
+                fill
+                sizes="(max-width: 768px) 100vw, 40vw"
+                className="object-cover object-center zoom-in"
+              />
+            </Reveal>
+            <StampBadge
+              variant="magazine"
+              size={210}
+              tilt="-3deg"
+              className="hidden sm:block absolute -bottom-8 -right-8 z-10"
             />
-          </Reveal>
+          </div>
           <Reveal className="md:col-span-6 md:col-start-7 reveal" delay={140}>
             <p className="kicker kicker-anim text-ochre-600 mb-4">Oral History Project</p>
             <h2 className="font-display text-4xl sm:text-5xl leading-[0.95] mb-6">
@@ -736,14 +773,23 @@ function Timeline() {
   return (
     <section className="relative bg-sand-50 overflow-hidden">
       <PerfSeam />
+      <StampWatermark
+        variant="magazine"
+        size={900}
+        tilt="-3deg"
+        className="top-1/3 -right-40 hidden xl:block"
+      />
       <div className="relative mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
-        <Reveal className="reveal-lg">
-          <p className="kicker kicker-anim text-ochre-600 mb-4">Project Timeline</p>
-          <h2 className="font-display text-5xl sm:text-6xl leading-[0.95] mb-16 max-w-3xl">
-            A year of building,
-            <span className="italic text-ochre-600"> gathering,</span> and going
-            to film.
-          </h2>
+        <Reveal className="reveal-lg flex items-start justify-between gap-6">
+          <div>
+            <p className="kicker kicker-anim text-ochre-600 mb-4">Project Timeline</p>
+            <h2 className="font-display text-5xl sm:text-6xl leading-[0.95] mb-16 max-w-3xl">
+              A year of building,
+              <span className="italic text-ochre-600"> gathering,</span> and going
+              to film.
+            </h2>
+          </div>
+          <StampBadge size={110} tilt="6deg" className="hidden sm:block" />
         </Reveal>
         <ol className="relative border-l border-ink/20 pl-8 sm:pl-12 space-y-12">
           {timeline.map((t, i) => (
@@ -804,16 +850,19 @@ function ClosingQuote() {
 
 function Team() {
   return (
-    <section id="team" className="bg-sand-100">
+    <section id="team" className="relative overflow-hidden bg-sand-100">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="grid gap-10 md:grid-cols-12 mb-16">
-          <Reveal className="md:col-span-5 reveal-lg">
-            <p className="kicker kicker-anim text-ochre-600 mb-4">Core Creative Team</p>
-            <h2 className="font-display text-5xl sm:text-6xl leading-[0.95]">
-              Built across
-              <span className="italic text-ochre-600"> three cities,</span>
-              with friends.
-            </h2>
+          <Reveal className="md:col-span-5 reveal-lg flex items-start gap-5">
+            <StampBadge size={86} tilt="-8deg" className="mt-1 shrink-0" />
+            <div>
+              <p className="kicker kicker-anim text-ochre-600 mb-4">Core Creative Team</p>
+              <h2 className="font-display text-5xl sm:text-6xl leading-[0.95]">
+                Built across
+                <span className="italic text-ochre-600"> three cities,</span>
+                with friends.
+              </h2>
+            </div>
           </Reveal>
           <Reveal as="p" className="md:col-span-6 md:col-start-7 text-lg leading-relaxed text-ink/75 reveal" delay={140}>
             Returning Sands is produced by Paris Quetzal Sistilli, Yusef
@@ -905,7 +954,10 @@ function Contact() {
           </Reveal>
 
           <Reveal className="md:col-span-4 md:col-start-9 reveal flex flex-col gap-10" delay={140}>
-            <StampBadge size={132} tilt="-3deg" className="self-end sm:self-start" />
+            <div className="flex items-start gap-4 self-end sm:self-start">
+              <StampBadge size={122} tilt="-3deg" />
+              <StampBadge variant="magazine" size={150} tilt="5deg" className="mt-6" />
+            </div>
             <div className="space-y-6">
               <div>
                 <p className="kicker text-ink/55 mb-1">Producer</p>
@@ -944,8 +996,16 @@ function Contact() {
 function Footer() {
   const marqueeItems = [...partners, ...partners];
   return (
-    <footer className="bg-nile-900 text-sand-100">
+    <footer className="relative overflow-hidden bg-nile-900 text-sand-100">
       <PerfSeam dark />
+      <StampWatermark
+        variant="sudan"
+        mode="screen"
+        opacity={0.05}
+        size={560}
+        tilt="6deg"
+        className="bottom-10 right-[8%] hidden lg:block"
+      />
       <div className="marquee-wrap overflow-hidden border-y border-sand-100/10 py-8">
         <div className="marquee">
           {marqueeItems.map((p, i) => (

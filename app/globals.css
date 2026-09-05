@@ -336,6 +336,46 @@ body {
   transform: rotate(3deg);
 }
 
+/* Idle sway — a stamp resting on paper, gently unsettled. Reads --tilt
+   (set inline per instance) as its resting angle. */
+.stamp-sway {
+  animation: stamp-sway-kf 7s ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+@keyframes stamp-sway-kf {
+  0%, 100% { transform: rotate(calc(var(--tilt, 0deg) - 1.6deg)); }
+  50%      { transform: rotate(calc(var(--tilt, 0deg) + 1.6deg)); }
+}
+
+/* Hover lift — composes with the parent's rotation instead of fighting it */
+.stamp-hover {
+  transition: transform 0.35s cubic-bezier(0.2, 0.6, 0.2, 1), box-shadow 0.35s ease;
+}
+.stamp-hover:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 20px 45px -10px rgba(24, 19, 12, 0.55);
+}
+
+/* Postmark stamping-in — the cancellation marks draw themselves as the
+   mark scrolls into view. Falls back to fully drawn when unsupported. */
+.postmark-draw circle,
+.postmark-draw line {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 0;
+}
+@supports (animation-timeline: view()) {
+  .postmark-draw circle,
+  .postmark-draw line {
+    stroke-dashoffset: 300;
+    animation: postmark-stamp-kf linear both;
+    animation-timeline: view();
+    animation-range: cover 10% cover 55%;
+  }
+}
+@keyframes postmark-stamp-kf {
+  to { stroke-dashoffset: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal-lg, .headline-stagger .word, .kicker-anim, .rule-draw::after {
     transition: none !important;
@@ -349,4 +389,13 @@ body {
     transform: none !important;
   }
   .marquee { animation: none; }
+  .stamp-sway {
+    animation: none !important;
+    transform: rotate(var(--tilt, 0deg)) !important;
+  }
+  .stamp-hover { transition: none !important; }
+  .postmark-draw circle, .postmark-draw line {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+  }
 }
