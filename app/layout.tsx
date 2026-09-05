@@ -21,12 +21,12 @@ const serif = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Returning Sands — A Sudanese Cultural Heritage Campaign & Film",
   description:
-    "A campaign and short documentary by Paris Quetzal Sistilli and Yusef Bushara, protecting Sudanese cultural memory through events in Cairo (Dec 2026) and London (early 2027).",
+    "A campaign and short documentary by Paris Sistilli, Yusef Bushara, and Camilla Marchese González, protecting Sudanese cultural memory through events in Cairo, London, and New York (2026–2027).",
   metadataBase: new URL("https://returningsands.org"),
   openGraph: {
     title: "Returning Sands",
     description:
-      "A Sudanese cultural heritage campaign and short documentary — events in Cairo and London, 2026–2027.",
+      "A Sudanese cultural heritage campaign and short documentary — events in Cairo, London, and New York, 2026–2027.",
     type: "website",
     url: "https://returningsands.org",
   },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Returning Sands",
     description:
-      "A Sudanese cultural heritage campaign and short documentary — events in Cairo and London, 2026–2027.",
+      "A Sudanese cultural heritage campaign and short documentary — events in Cairo, London, and New York, 2026–2027.",
   },
 };
 

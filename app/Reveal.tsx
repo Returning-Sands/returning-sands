@@ -10,6 +10,7 @@ type RevealProps = {
   threshold?: number;
   once?: boolean;
   id?: string;
+  style?: React.CSSProperties;
 };
 
 export function Reveal({
@@ -20,6 +21,7 @@ export function Reveal({
   threshold = 0.15,
   once = true,
   id,
+  style,
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
 
@@ -52,7 +54,7 @@ export function Reveal({
       ref={ref as React.Ref<HTMLDivElement>}
       id={id}
       className={className}
-      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      style={delay ? { ...style, transitionDelay: `${delay}ms` } : style}
     >
       {children}
     </Tag>

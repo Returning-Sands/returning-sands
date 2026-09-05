@@ -1,18 +1,41 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal, WordStagger } from "./Reveal";
+import { StampBadge, Postmark, PerfSeam } from "./Stamp";
 
-const creativeTeam = [
-  { name: "Paris Quetzal Sistilli", role: "Project Lead · Producer", base: "New York" },
-  { name: "Yusef Bushara", role: "Creative Director · Writing · Expo Coordination", base: "London" },
-  { name: "Hayat Aljowaily", role: "Executive Producer · Kalam Aflam Coordinator", base: "Cairo" },
-  { name: "Camilla Marchese Gonzalez", role: "Co-Producer · Creative Direction", base: "Brooklyn" },
+const producers = [
+  {
+    name: "Paris Quetzal Sistilli",
+    role: "Producer · Co-Founder",
+    base: "New York",
+    bio: "A Mexican-American cultural heritage researcher and practitioner focused on heritage protection, cultural policy, and collective memory. She holds degrees in Middle Eastern Politics from Sciences Po and Political Science from Columbia. Her writing has appeared in the Journal of Art Crime and art-law journals at UC Berkeley and Harvard.",
+  },
+  {
+    name: "Yusef Bushara",
+    role: "Producer · Co-Founder",
+    base: "London",
+    bio: "A Sudanese-Bermudian editor, writer, and researcher specializing in Middle Eastern politics and publishing. Based in London, he works as a non-fiction editorial assistant at Saqi Books, and released his debut poetry collection, Good News, in 2025.",
+  },
+  {
+    name: "Camilla Marchese González",
+    role: "Producer · Co-Founder",
+    base: "Brooklyn",
+    bio: "A Guatemalan-Italian writer and filmmaker drawn to storytelling as a means of preservation. Her short films have screened at DOC/NYC, Hamptons International Film Festival, Woodstock Film Festival, and Athens International Film Festival.",
+  },
+  {
+    name: "Basma Khalifa",
+    role: "Executive Producer",
+    base: "London",
+    bio: "A Sudanese creative and founder of Zola Studios, working in character-driven storytelling that foregrounds underrepresented voices. Her debut feature reached over 30 million viewers and earned a Newcomer of the Year nomination at the Edinburgh TV Festival.",
+  },
 ];
 
-const coordinators = [
-  { name: "Ali Nour", role: "Sudan Blue Shield · Cairo Event Co-Organizer · Narrative Focus" },
-  { name: "Jenna Khalil", role: "Event Coordination · Cairo & UNESCO" },
-  { name: "Cillian", role: "Finance · Logistics · Organization" },
+const coreTeam = [
+  { name: "Jenna Khalil", role: "Cairo Impact Coordinator" },
+  { name: "Afra Elagab", role: "Oral Historian" },
+  { name: "Anisa Estrada", role: "Researcher · Historic Preservation" },
+  { name: "Cillian Lavelle", role: "Finance Coordinator" },
+  { name: "Micheal Isaak", role: "Researcher" },
 ];
 
 const goals = [
@@ -25,59 +48,132 @@ const goals = [
 
 const timeline = [
   {
-    when: "April 2026",
-    title: "Foundation",
-    body: "Assembling team, applying for grants, establishing partnerships. Organizing ourselves as a charity / org.",
-  },
-  {
     when: "Summer 2026",
-    title: "Pre-Production",
-    body: "Confirming a director and assembling the trailer. Organizing the London and Cairo events.",
+    title: "Development Begins",
+    points: [
+      "Onboarded Aicha Cherif as documentary director",
+      "Backed by the Sundance x Adobe Ignite Fellowship",
+      "Fundraising promo video assembled; crew comes together",
+      "Received fiscal sponsorship from SIMA",
+    ],
   },
   {
     when: "Fall 2026",
-    title: "NYC Fundraising",
-    body: "Pre-Production continues. NYC fundraising events build the runway for filming.",
+    title: "Fundraising Begins",
+    points: [
+      "NYC fundraising events and private donations begin",
+      "Grant application rollout continues",
+    ],
   },
   {
-    when: "December 2026",
-    title: "Cairo · Filming Begins",
-    body: "Filming of the documentary begins. Cairo Returning Sands event — trailer screening, educational panel, art expo.",
+    when: "Nov – Dec 2026",
+    title: "Pre-Production · Cairo",
+    points: [
+      "Executing the Cairo exhibit and academic events",
+      "Film crew and shoot dates locked",
+      "Story arc finalized; oral history interviews begin",
+    ],
   },
   {
-    when: "January 2027",
+    when: "Jan – Feb 2027",
+    title: "London & New York",
+    points: [
+      "Executing the London exhibit and academic events",
+      "Impact trailer screens; NYC exhibit and academic events",
+      "Logistics finalized for the spring shoot",
+    ],
+  },
+  {
+    when: "May 2027",
+    title: "Production",
+    points: [
+      "Crew travels to Cairo",
+      "Filming conducted over a period of 2–3 weeks",
+    ],
+  },
+  {
+    when: "Fall 2027",
     title: "Post-Production",
-    body: "Editing begins. Plans to screen and submit to festivals across SWANA and internationally.",
-  },
-  {
-    when: "Early 2027",
-    title: "London · Campaign Launch",
-    body: "London Returning Sands event. Trailer, education panel, and campaign launch.",
+    points: [
+      "Editing, coloring, and sound are executed",
+      "Festival submission strategy rolls out",
+    ],
   },
 ];
 
 const events = [
   {
     city: "Cairo",
-    when: "December 2026",
-    label: "Cairo Returning Sands",
-    threads: ["Trailer Screening", "Educational Panel", "Art Expo"],
-    body: "Hosted in partnership with Sudan Blue Shield and Cairo-based collaborators, the first public surfacing of the project — staged where much of the heritage work is now coordinated from exile.",
+    when: "Dec 2026",
+    body: "Where much of the heritage work is now coordinated from exile.",
+    items: [
+      {
+        label: "Access Art Space Exhibit",
+        when: "Dec 18–20",
+        body: "Fifteen Sudanese artists, curated by Reem Aljeally, exploring memory, return, and home.",
+      },
+      {
+        label: "Educational Panel · AUC",
+        when: "Dec 16",
+        body: "A half-day series with Sudanese heritage expert Dr. Amira Ahmed — a refugee focus-group conversation, then a panel with ICROM, UNESCO, Blue Shield Sudan, and the National Archives.",
+      },
+      {
+        label: "Oral History Project",
+        when: "Ongoing",
+        body: "With Oral Historian Afra Elagab — cultural heritage in exile, toward a digital repository and bilingual publication.",
+      },
+    ],
   },
   {
     city: "London",
-    when: "Early 2027",
-    label: "London Returning Sands",
-    threads: ["Trailer", "Education Panel", "Campaign Launch"],
-    body: "Carrying the project into the diaspora. A trailer screening, panel, and campaign launch — gathering Sudanese artists, scholars, and audiences across the UK.",
+    when: "Jan 2027",
+    body: "Carrying the project into the diaspora.",
+    items: [
+      {
+        label: "London Exhibition",
+        when: "One week · Jan",
+        body: "Four artists — two Bermudian, two Sudanese — on the unlikely kinship of return. Sponsored by the Bermuda Arts Council.",
+      },
+      {
+        label: "Culture House Fireside",
+        when: "January",
+        body: "A conversation on collective memory and testimony with African heritage stakeholders, hosted by Culture House.",
+      },
+    ],
+  },
+  {
+    city: "New York",
+    when: "Nov 2026 – Feb 2027",
+    body: "The campaign's primary fundraising engine.",
+    items: [
+      {
+        label: "Private Donor Event",
+        when: "Nov 2026",
+        body: "Philanthropists from the arts and culture world; impact trailer, remarks, and a silent auction of contemporary Sudanese art.",
+      },
+      {
+        label: "Interactive Public Showcase",
+        when: "Mid-Nov 2026",
+        body: "With NYC-based Sudanese arts collectives — performance, mingling, and a live community-generated art installation.",
+      },
+      {
+        label: "Exhibition",
+        when: "Feb 2027",
+        body: "Curated by Paris Sistilli and Fatma Yasier — Sudanese artists on memory, return, and home.",
+      },
+    ],
   },
 ];
 
 const partners = [
-  "Culture House",
-  "P21 Gallery",
-  "Blue Shield International",
+  "Bermuda Arts Council",
   "Kalam Aflam",
+  "Sundance Institute",
+  "Sudan Human Rights Hub",
+  "Culture House",
+  "The American University in Cairo",
+  "SUDAAK",
+  "Blue Shield International",
 ];
 
 export default function Home() {
@@ -91,7 +187,9 @@ export default function Home() {
       <Goals />
       <Documentary />
       <AliNour />
+      <DirectorsNote />
       <Events />
+      <OralHistory />
       <Timeline />
       <ClosingQuote />
       <Team />
@@ -168,9 +266,14 @@ function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-nile-900/70 via-nile-900/20 to-nile-900/85" />
       <div className="absolute inset-0 grain" />
+      <StampBadge
+        size={104}
+        tilt="7deg"
+        className="hidden sm:block absolute top-28 right-6 sm:right-10 z-10"
+      />
       <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-10 pt-40 pb-20 sm:pb-28">
-        <Reveal className="kicker-anim kicker text-sand-300 mb-6">
-          A Sudanese Cultural Heritage Campaign · 2026 – 2027
+        <Reveal className="kicker-anim kicker text-sand-300 mb-6 flex items-center gap-3">
+          <span className="stamp-chip">A Sudanese Cultural Heritage Campaign · 2026 – 2027</span>
         </Reveal>
         <h1 className="font-display text-[18vw] leading-[0.86] sm:text-[14vw] md:text-[11rem] lg:text-[13rem] xl:text-[15rem] text-sand-50">
           <WordStagger as="span" text="Returning" />
@@ -180,14 +283,15 @@ function Hero() {
         </h1>
         <Reveal className="mt-10 grid gap-8 md:grid-cols-12 items-end reveal-lg" delay={150}>
           <p className="md:col-span-7 md:col-start-1 max-w-prose text-lg md:text-xl text-sand-100/90 font-light leading-relaxed">
-            A campaign and short documentary by Paris Quetzal Sistilli and
-            Yusef Bushara — protecting Sudanese cultural memory amid one of
-            the world&rsquo;s most devastating and underreported conflicts.
+            A campaign and short documentary by Paris Sistilli, Yusef
+            Bushara, and Camilla Marchese González — protecting Sudanese
+            cultural memory amid one of the world&rsquo;s most devastating
+            and underreported conflicts.
           </p>
           <div className="md:col-span-4 md:col-start-9 flex flex-col gap-2 text-sm reveal-stagger">
             <Row label="Cairo" value="Dec 2026" />
-            <Row label="London" value="Early 2027" />
-            <Row label="Film" value="In development" />
+            <Row label="London" value="Jan 2027" />
+            <Row label="New York" value="Nov 2026 – Feb 2027" />
           </div>
         </Reveal>
       </div>
@@ -227,7 +331,7 @@ function OpeningQuote() {
               nation&rsquo;s cultural memory.&rdquo;
             </blockquote>
             <figcaption className="mt-6 text-sand-300 kicker">
-              — Ali Nour · Sudan Blue Shield
+              — Ali Nour · Blue Shield Sudan
             </figcaption>
           </Reveal>
         </div>
@@ -244,6 +348,7 @@ function WhatsAtStake() {
   ];
   return (
     <section id="stake" className="bg-sand-50">
+      <PerfSeam />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="grid gap-14 md:grid-cols-12">
           <Reveal className="md:col-span-5 reveal-lg">
@@ -273,12 +378,13 @@ function WhatsAtStake() {
           </Reveal>
         </div>
 
-        <ul className="grid sm:grid-cols-3 gap-px mt-16 bg-ink/15 rounded-2xl overflow-hidden reveal-stagger">
+        <ul className="grid sm:grid-cols-3 gap-6 mt-16 reveal-stagger">
           {stats.map((s, i) => (
             <Reveal
               as="li"
               key={s.value}
-              className="bg-sand-50 p-8 sm:p-10 reveal"
+              className="perf bg-sand-100 p-8 sm:p-10 reveal"
+              style={{ ["--perf-bg" as string]: "var(--sand-50)" }}
               delay={i * 110}
             >
               <p className="font-display text-6xl sm:text-7xl text-ochre-600 leading-none mb-4">
@@ -296,23 +402,25 @@ function WhatsAtStake() {
 function Campaign() {
   return (
     <section id="campaign" className="bg-sand-100 grain">
+      <PerfSeam />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="grid gap-14 md:grid-cols-12">
           <Reveal className="md:col-span-5 reveal-lg">
             <p className="kicker kicker-anim text-ochre-600 mb-4">Impact Campaign</p>
             <h2 className="font-display text-5xl sm:text-6xl leading-[0.95]">
-              Two events,
+              Three cities,
               <span className="italic text-ochre-600"> one film,</span> one
               global call.
             </h2>
           </Reveal>
           <Reveal className="md:col-span-6 md:col-start-7 space-y-6 text-lg leading-relaxed text-ink/80 reveal" delay={120}>
             <p>
-              Returning Sands is a global campaign that launches with two
-              education and art expo events in <strong>London</strong> and{" "}
-              <strong>Cairo</strong> — serving as both visibility platforms
-              and fundraising catalysts for the short documentary at the
-              heart of the project.
+              Returning Sands is a global campaign that launches with
+              education and art exhibition events in{" "}
+              <strong>Cairo</strong>, <strong>London</strong>, and{" "}
+              <strong>New York</strong> — serving as both visibility
+              platforms and fundraising catalysts for the short documentary
+              at the heart of the project.
             </p>
             <p>
               The ambition extends beyond a single screening or exhibition.
@@ -338,6 +446,7 @@ function Campaign() {
 function Goals() {
   return (
     <section className="bg-sand-50">
+      <PerfSeam />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-24 sm:py-32">
         <Reveal className="reveal-lg">
           <p className="kicker kicker-anim text-ochre-600 mb-6">Goals of the Project</p>
@@ -368,6 +477,7 @@ function Goals() {
 function Documentary() {
   return (
     <section id="documentary" className="bg-nile-900 text-sand-50 grain relative">
+      <PerfSeam dark />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="grid gap-14 md:grid-cols-12 mb-16">
           <Reveal className="md:col-span-5 reveal-lg">
@@ -382,20 +492,22 @@ function Documentary() {
             <p>
               The film follows the story of Ali Nour, a Sudanese heritage
               professional leading efforts to protect his country&rsquo;s
-              cultural legacy. From Cairo, Ali and a network of displaced
-              Sudanese experts coordinate high-risk safeguarding operations
-              across Sudan — confronting the collapse of national
-              infrastructure and the limits of international support.
+              cultural legacy amid one of the world&rsquo;s most devastating
+              and underreported conflicts — a war that has displaced over
+              twelve million people and triggered the widespread, deliberate
+              destruction of museums, archives, and historic sites.
             </p>
             <p>
-              Expanding beyond preservation alone, the film also enters the
-              lives of Sudanese artists, musicians, and scholars in exile —
-              capturing the active creation and transmission of cultural
-              heritage within the diaspora. By interweaving frontline
-              protection efforts with stories of cultural resilience and
-              reinvention, the project positions heritage not only as
-              something under threat, but as a <em>living force</em>: central
-              to identity, survival, and the future of Sudan itself.
+              From Cairo, Ali and a network of displaced Sudanese experts
+              coordinate high-risk safeguarding operations across Sudan,
+              confronting the collapse of national infrastructure and the
+              limits of international support. Expanding beyond preservation
+              alone, the film also enters the lives of Sudanese artists,
+              musicians, and scholars in exile — capturing the active
+              creation and transmission of cultural heritage within the
+              diaspora. Heritage stands not only as something under threat,
+              but as a <em>living force</em>: central to identity, survival,
+              and the future of Sudan itself.
             </p>
           </Reveal>
         </div>
@@ -428,6 +540,7 @@ function Documentary() {
 function AliNour() {
   return (
     <section className="bg-sand-100">
+      <PerfSeam />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="grid gap-14 md:grid-cols-12 items-center">
           <Reveal className="md:col-span-5 relative aspect-[4/5] overflow-hidden rounded-2xl bg-ink reveal-lg parallax">
@@ -476,53 +589,143 @@ function AliNour() {
   );
 }
 
+function DirectorsNote() {
+  return (
+    <section className="bg-sand-50">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 py-24 sm:py-32">
+        <div className="grid gap-14 md:grid-cols-12">
+          <Reveal className="md:col-span-4 reveal-lg flex items-start gap-6">
+            <StampBadge size={92} tilt="-5deg" className="mt-1" />
+            <div>
+              <p className="kicker kicker-anim text-ochre-600 mb-4">Director&rsquo;s Note</p>
+              <h2 className="font-display text-4xl leading-[0.95]">
+                Aicha Cherif
+              </h2>
+              <p className="mt-3 text-sm text-ink/60">
+                Director · 2026 Sundance x Adobe Ignite Fellow
+              </p>
+            </div>
+          </Reveal>
+          <Reveal className="md:col-span-7 md:col-start-6 reveal" delay={120}>
+            <blockquote className="font-display text-2xl sm:text-3xl leading-[1.3] text-ink mb-6">
+              &ldquo;With Returning Sands I venture into thematics of memory
+              and belonging, through my own experience with displacement.
+              Fleeing gender-based violence in my homeland, Guinea, at age
+              one, I have found solace in storytelling.&rdquo;
+            </blockquote>
+            <p className="text-lg text-ink/75 leading-relaxed">
+              My intention with my forthcoming feature documentary{" "}
+              <em>HEAT</em>{" "}is to showcase a neighborhood filled with a rich
+              and textured history — and with this project, I explore the
+              same questions of identity and belonging from a different
+              lens. As part of the creative process, I&rsquo;m in open
+              conversation with Sudanese filmmakers and creatives, as well
+              as Ali and his community of heritage workers, to make sure to
+              highlight their voices and stories in a collaborative manner.
+            </p>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Events() {
   return (
     <section id="events" className="relative bg-nile-900 text-sand-50 grain">
+      <PerfSeam dark />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <Reveal className="reveal-lg">
             <p className="kicker kicker-anim text-sand-300 mb-4">Events</p>
             <h2 className="font-display text-5xl sm:text-6xl leading-[0.95]">
-              Two cities,
+              Three cities,
               <span className="italic text-sand-300"> one thread.</span>
             </h2>
           </Reveal>
           <Reveal as="p" className="max-w-md text-sand-100/80 leading-relaxed reveal" delay={140}>
-            Each evening combines a trailer screening, an educational panel,
-            and an art expo — open to the public, with limited capacity.
+            Each city combines exhibitions, academic panels, and fundraising
+            moments — open to the public, with limited capacity.
           </Reveal>
         </div>
-        <div className="grid md:grid-cols-2 gap-px bg-sand-50/10 rounded-2xl overflow-hidden">
+        <div className="grid md:grid-cols-3 gap-px bg-sand-50/10 rounded-2xl overflow-hidden">
           {events.map((e, i) => (
             <Reveal
               as="article"
               key={e.city}
-              className="bg-nile-900 p-10 sm:p-14 flex flex-col gap-6 transition-colors hover:bg-nile-800 reveal-lg"
-              delay={i * 160}
+              className="bg-nile-900 p-8 sm:p-10 flex flex-col gap-6 transition-colors hover:bg-nile-800 reveal-lg"
+              delay={i * 140}
             >
               <div className="flex items-baseline justify-between">
-                <span className="kicker text-sand-300">{e.label}</span>
                 <span className="kicker text-sand-300">{e.when}</span>
               </div>
-              <h3 className="font-display text-7xl sm:text-8xl leading-none">
+              <h3 className="font-display text-5xl leading-none">
                 {e.city}
               </h3>
-              <p className="text-sand-100/85 text-lg leading-relaxed max-w-md">
+              <p className="text-sand-100/70 text-sm leading-relaxed">
                 {e.body}
               </p>
-              <div className="mt-auto pt-6 flex flex-wrap gap-2">
-                {e.threads.map((t) => (
-                  <span
-                    key={t}
-                    className="text-xs uppercase tracking-[0.18em] border border-sand-100/30 rounded-full px-3 py-1 text-sand-100/85"
-                  >
-                    {t}
-                  </span>
+              <ul className="mt-2 flex flex-col gap-5 border-t border-sand-100/15 pt-6">
+                {e.items.map((it) => (
+                  <li key={it.label}>
+                    <div className="flex items-baseline justify-between gap-3 mb-1">
+                      <span className="font-display text-lg text-sand-50">
+                        {it.label}
+                      </span>
+                      <span className="text-[0.65rem] uppercase tracking-[0.14em] text-sand-300 whitespace-nowrap">
+                        {it.when}
+                      </span>
+                    </div>
+                    <p className="text-sand-100/75 text-sm leading-relaxed">
+                      {it.body}
+                    </p>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </Reveal>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function OralHistory() {
+  return (
+    <section className="bg-sand-100">
+      <PerfSeam />
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
+        <div className="grid gap-14 md:grid-cols-12 items-center">
+          <Reveal className="md:col-span-5 relative aspect-[4/5] overflow-hidden rounded-2xl bg-ink reveal-lg parallax">
+            <Image
+              src="/img/woman.jpg"
+              alt="Archival portrait — memory and adornment"
+              fill
+              sizes="(max-width: 768px) 100vw, 40vw"
+              className="object-cover object-center zoom-in"
+            />
+          </Reveal>
+          <Reveal className="md:col-span-6 md:col-start-7 reveal" delay={140}>
+            <p className="kicker kicker-anim text-ochre-600 mb-4">Oral History Project</p>
+            <h2 className="font-display text-4xl sm:text-5xl leading-[0.95] mb-6">
+              Ten artists, in their own words.
+            </h2>
+            <p className="text-lg text-ink/80 leading-relaxed mb-6">
+              In consultation with Oral Historian Afra Elagab, the project
+              will follow ten Sudanese artists in Cairo, documenting their
+              experiences of exile, displacement, and cultural loss —
+              collecting personal archives of photographs, documents,
+              artworks, and objects that go beyond the artists themselves,
+              drawing from the wider Sudanese community in Cairo and abroad.
+            </p>
+            <p className="text-lg text-ink/80 leading-relaxed">
+              These materials will be digitized into a community-led digital
+              archive, positioning civil-society collections as critical
+              resources for post-conflict cultural recovery — ultimately
+              becoming a virtual museum, making Sudanese cultural memory
+              accessible to audiences worldwide.
+            </p>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -532,6 +735,7 @@ function Events() {
 function Timeline() {
   return (
     <section className="relative bg-sand-50 overflow-hidden">
+      <PerfSeam />
       <div className="relative mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <Reveal className="reveal-lg">
           <p className="kicker kicker-anim text-ochre-600 mb-4">Project Timeline</p>
@@ -549,7 +753,14 @@ function Timeline() {
               <h3 className="font-display text-3xl sm:text-4xl mb-3">
                 {t.title}
               </h3>
-              <p className="text-ink/75 leading-relaxed max-w-xl">{t.body}</p>
+              <ul className="text-ink/75 leading-relaxed max-w-xl space-y-1.5">
+                {t.points.map((p) => (
+                  <li key={p} className="flex gap-3">
+                    <span className="text-ochre-600/70 mt-[0.55em] h-1 w-1 rounded-full bg-current shrink-0" />
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
             </Reveal>
           ))}
         </ol>
@@ -605,8 +816,9 @@ function Team() {
             </h2>
           </Reveal>
           <Reveal as="p" className="md:col-span-6 md:col-start-7 text-lg leading-relaxed text-ink/75 reveal" delay={140}>
-            Returning Sands is produced by Paris Quetzal Sistilli and Yusef
-            Bushara, with creative, advisory, and coordination support
+            Returning Sands is produced by Paris Quetzal Sistilli, Yusef
+            Bushara, and Camilla Marchese González, directed by Aicha
+            Cherif, with creative, advisory, and coordination support
             spanning New York, London, and Cairo. Where possible we work
             with friends and collaborators pro bono — the priority is paying
             heritage workers and contributors for their time.
@@ -614,7 +826,7 @@ function Team() {
         </div>
 
         <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/10 rounded-2xl overflow-hidden">
-          {creativeTeam.map((p, i) => (
+          {producers.map((p, i) => (
             <Reveal
               as="li"
               key={p.name}
@@ -628,20 +840,22 @@ function Team() {
                 {p.name}
               </h3>
               <p className="text-sm text-ink/65 leading-relaxed">{p.role}</p>
+              <p className="text-xs text-ink/55 leading-relaxed">{p.bio}</p>
               <p className="kicker text-ochre-600 mt-auto pt-4">{p.base}</p>
             </Reveal>
           ))}
         </ul>
 
         <div className="mt-16">
-          <Reveal as="p" className="kicker kicker-anim text-ochre-600 mb-6">Coordination &amp; Partners</Reveal>
-          <ul className="grid sm:grid-cols-3 gap-6">
-            {coordinators.map((p, i) => (
+          <Reveal as="p" className="kicker kicker-anim text-ochre-600 mb-6">Core Team</Reveal>
+          <ul className="grid sm:grid-cols-3 lg:grid-cols-5 gap-6">
+            {coreTeam.map((p, i) => (
               <Reveal
                 as="li"
                 key={p.name}
-                className="border border-ink/15 rounded-xl p-6 bg-sand-50/60 reveal"
-                delay={i * 110}
+                className="perf border border-ink/15 p-6 bg-sand-50/60 reveal"
+                style={{ ["--perf-bg" as string]: "var(--sand-100)" }}
+                delay={i * 90}
               >
                 <h3 className="font-display text-xl mb-1">{p.name}</h3>
                 <p className="text-sm text-ink/65 leading-relaxed">{p.role}</p>
@@ -657,6 +871,7 @@ function Team() {
 function Contact() {
   return (
     <section id="contact" className="bg-sand-50 grain">
+      <PerfSeam />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-7 reveal-lg">
@@ -689,8 +904,8 @@ function Contact() {
             </div>
           </Reveal>
 
-          <Reveal className="md:col-span-4 md:col-start-9 reveal" delay={140}>
-            <p className="kicker text-ink/50 mb-4">Direct</p>
+          <Reveal className="md:col-span-4 md:col-start-9 reveal flex flex-col gap-10" delay={140}>
+            <StampBadge size={132} tilt="-3deg" className="self-end sm:self-start" />
             <div className="space-y-6">
               <div>
                 <p className="kicker text-ink/55 mb-1">Producer</p>
@@ -730,6 +945,7 @@ function Footer() {
   const marqueeItems = [...partners, ...partners];
   return (
     <footer className="bg-nile-900 text-sand-100">
+      <PerfSeam dark />
       <div className="marquee-wrap overflow-hidden border-y border-sand-100/10 py-8">
         <div className="marquee">
           {marqueeItems.map((p, i) => (
@@ -738,9 +954,7 @@ function Footer() {
               className="font-display text-2xl text-sand-100/80 whitespace-nowrap flex items-center gap-12"
             >
               {p}
-              <span className="text-ochre-500/60" aria-hidden>
-                ✦
-              </span>
+              <Postmark className="text-ochre-500/50 h-6 w-6" label="" />
             </span>
           ))}
         </div>
@@ -753,8 +967,8 @@ function Footer() {
           </div>
           <p className="text-sand-100/70 max-w-sm leading-relaxed">
             A Sudanese cultural heritage campaign and short documentary by
-            Paris Quetzal Sistilli and Yusef Bushara, in partnership with
-            Sudan Blue Shield.
+            Paris Quetzal Sistilli, Yusef Bushara, and Camilla Marchese
+            González, in partnership with Blue Shield Sudan.
           </p>
         </div>
         <div className="md:col-span-3">
