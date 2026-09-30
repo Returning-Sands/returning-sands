@@ -167,6 +167,7 @@ const events = [
 
 const partners = [
   "Bermuda Arts Council",
+  "British Council",
   "Kalam Aflam",
   "Sundance Institute",
   "Sudan Human Rights Hub",
