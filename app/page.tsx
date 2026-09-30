@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal, WordStagger } from "./Reveal";
 import { StampBadge, StampWatermark, Postmark, PerfSeam } from "./Stamp";
+import { ThanksBanner } from "./Thanks";
 
 const producers = [
   {
@@ -184,10 +185,22 @@ const donate = {
     tagline:
       "US donations are tax-deductible to the fullest extent of the law via our fiscal sponsor, SIMA Studios (501(c)(3)).",
   },
-  // UK / rest of world: Stripe Payment Link and bank details to follow.
+  // UK / rest of world: Stripe Payment Link (donor chooses amount) + Co-op bank transfer.
   uk: {
-    stripe: null as string | null,
-    bank: null as { accountName: string; sortCode: string; accountNumber: string } | null,
+    stripe: "https://donate.stripe.com/bJeaEW9qC7Kudizgvw8EM00" as string | null,
+    bank: {
+      accountName: "Returning Sands Community Interest Company",
+      sortCode: "08-92-99",
+      accountNumber: "67540396",
+      iban: "GB83 CPBK 0892 9967 5403 96",
+      bic: "CPBKGB22",
+    } as {
+      accountName: string;
+      sortCode: string;
+      accountNumber: string;
+      iban?: string;
+      bic?: string;
+    } | null,
   },
   note: "Returning Sands CIC is entirely not-for-profit; all funds are reinvested in the mission.",
 };
@@ -1005,6 +1018,7 @@ function Donate() {
         className="-top-16 right-[4%] hidden lg:block"
       />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
+        <ThanksBanner />
         <Reveal className="reveal-lg max-w-3xl">
           <p className="kicker kicker-anim text-sand-300 mb-4">Donate</p>
           <h2 className="font-display text-5xl sm:text-6xl leading-[0.95] mb-8">
@@ -1056,8 +1070,9 @@ function Donate() {
               {uk.stripe || uk.bank ? (
                 <>
                   <p className="text-sand-100/75 leading-relaxed mb-8 flex-1">
-                    Give by card in GBP, or by bank transfer using the details
-                    below. Please use your name as the payment reference.
+                    Give by card, Apple Pay or Google Pay in the amount of your
+                    choice, or by bank transfer using the details below. Please
+                    use your name as the payment reference so we can thank you.
                   </p>
                   <div className="flex flex-wrap gap-3">
                     {uk.stripe && (
@@ -1080,6 +1095,18 @@ function Donate() {
                       <dd>{uk.bank.sortCode}</dd>
                       <dt className="text-sand-300">Account number</dt>
                       <dd>{uk.bank.accountNumber}</dd>
+                      {uk.bank.iban && (
+                        <>
+                          <dt className="text-sand-300">IBAN</dt>
+                          <dd className="tabular-nums">{uk.bank.iban}</dd>
+                        </>
+                      )}
+                      {uk.bank.bic && (
+                        <>
+                          <dt className="text-sand-300">BIC</dt>
+                          <dd>{uk.bank.bic}</dd>
+                        </>
+                      )}
                     </dl>
                   )}
                 </>
