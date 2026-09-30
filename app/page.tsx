@@ -1087,15 +1087,18 @@ function Donate() {
                 <>
                   <p className="text-sand-100/75 leading-relaxed mb-8 flex-1">
                     Card payments in GBP and bank transfer details are coming
-                    shortly. In the meantime, email us and we&rsquo;ll send you
-                    the details directly.
+                    shortly. In the meantime, email{" "}
+                    <a href="mailto:donations@returningsands.org" className="hover-underline text-sand-50">
+                      donations@returningsands.org
+                    </a>{" "}
+                    and we&rsquo;ll send you the details directly.
                   </p>
                   <div className="flex flex-wrap gap-3">
                     <a
-                      href="#contact"
+                      href="mailto:donations@returningsands.org?subject=Donation%20to%20Returning%20Sands"
                       className="inline-flex items-center gap-3 rounded-full border border-sand-100/30 px-6 py-3 text-sand-50 hover:bg-sand-50 hover:text-nile-900 transition-colors"
                     >
-                      Get in touch
+                      Email the donations team
                       <Arrow />
                     </a>
                   </div>
@@ -1131,18 +1134,22 @@ function Contact() {
               We&rsquo;re actively building partnerships, applying for grants,
               and looking for friends who can help — through funding,
               expertise, venues, or simply by carrying the word forward.
-              Reach out to the producer or the creative director directly.
+              Write to us at{" "}
+              <a href="mailto:info@returningsands.org" className="hover-underline text-ink">
+                info@returningsands.org
+              </a>
+              , or reach the producer or the creative director directly.
             </p>
             <div className="flex flex-wrap gap-4">
               <a
-                href="mailto:pqsistilli@gmail.com?subject=Returning%20Sands"
+                href="mailto:paris@returningsands.org?subject=Returning%20Sands"
                 className="inline-flex items-center gap-3 rounded-full bg-ochre-600 px-6 py-3 text-sand-50 hover:bg-ochre-500 transition-colors"
               >
                 Email the Producer
                 <Arrow />
               </a>
               <a
-                href="mailto:ysbushara@gmail.com?subject=Returning%20Sands"
+                href="mailto:yusef@returningsands.org?subject=Returning%20Sands"
                 className="inline-flex items-center gap-3 rounded-full border border-ink/25 px-6 py-3 text-ink hover:bg-ink hover:text-sand-50 transition-colors"
               >
                 Email the Creative Director
@@ -1165,10 +1172,10 @@ function Contact() {
                 <p className="kicker text-ink/55 mb-1">Producer</p>
                 <p className="font-display text-2xl">Paris Quetzal Sistilli</p>
                 <a
-                  href="mailto:pqsistilli@gmail.com"
+                  href="mailto:paris@returningsands.org"
                   className="block text-sm text-ink/70 hover-underline mt-1"
                 >
-                  pqsistilli@gmail.com
+                  paris@returningsands.org
                 </a>
                 <p className="text-sm text-ink/60 mt-1">
                   +1 (443) 699 4957 · New York
@@ -1178,10 +1185,10 @@ function Contact() {
                 <p className="kicker text-ink/55 mb-1">Creative Director</p>
                 <p className="font-display text-2xl">Yusef Bushara</p>
                 <a
-                  href="mailto:ysbushara@gmail.com"
+                  href="mailto:yusef@returningsands.org"
                   className="block text-sm text-ink/70 hover-underline mt-1"
                 >
-                  ysbushara@gmail.com
+                  yusef@returningsands.org
                 </a>
                 <p className="text-sm text-ink/60 mt-1">
                   +44 (0) 7568 946890 · London
