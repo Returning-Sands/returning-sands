@@ -176,6 +176,26 @@ const partners = [
   "Blue Shield International",
 ];
 
+const donate = {
+  us: {
+    sponsorPage: "https://simastudios.org/fiscal-sponsorship/returning-sands/",
+    paypal: "https://www.paypal.com/donate/?hosted_button_id=CU7JMGF3GWH2J",
+    tagline:
+      "US donations are tax-deductible to the fullest extent of the law via our fiscal sponsor, SIMA Studios (501(c)(3)).",
+  },
+  // UK / rest of world: Stripe Payment Link and bank details to follow.
+  uk: {
+    stripe: null as string | null,
+    bank: null as { accountName: string; sortCode: string; accountNumber: string } | null,
+  },
+  note: "Returning Sands CIC is entirely not-for-profit; all funds are reinvested in the mission.",
+};
+
+const socials = [
+  { label: "Instagram", handle: "@returningsands", href: "https://www.instagram.com/returningsands" },
+  { label: "LinkedIn", handle: "Returning Sands", href: "https://www.linkedin.com/company/returningsands" },
+];
+
 export default function Home() {
   return (
     <>
@@ -193,6 +213,7 @@ export default function Home() {
       <Timeline />
       <ClosingQuote />
       <Team />
+      <Donate />
       <Contact />
       <Footer />
     </>
@@ -215,12 +236,13 @@ function Nav() {
           <a href="#documentary" className="hover-underline">Film</a>
           <a href="#events" className="hover-underline">Events</a>
           <a href="#team" className="hover-underline">Team</a>
+          <a href="#contact" className="hover-underline">Contact</a>
         </nav>
         <a
-          href="#contact"
+          href="#donate"
           className="hidden md:inline-flex items-center gap-2 rounded-full bg-sand-50 px-4 py-2 text-sm text-nile-900 hover:bg-sand-200 transition-colors"
         >
-          Contribute
+          Donate
           <Arrow />
         </a>
       </div>
@@ -250,6 +272,57 @@ function Arrow() {
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
       <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
+  );
+}
+
+function ExternalArrow() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
+      <path d="M4 10 10 4M5 4h5v5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function SocialIcon({ name, className = "" }: { name: string; className?: string }) {
+  if (name === "Instagram") {
+    return (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden className={className}>
+        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.6" />
+        <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.6" />
+        <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" />
+      </svg>
+    );
+  }
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden className={className}>
+      <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M8 10.5V17M8 7.5v.1M12 17v-4a2 2 0 0 1 4 0v4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function SocialLinks({ tone = "light" }: { tone?: "light" | "dark" }) {
+  const base =
+    tone === "light"
+      ? "text-sand-100/80 hover:text-sand-50"
+      : "text-ink/70 hover:text-ink";
+  return (
+    <ul className="flex items-center gap-5">
+      {socials.map((s) => (
+        <li key={s.label}>
+          <a
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Returning Sands on ${s.label}`}
+            className={`inline-flex items-center gap-2 text-sm transition-colors ${base}`}
+          >
+            <SocialIcon name={s.label} />
+            <span className="hover-underline">{s.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -917,6 +990,130 @@ function Team() {
   );
 }
 
+function Donate() {
+  const { us, uk, note } = donate;
+  return (
+    <section id="donate" className="relative overflow-hidden bg-nile-900 text-sand-50 grain">
+      <PerfSeam dark />
+      <StampWatermark
+        variant="magazine"
+        mode="screen"
+        opacity={0.06}
+        size={520}
+        tilt="-7deg"
+        className="-top-16 right-[4%] hidden lg:block"
+      />
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
+        <Reveal className="reveal-lg max-w-3xl">
+          <p className="kicker kicker-anim text-sand-300 mb-4">Donate</p>
+          <h2 className="font-display text-5xl sm:text-6xl leading-[0.95] mb-8">
+            Help carry this work
+            <span className="italic text-sand-300"> forward.</span>
+          </h2>
+          <p className="text-sand-100/75 leading-relaxed text-lg max-w-2xl">
+            Every contribution goes directly into documenting endangered
+            heritage, supporting Sudanese heritage workers, and finishing the
+            film. Choose the route that suits where you are.
+          </p>
+        </Reveal>
+
+        <div className="mt-16 grid gap-6 md:grid-cols-2">
+          <Reveal className="reveal" delay={80}>
+            <div className="h-full rounded-2xl border border-sand-100/15 bg-sand-50/[0.04] p-8 sm:p-10 flex flex-col">
+              <p className="kicker text-sand-300 mb-3">United States</p>
+              <h3 className="font-display text-3xl mb-4">Give through SIMA Studios</h3>
+              <p className="text-sand-100/75 leading-relaxed mb-8 flex-1">
+                {us.tagline}
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={us.paypal}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 rounded-full bg-sand-50 px-6 py-3 text-nile-900 hover:bg-sand-200 transition-colors"
+                >
+                  Donate in USD
+                  <ExternalArrow />
+                </a>
+                <a
+                  href={us.sponsorPage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 rounded-full border border-sand-100/30 px-6 py-3 text-sand-50 hover:bg-sand-50 hover:text-nile-900 transition-colors"
+                >
+                  Our SIMA page
+                  <ExternalArrow />
+                </a>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal className="reveal" delay={160}>
+            <div className="h-full rounded-2xl border border-sand-100/15 bg-sand-50/[0.04] p-8 sm:p-10 flex flex-col">
+              <p className="kicker text-sand-300 mb-3">United Kingdom &amp; elsewhere</p>
+              <h3 className="font-display text-3xl mb-4">Give directly to Returning Sands CIC</h3>
+              {uk.stripe || uk.bank ? (
+                <>
+                  <p className="text-sand-100/75 leading-relaxed mb-8 flex-1">
+                    Give by card in GBP, or by bank transfer using the details
+                    below. Please use your name as the payment reference.
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    {uk.stripe && (
+                      <a
+                        href={uk.stripe}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 rounded-full bg-sand-50 px-6 py-3 text-nile-900 hover:bg-sand-200 transition-colors"
+                      >
+                        Donate in GBP
+                        <ExternalArrow />
+                      </a>
+                    )}
+                  </div>
+                  {uk.bank && (
+                    <dl className="mt-8 grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm text-sand-100/80">
+                      <dt className="text-sand-300">Account name</dt>
+                      <dd>{uk.bank.accountName}</dd>
+                      <dt className="text-sand-300">Sort code</dt>
+                      <dd>{uk.bank.sortCode}</dd>
+                      <dt className="text-sand-300">Account number</dt>
+                      <dd>{uk.bank.accountNumber}</dd>
+                    </dl>
+                  )}
+                </>
+              ) : (
+                <>
+                  <p className="text-sand-100/75 leading-relaxed mb-8 flex-1">
+                    Card payments in GBP and bank transfer details are coming
+                    shortly. In the meantime, email us and we&rsquo;ll send you
+                    the details directly.
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    <a
+                      href="#contact"
+                      className="inline-flex items-center gap-3 rounded-full border border-sand-100/30 px-6 py-3 text-sand-50 hover:bg-sand-50 hover:text-nile-900 transition-colors"
+                    >
+                      Get in touch
+                      <Arrow />
+                    </a>
+                  </div>
+                </>
+              )}
+            </div>
+          </Reveal>
+        </div>
+
+        <Reveal className="reveal mt-12" delay={220}>
+          <p className="text-sm text-sand-100/60 max-w-2xl leading-relaxed">
+            {note}
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function Contact() {
   return (
     <section id="contact" className="bg-sand-50 grain">
@@ -950,6 +1147,10 @@ function Contact() {
                 Email the Creative Director
                 <Arrow />
               </a>
+            </div>
+            <div className="mt-10">
+              <p className="kicker text-ink/55 mb-3">Follow along</p>
+              <SocialLinks tone="dark" />
             </div>
           </Reveal>
 
@@ -1039,6 +1240,7 @@ function Footer() {
             <li><a href="#documentary" className="hover-underline">Documentary</a></li>
             <li><a href="#events" className="hover-underline">Events</a></li>
             <li><a href="#team" className="hover-underline">Team</a></li>
+            <li><a href="#donate" className="hover-underline">Donate</a></li>
             <li><a href="#contact" className="hover-underline">Contact</a></li>
           </ul>
         </div>
@@ -1053,7 +1255,8 @@ function Footer() {
       </div>
       <div className="border-t border-sand-100/10">
         <div className="mx-auto max-w-7xl px-6 sm:px-10 py-6 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-xs text-sand-100/55">
-          <span>© {new Date().getFullYear()} Returning Sands</span>
+          <span>© {new Date().getFullYear()} Returning Sands CIC</span>
+          <SocialLinks />
           <span>New York · London · Cairo · Khartoum</span>
         </div>
       </div>
