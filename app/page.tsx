@@ -1047,7 +1047,7 @@ function Donate() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 rounded-full bg-sand-50 px-6 py-3 text-nile-900 hover:bg-sand-200 transition-colors"
                 >
-                  Donate in USD
+                  Donate via SIMA
                   <ExternalArrow />
                 </a>
                 <a
@@ -1071,8 +1071,10 @@ function Donate() {
                 <>
                   <p className="text-sand-100/75 leading-relaxed mb-8 flex-1">
                     Give by card, Apple Pay or Google Pay in the amount of your
-                    choice, or by bank transfer using the details below. Please
-                    use your name as the payment reference so we can thank you.
+                    choice. Pay in pounds, euros or your own currency; the
+                    checkout adjusts to where you are. Or send a bank transfer
+                    using the details below, with your name as the reference so
+                    we can thank you.
                   </p>
                   <div className="flex flex-wrap gap-3">
                     {uk.stripe && (
@@ -1082,7 +1084,7 @@ function Donate() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-3 rounded-full bg-sand-50 px-6 py-3 text-nile-900 hover:bg-sand-200 transition-colors"
                       >
-                        Donate in GBP
+                        Donate by card
                         <ExternalArrow />
                       </a>
                     )}
