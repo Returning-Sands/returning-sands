@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Reveal, WordStagger } from "./Reveal";
 import { StampBadge, StampWatermark, Postmark, PerfSeam } from "./Stamp";
 import { ThanksBanner } from "./Thanks";
+import { MailingListForm } from "./MailingList";
 
 const producers = [
   {
@@ -1059,6 +1060,9 @@ function Donate() {
                   Our SIMA page
                   <ExternalArrow />
                 </a>
+              </div>
+              <div className="mt-8 pt-8 border-t border-sand-100/10">
+                <MailingListForm />
               </div>
             </div>
           </Reveal>
