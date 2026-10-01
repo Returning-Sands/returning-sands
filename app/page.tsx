@@ -36,7 +36,7 @@ const coreTeam = [
   { name: "Jenna Khalil", role: "Cairo Impact Coordinator" },
   { name: "Afra Elagab", role: "Oral Historian" },
   { name: "Anisa Estrada", role: "Researcher · Historic Preservation" },
-  { name: "Cillian Lavelle", role: "Finance Coordinator" },
+  { name: "Cillian Lavelle", role: "Director, Finance & Operations" },
   { name: "Micheal Isaak", role: "Researcher" },
 ];
 
