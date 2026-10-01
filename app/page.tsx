@@ -16,7 +16,7 @@ const producers = [
     name: "Yusef Bushara",
     role: "Producer · Co-Founder",
     base: "London",
-    bio: "A Sudanese-Bermudian editor, writer, and researcher specializing in Middle Eastern politics and publishing. Based in London, he works as a non-fiction editorial assistant at Saqi Books, and released his debut poetry collection, Good News, in 2025.",
+    bio: "A Sudanese-Bermudian editor, writer, and researcher specializing in global literatures and publishing. In 2025, he released his debut poetry collection, Good News. Yusef holds a degree in Middle Eastern politics from Sciences Po and one in English Literature from the University of Hong Kong, and earned his Master's in Comparative Literature from SOAS University of London.",
   },
   {
     name: "Camilla Marchese González",
