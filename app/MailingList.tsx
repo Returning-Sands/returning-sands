@@ -2,18 +2,25 @@
 
 import { useState } from "react";
 
-const TO = "info@returningsands.org";
+// Web3Forms access key: public by design, only lets the site submit to the
+// form that forwards to info@returningsands.org.
+const WEB3FORMS_KEY = "b24cc743-7a95-4a52-9fcc-5427cf5e251b";
+const ENDPOINT = "https://api.web3forms.com/submit";
+const CONSENT_TEXT =
+  "Yes, email me occasionally about events, the film and how donations are used. Unsubscribe any time.";
+
+type Status = "idle" | "sending" | "done" | "error";
 
 /**
- * Interim mailing-list sign-up. The site is fully static with no mail
- * provider yet, so the form composes a pre-filled email to info@ that the
- * visitor sends themselves. The received email is the consent record.
- * Swap the submit handler for the newsletter provider's API when chosen.
+ * Mailing-list sign-up. Posts to Web3Forms, which emails the submission to
+ * info@returningsands.org. That email (address + consent statement + time)
+ * is the consent record. Swap ENDPOINT for the newsletter provider's API
+ * when one is chosen.
  */
 export function MailingListForm({ tone = "light" }: { tone?: "light" | "dark" }) {
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
 
   const light = tone === "light";
   const input = light
@@ -24,34 +31,42 @@ export function MailingListForm({ tone = "light" }: { tone?: "light" | "dark" })
     : "bg-ochre-600 text-sand-50 hover:bg-ochre-500 disabled:opacity-40";
   const text = light ? "text-sand-100/70" : "text-ink/65";
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!agreed || !email) return;
-    const subject = encodeURIComponent("Mailing list sign-up");
-    const body = encodeURIComponent(
-      `Please add ${email} to the Returning Sands mailing list.\n\n` +
-        `I agree to receive occasional emails about events, the film and how donations are used. ` +
-        `I understand I can unsubscribe at any time.`
-    );
-    window.location.href = `mailto:${TO}?subject=${subject}&body=${body}`;
-    setSent(true);
+    if (!agreed || !email || status === "sending") return;
+    setStatus("sending");
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: "Mailing list sign-up — returningsands.org",
+          from_name: "Returning Sands website",
+          email,
+          consent: CONSENT_TEXT,
+          source: typeof window !== "undefined" ? window.location.href : "returningsands.org",
+          botcheck: "",
+        }),
+      });
+      const data = (await res.json()) as { success?: boolean };
+      setStatus(data.success ? "done" : "error");
+    } catch {
+      setStatus("error");
+    }
   }
 
-  if (sent) {
+  if (status === "done") {
     return (
       <p role="status" className={`text-sm leading-relaxed ${text}`}>
-        Your email app should have opened with the sign-up ready to go. Hit
-        send and you&rsquo;re on the list. If nothing opened, email{" "}
-        <a href={`mailto:${TO}`} className="hover-underline underline">
-          {TO}
-        </a>{" "}
-        with &ldquo;Mailing list&rdquo; in the subject.
+        You&rsquo;re on the list. Thank you, we&rsquo;ll be in touch about
+        events, the film and how donations are being used.
       </p>
     );
   }
 
   return (
-    <form onSubmit={submit} className="flex flex-col gap-3" noValidate={false}>
+    <form onSubmit={submit} className="flex flex-col gap-3">
       <label htmlFor={`ml-email-${tone}`} className={`text-sm ${text}`}>
         Join the mailing list
       </label>
@@ -69,12 +84,14 @@ export function MailingListForm({ tone = "light" }: { tone?: "light" | "dark" })
         />
         <button
           type="submit"
-          disabled={!agreed || !email}
+          disabled={!agreed || !email || status === "sending"}
           className={`inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm transition-colors ${button}`}
         >
-          Join
+          {status === "sending" ? "Joining…" : "Join"}
         </button>
       </div>
+      {/* Honeypot for bots; Web3Forms ignores submissions where this is filled. */}
+      <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} aria-hidden />
       <label className={`flex items-start gap-3 text-xs leading-relaxed ${text}`}>
         <input
           type="checkbox"
@@ -83,11 +100,19 @@ export function MailingListForm({ tone = "light" }: { tone?: "light" | "dark" })
           className="mt-0.5 h-4 w-4 shrink-0 accent-[#b8651f]"
         />
         <span>
-          Yes, email me occasionally about events, the film and how donations
-          are used. Unsubscribe any time. Returning Sands Community Interest
-          Company, no. 17311689.
+          {CONSENT_TEXT} Returning Sands Community Interest Company, no.
+          17311689.
         </span>
       </label>
+      {status === "error" && (
+        <p role="alert" className={`text-xs ${text}`}>
+          Something went wrong. Please try again, or email{" "}
+          <a href="mailto:info@returningsands.org" className="underline">
+            info@returningsands.org
+          </a>
+          .
+        </p>
+      )}
     </form>
   );
 }
