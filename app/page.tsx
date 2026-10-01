@@ -1075,8 +1075,7 @@ function Donate() {
                 <>
                   <p className="text-sand-100/75 leading-relaxed mb-8 flex-1">
                     Give by card, Apple Pay or Google Pay in the amount of your
-                    choice. Pay in pounds, euros or your own currency; the
-                    checkout adjusts to where you are. Or send a bank transfer
+                    choice, in pounds, euros or your own currency. Or send a bank transfer
                     using the details below, with your name as the reference so
                     we can thank you.
                   </p>
