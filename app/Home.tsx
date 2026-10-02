@@ -4,262 +4,60 @@ import { Reveal, WordStagger } from "./Reveal";
 import { StampBadge, StampWatermark, Postmark, PerfSeam } from "./Stamp";
 import { ThanksBanner } from "./Thanks";
 import { MailingListForm } from "./MailingList";
+import type { Locale, SiteContent } from "./content";
+import { LangSwitch } from "./LangSwitch";
 
-const producers = [
-  {
-    name: "Paris Quetzal Sistilli",
-    role: "Producer · Co-Founder",
-    base: "New York",
-    bio: "A Mexican-American cultural heritage researcher and practitioner focused on heritage protection, cultural policy, and collective memory. She holds degrees in Middle Eastern Politics from Sciences Po and Political Science from Columbia. Her writing has appeared in the Journal of Art Crime and art-law journals at UC Berkeley and Harvard.",
-  },
-  {
-    name: "Yusef Bushara",
-    role: "Producer · Co-Founder",
-    base: "London",
-    bio: "A Sudanese-Bermudian editor, writer, and researcher specializing in global literatures and publishing. In 2025, he released his debut poetry collection, Good News. Yusef holds a degree in Middle Eastern politics from Sciences Po and one in English Literature from the University of Hong Kong, and earned his Master's in Comparative Literature from SOAS University of London.",
-  },
-  {
-    name: "Camilla Marchese González",
-    role: "Producer · Co-Founder",
-    base: "Brooklyn",
-    bio: "A Guatemalan-Italian writer and filmmaker drawn to storytelling as a means of preservation. Her short films have screened at DOC/NYC, Hamptons International Film Festival, Woodstock Film Festival, and Athens International Film Festival.",
-  },
-  {
-    name: "Basma Khalifa",
-    role: "Executive Producer",
-    base: "London",
-    bio: "A Sudanese creative and founder of Zola Studios, working in character-driven storytelling that foregrounds underrepresented voices. Her debut feature reached over 30 million viewers and earned a Newcomer of the Year nomination at the Edinburgh TV Festival.",
-  },
-];
+type T = SiteContent;
 
-const coreTeam = [
-  { name: "Jenna Khalil", role: "Cairo Impact Coordinator" },
-  { name: "Afra Elagab", role: "Oral Historian" },
-  { name: "Anisa Estrada", role: "Researcher · Historic Preservation" },
-  { name: "Cillian Lavelle", role: "Director, Finance & Operations" },
-  { name: "Micheal Isaak", role: "Researcher" },
-];
-
-const goals = [
-  "Support the documentation of endangered heritage and lived memory.",
-  "Amplify the work of Sudanese heritage professionals, including emerging efforts tied to Blue Shield Sudan.",
-  "Collaborate with Sudanese artists and heritage experts to tackle the issue of futurity in an interdisciplinary fashion.",
-  "Enable future pathways to rebuild, recover, and sustain Sudanese cultural heritage — within the country and across the diaspora.",
-  "Position culture as a core component of humanitarian and post-conflict response.",
-];
-
-const timeline = [
-  {
-    when: "Summer 2026",
-    title: "Development Begins",
-    points: [
-      "Onboarded Aicha Cherif as documentary director",
-      "Backed by the Sundance x Adobe Ignite Fellowship",
-      "Fundraising promo video assembled; crew comes together",
-      "Received fiscal sponsorship from SIMA",
-    ],
-  },
-  {
-    when: "Fall 2026",
-    title: "Fundraising Begins",
-    points: [
-      "NYC fundraising events and private donations begin",
-      "Grant application rollout continues",
-    ],
-  },
-  {
-    when: "Nov – Dec 2026",
-    title: "Pre-Production · Cairo",
-    points: [
-      "Executing the Cairo exhibit and academic events",
-      "Film crew and shoot dates locked",
-      "Story arc finalized; oral history interviews begin",
-    ],
-  },
-  {
-    when: "Jan – Feb 2027",
-    title: "London & New York",
-    points: [
-      "Executing the London exhibit and academic events",
-      "Impact trailer screens; NYC exhibit and academic events",
-      "Logistics finalized for the spring shoot",
-    ],
-  },
-  {
-    when: "May 2027",
-    title: "Production",
-    points: [
-      "Crew travels to Cairo",
-      "Filming conducted over a period of 2–3 weeks",
-    ],
-  },
-  {
-    when: "Fall 2027",
-    title: "Post-Production",
-    points: [
-      "Editing, coloring, and sound are executed",
-      "Festival submission strategy rolls out",
-    ],
-  },
-];
-
-const events = [
-  {
-    city: "Cairo",
-    when: "Dec 2026",
-    body: "Where much of the heritage work is now coordinated from exile.",
-    items: [
-      {
-        label: "Access Art Space Exhibit",
-        when: "Dec 18–20",
-        body: "Fifteen Sudanese artists, curated by Reem Aljeally, exploring memory, return, and home.",
-      },
-      {
-        label: "Educational Panel · AUC",
-        when: "Dec 16",
-        body: "A half-day series with Sudanese heritage expert Dr. Amira Ahmed — a refugee focus-group conversation, then a panel with ICROM, UNESCO, Blue Shield Sudan, and the National Archives.",
-      },
-      {
-        label: "Oral History Project",
-        when: "Ongoing",
-        body: "With Oral Historian Afra Elagab — cultural heritage in exile, toward a digital repository and bilingual publication.",
-      },
-    ],
-  },
-  {
-    city: "London",
-    when: "Jan 2027",
-    body: "Carrying the project into the diaspora.",
-    items: [
-      {
-        label: "London Exhibition",
-        when: "One week · Jan",
-        body: "Four artists — two Bermudian, two Sudanese — on the unlikely kinship of return. Sponsored by the Bermuda Arts Council.",
-      },
-      {
-        label: "Culture House Fireside",
-        when: "January",
-        body: "A conversation on collective memory and testimony with African heritage stakeholders, hosted by Culture House.",
-      },
-    ],
-  },
-  {
-    city: "New York",
-    when: "Nov 2026 – Feb 2027",
-    body: "The campaign's primary fundraising engine.",
-    items: [
-      {
-        label: "Private Donor Event",
-        when: "Nov 2026",
-        body: "Philanthropists from the arts and culture world; impact trailer, remarks, and a silent auction of contemporary Sudanese art.",
-      },
-      {
-        label: "Interactive Public Showcase",
-        when: "Mid-Nov 2026",
-        body: "With NYC-based Sudanese arts collectives — performance, mingling, and a live community-generated art installation.",
-      },
-      {
-        label: "Exhibition",
-        when: "Feb 2027",
-        body: "Curated by Paris Sistilli and Fatma Yasier — Sudanese artists on memory, return, and home.",
-      },
-    ],
-  },
-];
-
-const partners = [
-  "Bermuda Arts Council",
-  "British Council",
-  "Kalam Aflam",
-  "Sundance Institute",
-  "Sudan Human Rights Hub",
-  "Culture House",
-  "The American University in Cairo",
-  "SUDAAK",
-  "Blue Shield International",
-];
-
-const donate = {
-  us: {
-    sponsorPage: "https://simastudios.org/fiscal-sponsorship/returning-sands/",
-    paypal: "https://www.paypal.com/donate/?hosted_button_id=CU7JMGF3GWH2J",
-    tagline:
-      "US donations are tax-deductible to the fullest extent of the law via our fiscal sponsor, SIMA Studios (501(c)(3)).",
-  },
-  // UK / rest of world: Stripe Payment Link (donor chooses amount) + Co-op bank transfer.
-  uk: {
-    stripe: "https://donate.stripe.com/bJeaEW9qC7Kudizgvw8EM00" as string | null,
-    bank: {
-      accountName: "Returning Sands Community Interest Company",
-      sortCode: "08-92-99",
-      accountNumber: "67540396",
-      iban: "GB83 CPBK 0892 9967 5403 96",
-      bic: "CPBKGB22",
-    } as {
-      accountName: string;
-      sortCode: string;
-      accountNumber: string;
-      iban?: string;
-      bic?: string;
-    } | null,
-  },
-  note: "Returning Sands CIC is entirely not-for-profit; all funds are reinvested in the mission.",
-};
-
-const socials = [
-  { label: "Instagram", handle: "@returningsands", href: "https://www.instagram.com/returningsands" },
-  { label: "LinkedIn", handle: "Returning Sands", href: "https://www.linkedin.com/company/returningsands" },
-];
-
-export default function Home() {
+export function HomePage({ t, locale }: { t: SiteContent; locale: Locale }) {
   return (
     <>
-      <Nav />
-      <Hero />
-      <OpeningQuote />
-      <WhatsAtStake />
-      <Campaign />
-      <Goals />
-      <Documentary />
-      <AliNour />
-      <DirectorsNote />
-      <Events />
-      <OralHistory />
-      <Timeline />
-      <ClosingQuote />
-      <Team />
-      <Donate />
-      <Contact />
-      <Footer />
+      <Nav t={t} locale={locale} />
+      <Hero t={t} />
+      <OpeningQuote t={t.openingQuote} />
+      <WhatsAtStake t={t.stake} />
+      <Campaign t={t.campaign} />
+      <Goals t={t.goals} />
+      <Documentary t={t.documentary} />
+      <AliNour t={t.aliNour} />
+      <DirectorsNote t={t.directorsNote} />
+      <Events t={t.events} />
+      <OralHistory t={t.oralHistory} />
+      <Timeline t={t.timeline} />
+      <ClosingQuote t={t.closingQuote} />
+      <Team t={t.team} />
+      <Donate t={t} />
+      <Contact t={t} />
+      <Footer t={t} locale={locale} />
     </>
   );
 }
 
-function Nav() {
+function Nav({ t, locale }: { t: T; locale: Locale }) {
   return (
-    <header className="absolute top-0 left-0 right-0 z-30">
+    <header className="absolute top-0 start-0 end-0 z-30">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href={locale === "ar" ? "/ar" : "/"} className="flex items-center gap-3 group">
           <Mark className="text-sand-50" />
           <span className="font-display text-xl tracking-tight text-sand-50">
-            Returning Sands
+            {t.brand.name}
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-9 text-sm text-sand-100/85">
-          <a href="#stake" className="hover-underline">At Stake</a>
-          <a href="#campaign" className="hover-underline">Campaign</a>
-          <a href="#documentary" className="hover-underline">Film</a>
-          <a href="#events" className="hover-underline">Events</a>
-          <a href="#team" className="hover-underline">Team</a>
-          <a href="#contact" className="hover-underline">Contact</a>
+          {t.nav.links.map((l) => (
+            <a key={l.href} href={l.href} className="hover-underline">{l.label}</a>
+          ))}
         </nav>
-        <a
-          href="#donate"
-          className="hidden md:inline-flex items-center gap-2 rounded-full bg-sand-50 px-4 py-2 text-sm text-nile-900 hover:bg-sand-200 transition-colors"
-        >
-          Donate
-          <Arrow />
-        </a>
+        <div className="flex items-center gap-5">
+          <LangSwitch locale={locale} label={t.langSwitch} tone="light" />
+          <a
+            href="#donate"
+            className="hidden md:inline-flex items-center gap-2 rounded-full bg-sand-50 px-4 py-2 text-sm text-nile-900 hover:bg-sand-200 transition-colors"
+          >
+            {t.nav.donate}
+            <Arrow />
+          </a>
+        </div>
       </div>
     </header>
   );
@@ -299,7 +97,7 @@ function ExternalArrow() {
 }
 
 function SocialIcon({ name, className = "" }: { name: string; className?: string }) {
-  if (name === "Instagram") {
+  if (name === "instagram") {
     return (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden className={className}>
         <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.6" />
@@ -316,23 +114,23 @@ function SocialIcon({ name, className = "" }: { name: string; className?: string
   );
 }
 
-function SocialLinks({ tone = "light" }: { tone?: "light" | "dark" }) {
+function SocialLinks({ t, tone = "light" }: { t: T["social"]; tone?: "light" | "dark" }) {
   const base =
     tone === "light"
       ? "text-sand-100/80 hover:text-sand-50"
       : "text-ink/70 hover:text-ink";
   return (
     <ul className="flex items-center gap-5">
-      {socials.map((s) => (
-        <li key={s.label}>
+      {t.networks.map((s) => (
+        <li key={s.network}>
           <a
             href={s.href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Returning Sands on ${s.label}`}
+            aria-label={t.ariaLabel.replace("{network}", s.label)}
             className={`inline-flex items-center gap-2 text-sm transition-colors ${base}`}
           >
-            <SocialIcon name={s.label} />
+            <SocialIcon name={s.network} />
             <span className="hover-underline">{s.label}</span>
           </a>
         </li>
@@ -341,12 +139,13 @@ function SocialLinks({ tone = "light" }: { tone?: "light" | "dark" }) {
   );
 }
 
-function Hero() {
+function Hero({ t }: { t: T }) {
+  const h = t.hero;
   return (
     <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden bg-nile-900 text-sand-50">
       <Image
         src="/img/bridge.jpg"
-        alt="Sunrise over a bridge in Khartoum"
+        alt={h.imageAlt}
         fill
         priority
         sizes="100vw"
@@ -367,25 +166,22 @@ function Hero() {
       />
       <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-10 pt-40 pb-20 sm:pb-28">
         <Reveal className="kicker-anim kicker text-sand-300 mb-6 flex items-center gap-3">
-          <span className="stamp-chip">A Sudanese Cultural Heritage Campaign · 2026 – 2027</span>
+          <span className="stamp-chip">{h.kicker}</span>
         </Reveal>
         <h1 className="font-display text-[18vw] leading-[0.86] sm:text-[14vw] md:text-[11rem] lg:text-[13rem] xl:text-[15rem] text-sand-50">
-          <WordStagger as="span" text="Returning" />
+          <WordStagger as="span" text={h.titleLead} />
           <span className="block italic text-sand-300">
-            <WordStagger as="span" text="Sands" />
+            <WordStagger as="span" text={h.titleEmphasis} />
           </span>
         </h1>
         <Reveal className="mt-10 grid gap-8 md:grid-cols-12 items-end reveal-lg" delay={150}>
           <p className="md:col-span-7 md:col-start-1 max-w-prose text-lg md:text-xl text-sand-100/90 font-light leading-relaxed">
-            A campaign and short documentary by Paris Sistilli, Yusef
-            Bushara, and Camilla Marchese González — protecting Sudanese
-            cultural memory amid one of the world&rsquo;s most devastating
-            and underreported conflicts.
+            {h.intro}
           </p>
           <div className="md:col-span-4 md:col-start-9 flex flex-col gap-2 text-sm reveal-stagger">
-            <Row label="Cairo" value="Dec 2026" />
-            <Row label="London" value="Jan 2027" />
-            <Row label="New York" value="Nov 2026 – Feb 2027" />
+            {h.schedule.map((r) => (
+              <Row key={r.label} label={r.label} value={r.value} />
+            ))}
           </div>
         </Reveal>
       </div>
@@ -402,14 +198,14 @@ function Row({ label, value }: { label: string; value: string }) {
   );
 }
 
-function OpeningQuote() {
+function OpeningQuote({ t }: { t: T["openingQuote"] }) {
   return (
     <section className="relative bg-nile-900 text-sand-50 overflow-hidden">
       <div className="relative h-[70svh] min-h-[480px] parallax">
         <div className="parallax-layer">
           <Image
             src="/img/meroe.jpg"
-            alt="The pyramids of Meroë in Sudan"
+            alt={t.imageAlt}
             fill
             sizes="100vw"
             className="object-cover object-center"
@@ -418,14 +214,12 @@ function OpeningQuote() {
         <div className="absolute inset-0 bg-gradient-to-r from-nile-900/90 via-nile-900/50 to-nile-900/10" />
         <div className="relative h-full mx-auto max-w-7xl px-6 sm:px-10 flex items-center">
           <Reveal as="figure" className="max-w-2xl reveal-lg">
-            <p className="kicker text-sand-300 mb-6">Opening Statement</p>
+            <p className="kicker text-sand-300 mb-6">{t.kicker}</p>
             <blockquote className="font-display text-3xl sm:text-4xl md:text-5xl leading-[1.15] text-sand-50">
-              &ldquo;Beneath the wreckage of homes and hospitals lies another
-              front in this war: the systematic erasure of a
-              nation&rsquo;s cultural memory.&rdquo;
+              {t.quote}
             </blockquote>
             <figcaption className="mt-6 text-sand-300 kicker">
-              — Ali Nour · Blue Shield Sudan
+              {t.attribution}
             </figcaption>
           </Reveal>
         </div>
@@ -434,46 +228,28 @@ function OpeningQuote() {
   );
 }
 
-function WhatsAtStake() {
-  const stats = [
-    { value: "60%", label: "of Sudan National Museum holdings looted in the last three years." },
-    { value: "12M+", label: "people displaced since the war began in 2023." },
-    { value: "Ongoing", label: "deliberate destruction of museums, archives, and historic sites." },
-  ];
+function WhatsAtStake({ t }: { t: T["stake"] }) {
   return (
     <section id="stake" className="bg-sand-50">
       <PerfSeam />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="grid gap-14 md:grid-cols-12">
           <Reveal className="md:col-span-5 reveal-lg">
-            <p className="kicker kicker-anim text-ochre-600 mb-4">What&rsquo;s at Stake</p>
+            <p className="kicker kicker-anim text-ochre-600 mb-4">{t.kicker}</p>
             <h2 className="font-display text-5xl sm:text-6xl leading-[0.95] rule-draw pb-6">
-              Cultural heritage is a tangible expression of
-              <span className="italic text-ochre-600"> identity.</span>
+              {t.headingLead}
+              <span className="italic text-ochre-600">{` ${t.headingEmphasis}`}</span>
             </h2>
           </Reveal>
           <Reveal className="md:col-span-7 md:col-start-6 space-y-6 text-lg leading-relaxed text-ink/80 reveal" delay={120}>
-            <p>
-              In times of conflict, that identity becomes a strategic target —
-              a way to erode the memory, cohesion, and continuity of a people.
-              Although commonly framed as a &ldquo;civil war,&rdquo; Sudan
-              since 2023 has been in the throes of a counter-revolutionary
-              war. The country has witnessed widespread and irreversible
-              damage to archaeological sites, archives, and museums.
-            </p>
-            <p>
-              Destruction in Sudan is ongoing, not confined to the past.
-              Immediate documentation and action are essential. Heritage
-              workers continue to operate under extreme, time-sensitive
-              conditions with limited visibility and support — underscoring
-              the urgent need for greater aid, technical expertise, and
-              protective resources.
-            </p>
+            {t.paragraphs.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
           </Reveal>
         </div>
 
         <ul className="grid sm:grid-cols-3 gap-6 mt-16 reveal-stagger">
-          {stats.map((s, i) => (
+          {t.stats.map((s, i) => (
             <Reveal
               as="li"
               key={s.value}
@@ -493,43 +269,29 @@ function WhatsAtStake() {
   );
 }
 
-function Campaign() {
+function Campaign({ t }: { t: T["campaign"] }) {
+  const [c1, c2, c3] = t.p1.cities;
   return (
     <section id="campaign" className="bg-sand-100 grain">
       <PerfSeam />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="grid gap-14 md:grid-cols-12">
           <Reveal className="md:col-span-5 reveal-lg">
-            <p className="kicker kicker-anim text-ochre-600 mb-4">Impact Campaign</p>
+            <p className="kicker kicker-anim text-ochre-600 mb-4">{t.kicker}</p>
             <h2 className="font-display text-5xl sm:text-6xl leading-[0.95]">
-              Three cities,
-              <span className="italic text-ochre-600"> one film,</span> one
-              global call.
+              {t.headingLead}
+              <span className="italic text-ochre-600">{` ${t.headingEmphasis}`}</span>
+              {` ${t.headingTail}`}
             </h2>
           </Reveal>
           <Reveal className="md:col-span-6 md:col-start-7 space-y-6 text-lg leading-relaxed text-ink/80 reveal" delay={120}>
             <p>
-              Returning Sands is a global campaign that launches with
-              education and art exhibition events in{" "}
-              <strong>Cairo</strong>, <strong>London</strong>, and{" "}
-              <strong>New York</strong> — serving as both visibility
-              platforms and fundraising catalysts for the short documentary
-              at the heart of the project.
+              {t.p1.lead}{" "}
+              <strong>{c1}</strong>{t.p1.separator}<strong>{c2}</strong>{t.p1.lastSeparator}{" "}
+              <strong>{c3}</strong>{` ${t.p1.tail}`}
             </p>
-            <p>
-              The ambition extends beyond a single screening or exhibition.
-              At its core is the production of a documentary film to be
-              submitted to festivals across the SWANA region and
-              internationally, fostering sustained engagement with the urgent
-              issues of heritage preservation in Sudan and the deliberate
-              targeting of cultural sites in conflict zones.
-            </p>
-            <p>
-              Through this work, we seek to engage Sudanese communities
-              within the country and across the diaspora, while reaching a
-              broader global audience — to amplify awareness and mobilize a
-              wider call to action.
-            </p>
+            <p>{t.p2}</p>
+            <p>{t.p3}</p>
           </Reveal>
         </div>
       </div>
@@ -537,7 +299,7 @@ function Campaign() {
   );
 }
 
-function Goals() {
+function Goals({ t }: { t: T["goals"] }) {
   return (
     <section className="relative overflow-hidden bg-sand-50">
       <PerfSeam />
@@ -550,9 +312,9 @@ function Goals() {
       <div className="relative mx-auto max-w-7xl px-6 sm:px-10 py-24 sm:py-32">
         <Reveal className="reveal-lg flex items-start justify-between gap-6">
           <div className="flex-1">
-            <p className="kicker kicker-anim text-ochre-600 mb-6">Goals of the Project</p>
+            <p className="kicker kicker-anim text-ochre-600 mb-6">{t.kicker}</p>
             <h2 className="font-display text-4xl sm:text-5xl leading-[0.95] mb-14 max-w-3xl rule-draw pb-6">
-              Five threads holding the work together.
+              {t.heading}
             </h2>
           </div>
           <StampBadge
@@ -563,7 +325,7 @@ function Goals() {
           />
         </Reveal>
         <ol className="grid gap-px bg-ink/15 rounded-2xl overflow-hidden md:grid-cols-2">
-          {goals.map((g, i) => (
+          {t.items.map((g, i) => (
             <Reveal
               as="li"
               key={i}
@@ -582,40 +344,24 @@ function Goals() {
   );
 }
 
-function Documentary() {
+function Documentary({ t }: { t: T["documentary"] }) {
   return (
     <section id="documentary" className="bg-nile-900 text-sand-50 grain relative">
       <PerfSeam dark />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="grid gap-14 md:grid-cols-12 mb-16">
           <Reveal className="md:col-span-5 reveal-lg">
-            <p className="kicker kicker-anim text-sand-300 mb-4">The Documentary</p>
+            <p className="kicker kicker-anim text-sand-300 mb-4">{t.kicker}</p>
             <h2 className="font-display text-5xl sm:text-6xl leading-[0.95]">
-              From exile in Egypt,
-              <span className="italic text-sand-300"> a fight</span> to keep
-              memory alive.
+              {t.headingLead}
+              <span className="italic text-sand-300">{` ${t.headingEmphasis}`}</span>
+              {` ${t.headingTail}`}
             </h2>
           </Reveal>
           <Reveal className="md:col-span-6 md:col-start-7 space-y-6 text-lg leading-relaxed text-sand-100/85 reveal" delay={120}>
+            <p>{t.p1}</p>
             <p>
-              The film follows the story of Ali Nour, a Sudanese heritage
-              professional leading efforts to protect his country&rsquo;s
-              cultural legacy amid one of the world&rsquo;s most devastating
-              and underreported conflicts — a war that has displaced over
-              twelve million people and triggered the widespread, deliberate
-              destruction of museums, archives, and historic sites.
-            </p>
-            <p>
-              From Cairo, Ali and a network of displaced Sudanese experts
-              coordinate high-risk safeguarding operations across Sudan,
-              confronting the collapse of national infrastructure and the
-              limits of international support. Expanding beyond preservation
-              alone, the film also enters the lives of Sudanese artists,
-              musicians, and scholars in exile — capturing the active
-              creation and transmission of cultural heritage within the
-              diaspora. Heritage stands not only as something under threat,
-              but as a <em>living force</em>: central to identity, survival,
-              and the future of Sudan itself.
+              {`${t.p2Lead} `}<em>{t.p2Emphasis}</em>{t.p2Tail}
             </p>
           </Reveal>
         </div>
@@ -624,19 +370,16 @@ function Documentary() {
           <Reveal className="md:col-span-7 relative aspect-[16/10] overflow-hidden rounded-2xl bg-nile-800 reveal parallax">
             <Image
               src="/img/barbers.jpg"
-              alt="Archival photograph from Sudan"
+              alt={t.imageAlt}
               fill
               sizes="(max-width: 768px) 100vw, 60vw"
               className="object-cover object-center zoom-in"
             />
           </Reveal>
           <Reveal as="figure" className="md:col-span-5 bg-nile-800 p-10 sm:p-12 rounded-2xl flex flex-col justify-center reveal" delay={140}>
-            <p className="kicker text-sand-300 mb-4">Logline</p>
+            <p className="kicker text-sand-300 mb-4">{t.loglineKicker}</p>
             <blockquote className="font-display text-2xl sm:text-3xl leading-[1.2] text-sand-50">
-              From exile in Egypt, Ali Nour coordinates Sudan&rsquo;s fight
-              to keep heritage alive. With national memory under siege, Ali
-              and his crew of brave volunteers do everything to safeguard
-              Sudan&rsquo;s future while maintaining its thread to the past.
+              {t.logline}
             </blockquote>
           </Reveal>
         </div>
@@ -645,7 +388,7 @@ function Documentary() {
   );
 }
 
-function AliNour() {
+function AliNour({ t }: { t: T["aliNour"] }) {
   return (
     <section className="bg-sand-100">
       <PerfSeam />
@@ -654,7 +397,7 @@ function AliNour() {
           <Reveal className="md:col-span-5 relative aspect-[4/5] overflow-hidden rounded-2xl bg-ink reveal-lg parallax">
             <Image
               src="/img/gateway.jpg"
-              alt="Architectural heritage — historic gateway in Sudan"
+              alt={t.imageAlt}
               fill
               sizes="(max-width: 768px) 100vw, 40vw"
               className="object-cover object-center zoom-in"
@@ -662,32 +405,19 @@ function AliNour() {
             <div className="absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent" />
           </Reveal>
           <Reveal className="md:col-span-6 md:col-start-7 reveal" delay={140}>
-            <p className="kicker kicker-anim text-ochre-600 mb-4">Introducing</p>
+            <p className="kicker kicker-anim text-ochre-600 mb-4">{t.kicker}</p>
             <h2 className="font-display text-5xl sm:text-6xl leading-[0.95] mb-6">
-              Ali Nour
+              {t.heading}
             </h2>
-            <p className="text-lg text-ink/80 leading-relaxed mb-6">
-              A grants-management specialist and cultural heritage advocate.
-              Ali serves as Secretary General of Blue Shield Sudan and
-              rapporteur of the Emergency Response Committee under
-              Sudan&rsquo;s National Corporation for Antiquities and Museums
-              (NCAM).
-            </p>
-            <p className="text-lg text-ink/80 leading-relaxed">
-              With a background in strategic fundraising, proposal
-              development, and crisis coordination, he supports regional and
-              international efforts to document, stabilise, and protect
-              heritage in Sudan.
-            </p>
+            <p className="text-lg text-ink/80 leading-relaxed mb-6">{t.p1}</p>
+            <p className="text-lg text-ink/80 leading-relaxed">{t.p2}</p>
             <div className="mt-10 divider-rule" />
             <figure className="mt-10">
               <blockquote className="font-display text-2xl sm:text-3xl leading-snug text-ink">
-                &ldquo;Heritage workers operate under constant threat amidst
-                an active war, with civilian attacks intensifying, even in
-                the capital, Khartoum.&rdquo;
+                {t.quote}
               </blockquote>
               <figcaption className="mt-4 kicker text-ink/55">
-                — Ali Nour
+                {t.attribution}
               </figcaption>
             </figure>
           </Reveal>
@@ -697,7 +427,7 @@ function AliNour() {
   );
 }
 
-function DirectorsNote() {
+function DirectorsNote({ t }: { t: T["directorsNote"] }) {
   return (
     <section className="bg-sand-50">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-24 sm:py-32">
@@ -705,31 +435,20 @@ function DirectorsNote() {
           <Reveal className="md:col-span-4 reveal-lg flex items-start gap-6">
             <StampBadge size={92} tilt="-5deg" className="mt-1" />
             <div>
-              <p className="kicker kicker-anim text-ochre-600 mb-4">Director&rsquo;s Note</p>
+              <p className="kicker kicker-anim text-ochre-600 mb-4">{t.kicker}</p>
               <h2 className="font-display text-4xl leading-[0.95]">
-                Aicha Cherif
+                {t.name}
               </h2>
-              <p className="mt-3 text-sm text-ink/60">
-                Director · 2026 Sundance x Adobe Ignite Fellow
-              </p>
+              <p className="mt-3 text-sm text-ink/60">{t.role}</p>
             </div>
           </Reveal>
           <Reveal className="md:col-span-7 md:col-start-6 reveal" delay={120}>
             <blockquote className="font-display text-2xl sm:text-3xl leading-[1.3] text-ink mb-6">
-              &ldquo;With Returning Sands I venture into thematics of memory
-              and belonging, through my own experience with displacement.
-              Fleeing gender-based violence in my homeland, Guinea, at age
-              one, I have found solace in storytelling.&rdquo;
+              {t.quote}
             </blockquote>
             <p className="text-lg text-ink/75 leading-relaxed">
-              My intention with my forthcoming feature documentary{" "}
-              <em>HEAT</em>{" "}is to showcase a neighborhood filled with a rich
-              and textured history — and with this project, I explore the
-              same questions of identity and belonging from a different
-              lens. As part of the creative process, I&rsquo;m in open
-              conversation with Sudanese filmmakers and creatives, as well
-              as Ali and his community of heritage workers, to make sure to
-              highlight their voices and stories in a collaborative manner.
+              {t.bodyLead}{" "}
+              <em>{t.bodyTitle}</em>{" "}{t.bodyTail}
             </p>
           </Reveal>
         </div>
@@ -738,7 +457,7 @@ function DirectorsNote() {
   );
 }
 
-function Events() {
+function Events({ t }: { t: T["events"] }) {
   return (
     <section id="events" className="relative overflow-hidden bg-nile-900 text-sand-50 grain">
       <PerfSeam dark />
@@ -753,20 +472,19 @@ function Events() {
           <Reveal className="reveal-lg flex items-start gap-5">
             <Postmark animate className="text-sand-300 mt-1 shrink-0" label="" />
             <div>
-              <p className="kicker kicker-anim text-sand-300 mb-4">Events</p>
+              <p className="kicker kicker-anim text-sand-300 mb-4">{t.kicker}</p>
               <h2 className="font-display text-5xl sm:text-6xl leading-[0.95]">
-                Three cities,
-                <span className="italic text-sand-300"> one thread.</span>
+                {t.headingLead}
+                <span className="italic text-sand-300">{` ${t.headingEmphasis}`}</span>
               </h2>
             </div>
           </Reveal>
           <Reveal as="p" className="max-w-md text-sand-100/80 leading-relaxed reveal" delay={140}>
-            Each city combines exhibitions, academic panels, and fundraising
-            moments — open to the public, with limited capacity.
+            {t.intro}
           </Reveal>
         </div>
         <div className="grid md:grid-cols-3 gap-px bg-sand-50/10 rounded-2xl overflow-hidden">
-          {events.map((e, i) => (
+          {t.cities.map((e, i) => (
             <Reveal
               as="article"
               key={e.city}
@@ -807,7 +525,7 @@ function Events() {
   );
 }
 
-function OralHistory() {
+function OralHistory({ t }: { t: T["oralHistory"] }) {
   return (
     <section className="bg-sand-100">
       <PerfSeam />
@@ -817,7 +535,7 @@ function OralHistory() {
             <Reveal className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-ink reveal-lg parallax">
               <Image
                 src="/img/woman.jpg"
-                alt="Archival portrait — memory and adornment"
+                alt={t.imageAlt}
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover object-center zoom-in"
@@ -831,25 +549,12 @@ function OralHistory() {
             />
           </div>
           <Reveal className="md:col-span-6 md:col-start-7 reveal" delay={140}>
-            <p className="kicker kicker-anim text-ochre-600 mb-4">Oral History Project</p>
+            <p className="kicker kicker-anim text-ochre-600 mb-4">{t.kicker}</p>
             <h2 className="font-display text-4xl sm:text-5xl leading-[0.95] mb-6">
-              Ten artists, in their own words.
+              {t.heading}
             </h2>
-            <p className="text-lg text-ink/80 leading-relaxed mb-6">
-              In consultation with Oral Historian Afra Elagab, the project
-              will follow ten Sudanese artists in Cairo, documenting their
-              experiences of exile, displacement, and cultural loss —
-              collecting personal archives of photographs, documents,
-              artworks, and objects that go beyond the artists themselves,
-              drawing from the wider Sudanese community in Cairo and abroad.
-            </p>
-            <p className="text-lg text-ink/80 leading-relaxed">
-              These materials will be digitized into a community-led digital
-              archive, positioning civil-society collections as critical
-              resources for post-conflict cultural recovery — ultimately
-              becoming a virtual museum, making Sudanese cultural memory
-              accessible to audiences worldwide.
-            </p>
+            <p className="text-lg text-ink/80 leading-relaxed mb-6">{t.p1}</p>
+            <p className="text-lg text-ink/80 leading-relaxed">{t.p2}</p>
           </Reveal>
         </div>
       </div>
@@ -857,7 +562,7 @@ function OralHistory() {
   );
 }
 
-function Timeline() {
+function Timeline({ t }: { t: T["timeline"] }) {
   return (
     <section className="relative bg-sand-50 overflow-hidden">
       <PerfSeam />
@@ -870,25 +575,25 @@ function Timeline() {
       <div className="relative mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <Reveal className="reveal-lg flex items-start justify-between gap-6">
           <div>
-            <p className="kicker kicker-anim text-ochre-600 mb-4">Project Timeline</p>
+            <p className="kicker kicker-anim text-ochre-600 mb-4">{t.kicker}</p>
             <h2 className="font-display text-5xl sm:text-6xl leading-[0.95] mb-16 max-w-3xl">
-              A year of building,
-              <span className="italic text-ochre-600"> gathering,</span> and going
-              to film.
+              {t.headingLead}
+              <span className="italic text-ochre-600">{` ${t.headingEmphasis}`}</span>
+              {` ${t.headingTail}`}
             </h2>
           </div>
           <StampBadge size={110} tilt="6deg" className="hidden sm:block" />
         </Reveal>
         <ol className="relative border-l border-ink/20 pl-8 sm:pl-12 space-y-12">
-          {timeline.map((t, i) => (
-            <Reveal as="li" key={t.when} className="relative reveal" delay={i * 100}>
+          {t.entries.map((entry, i) => (
+            <Reveal as="li" key={entry.when} className="relative reveal" delay={i * 100}>
               <span className="absolute -left-[2.6rem] sm:-left-[3.6rem] top-2 h-3 w-3 rounded-full bg-ochre-600 ring-4 ring-sand-50" />
-              <p className="kicker text-ochre-600 mb-2">{t.when}</p>
+              <p className="kicker text-ochre-600 mb-2">{entry.when}</p>
               <h3 className="font-display text-3xl sm:text-4xl mb-3">
-                {t.title}
+                {entry.title}
               </h3>
               <ul className="text-ink/75 leading-relaxed max-w-xl space-y-1.5">
-                {t.points.map((p) => (
+                {entry.points.map((p) => (
                   <li key={p} className="flex gap-3">
                     <span className="text-ochre-600/70 mt-[0.55em] h-1 w-1 rounded-full bg-current shrink-0" />
                     <span>{p}</span>
@@ -903,14 +608,14 @@ function Timeline() {
   );
 }
 
-function ClosingQuote() {
+function ClosingQuote({ t }: { t: T["closingQuote"] }) {
   return (
     <section className="relative bg-sand-100">
       <div className="relative h-[80svh] min-h-[520px] overflow-hidden parallax">
         <div className="parallax-layer">
           <Image
             src="/img/portrait.jpg"
-            alt="Historical portrait — adornment and identity"
+            alt={t.imageAlt}
             fill
             sizes="100vw"
             style={{ objectPosition: "85% center" }}
@@ -920,14 +625,12 @@ function ClosingQuote() {
         <div className="absolute inset-0 bg-gradient-to-r from-sand-100 via-sand-100/85 to-transparent" />
         <div className="relative h-full mx-auto max-w-7xl px-6 sm:px-10 flex items-center">
           <Reveal as="figure" className="max-w-xl reveal-lg">
-            <p className="kicker kicker-anim text-ochre-600 mb-6">Closing Statement</p>
+            <p className="kicker kicker-anim text-ochre-600 mb-6">{t.kicker}</p>
             <blockquote className="font-display text-3xl sm:text-4xl md:text-5xl leading-[1.15] text-ink">
-              &ldquo;Country is more than territory, it is memory… So if you
-              protect that now, in the middle of this chaos, then we will
-              have a foundation through which we can rebuild.&rdquo;
+              {t.quote}
             </blockquote>
             <figcaption className="mt-6 kicker text-ink/65">
-              — Ali Nour
+              {t.attribution}
             </figcaption>
           </Reveal>
         </div>
@@ -936,7 +639,7 @@ function ClosingQuote() {
   );
 }
 
-function Team() {
+function Team({ t }: { t: T["team"] }) {
   return (
     <section id="team" className="relative overflow-hidden bg-sand-100">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
@@ -944,26 +647,22 @@ function Team() {
           <Reveal className="md:col-span-5 reveal-lg flex items-start gap-5">
             <StampBadge size={86} tilt="-8deg" className="mt-1 shrink-0" />
             <div>
-              <p className="kicker kicker-anim text-ochre-600 mb-4">Core Creative Team</p>
+              <p className="kicker kicker-anim text-ochre-600 mb-4">{t.kicker}</p>
               <h2 className="font-display text-5xl sm:text-6xl leading-[0.95]">
-                Built across
-                <span className="italic text-ochre-600"> three cities,</span>
-                with friends.
+                {t.headingLead}
+                <span className="italic text-ochre-600">{` ${t.headingEmphasis}`}</span>
+                {/* No separating space here: preserves the pre-extraction markup exactly. */}
+                {t.headingTail}
               </h2>
             </div>
           </Reveal>
           <Reveal as="p" className="md:col-span-6 md:col-start-7 text-lg leading-relaxed text-ink/75 reveal" delay={140}>
-            Returning Sands is produced by Paris Quetzal Sistilli, Yusef
-            Bushara, and Camilla Marchese González, directed by Aicha
-            Cherif, with creative, advisory, and coordination support
-            spanning New York, London, and Cairo. Where possible we work
-            with friends and collaborators pro bono — the priority is paying
-            heritage workers and contributors for their time.
+            {t.intro}
           </Reveal>
         </div>
 
         <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/10 rounded-2xl overflow-hidden">
-          {producers.map((p, i) => (
+          {t.producers.map((p, i) => (
             <Reveal
               as="li"
               key={p.name}
@@ -984,9 +683,9 @@ function Team() {
         </ul>
 
         <div className="mt-16">
-          <Reveal as="p" className="kicker kicker-anim text-ochre-600 mb-6">Core Team</Reveal>
+          <Reveal as="p" className="kicker kicker-anim text-ochre-600 mb-6">{t.coreTeamKicker}</Reveal>
           <ul className="grid sm:grid-cols-3 lg:grid-cols-5 gap-6">
-            {coreTeam.map((p, i) => (
+            {t.coreTeam.map((p, i) => (
               <Reveal
                 as="li"
                 key={p.name}
@@ -1005,8 +704,9 @@ function Team() {
   );
 }
 
-function Donate() {
-  const { us, uk, note } = donate;
+function Donate({ t }: { t: T }) {
+  const d = t.donate;
+  const { us, uk, note } = d;
   return (
     <section id="donate" className="relative overflow-hidden bg-nile-900 text-sand-50 grain">
       <PerfSeam dark />
@@ -1019,96 +719,91 @@ function Donate() {
         className="-top-16 right-[4%] hidden lg:block"
       />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
-        <ThanksBanner />
+        <ThanksBanner text={t.thanks} />
         <Reveal className="reveal-lg max-w-3xl">
-          <p className="kicker kicker-anim text-sand-300 mb-4">Donate</p>
+          <p className="kicker kicker-anim text-sand-300 mb-4">{d.kicker}</p>
           <h2 className="font-display text-5xl sm:text-6xl leading-[0.95] mb-8">
-            Help carry this work
-            <span className="italic text-sand-300"> forward.</span>
+            {d.headingLead}
+            <span className="italic text-sand-300">{` ${d.headingEmphasis}`}</span>
           </h2>
           <p className="text-sand-100/75 leading-relaxed text-lg max-w-2xl">
-            Every contribution goes directly into documenting endangered
-            heritage, supporting Sudanese heritage workers, and finishing the
-            film. Choose the route that suits where you are.
+            {d.intro}
           </p>
         </Reveal>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           <Reveal className="reveal" delay={80}>
             <div className="h-full rounded-2xl border border-sand-100/15 bg-sand-50/[0.04] p-8 sm:p-10 flex flex-col">
-              <p className="kicker text-sand-300 mb-3">United States</p>
-              <h3 className="font-display text-3xl mb-4">Give through SIMA Studios</h3>
+              <p className="kicker text-sand-300 mb-3">{us.kicker}</p>
+              <h3 className="font-display text-3xl mb-4">{us.heading}</h3>
               <p className="text-sand-100/75 leading-relaxed mb-8 flex-1">
                 {us.tagline}
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href={us.paypal}
+                  href={us.links.paypal}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 rounded-full bg-sand-50 px-6 py-3 text-nile-900 hover:bg-sand-200 transition-colors"
                 >
-                  Donate via SIMA
+                  {us.paypalButton}
                   <ExternalArrow />
                 </a>
                 <a
-                  href={us.sponsorPage}
+                  href={us.links.sponsorPage}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 rounded-full border border-sand-100/30 px-6 py-3 text-sand-50 hover:bg-sand-50 hover:text-nile-900 transition-colors"
                 >
-                  Our SIMA page
+                  {us.sponsorButton}
                   <ExternalArrow />
                 </a>
               </div>
               <div className="mt-8 pt-8 border-t border-sand-100/10">
-                <MailingListForm />
+                <MailingListForm text={t.mailingList} />
               </div>
             </div>
           </Reveal>
 
           <Reveal className="reveal" delay={160}>
             <div className="h-full rounded-2xl border border-sand-100/15 bg-sand-50/[0.04] p-8 sm:p-10 flex flex-col">
-              <p className="kicker text-sand-300 mb-3">United Kingdom &amp; elsewhere</p>
-              <h3 className="font-display text-3xl mb-4">Give directly to Returning Sands CIC</h3>
-              {uk.stripe || uk.bank ? (
+              <p className="kicker text-sand-300 mb-3">{uk.kicker}</p>
+              <h3 className="font-display text-3xl mb-4">{uk.heading}</h3>
+              {uk.links.stripe || uk.bank ? (
                 <>
                   <p className="text-sand-100/75 leading-relaxed mb-8 flex-1">
-                    Give by card, Apple Pay or Google Pay in the amount of your
-                    choice, in pounds, euros or your own currency. Or send a bank transfer
-                    using the details below, with your name as the reference so
-                    we can thank you.
+                    {uk.body}
                   </p>
                   <div className="flex flex-wrap gap-3">
-                    {uk.stripe && (
+                    {uk.links.stripe && (
                       <a
-                        href={uk.stripe}
+                        href={uk.links.stripe}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-3 rounded-full bg-sand-50 px-6 py-3 text-nile-900 hover:bg-sand-200 transition-colors"
                       >
-                        Donate by card
+                        {uk.cardButton}
                         <ExternalArrow />
                       </a>
                     )}
                   </div>
                   {uk.bank && (
                     <dl className="mt-8 grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm text-sand-100/80">
-                      <dt className="text-sand-300">Account name</dt>
+                      <dt className="text-sand-300">{uk.bankLabels.accountName}</dt>
                       <dd>{uk.bank.accountName}</dd>
-                      <dt className="text-sand-300">Sort code</dt>
+                      <dt className="text-sand-300">{uk.bankLabels.sortCode}</dt>
                       <dd>{uk.bank.sortCode}</dd>
-                      <dt className="text-sand-300">Account number</dt>
+                      <dt className="text-sand-300">{uk.bankLabels.accountNumber}</dt>
                       <dd>{uk.bank.accountNumber}</dd>
                       {uk.bank.iban && (
                         <>
-                          <dt className="text-sand-300">IBAN</dt>
+                          <dt className="text-sand-300">{uk.bankLabels.iban}</dt>
                           <dd className="tabular-nums">{uk.bank.iban}</dd>
                         </>
                       )}
                       {uk.bank.bic && (
                         <>
-                          <dt className="text-sand-300">BIC</dt>
+                          <dt className="text-sand-300">{uk.bankLabels.bic}</dt>
                           <dd>{uk.bank.bic}</dd>
                         </>
                       )}
@@ -1118,19 +813,18 @@ function Donate() {
               ) : (
                 <>
                   <p className="text-sand-100/75 leading-relaxed mb-8 flex-1">
-                    Card payments in GBP and bank transfer details are coming
-                    shortly. In the meantime, email{" "}
-                    <a href="mailto:donations@returningsands.org" className="hover-underline text-sand-50">
-                      donations@returningsands.org
+                    {uk.fallback.bodyLead}{" "}
+                    <a href={`mailto:${uk.links.donationsEmail}`} className="hover-underline text-sand-50">
+                      {uk.links.donationsEmail}
                     </a>{" "}
-                    and we&rsquo;ll send you the details directly.
+                    {uk.fallback.bodyTail}
                   </p>
                   <div className="flex flex-wrap gap-3">
                     <a
-                      href="mailto:donations@returningsands.org?subject=Donation%20to%20Returning%20Sands"
+                      href={`mailto:${uk.links.donationsEmail}?subject=${encodeURIComponent(uk.fallback.mailSubject)}`}
                       className="inline-flex items-center gap-3 rounded-full border border-sand-100/30 px-6 py-3 text-sand-50 hover:bg-sand-50 hover:text-nile-900 transition-colors"
                     >
-                      Email the donations team
+                      {uk.fallback.button}
                       <Arrow />
                     </a>
                   </div>
@@ -1150,47 +844,46 @@ function Donate() {
   );
 }
 
-function Contact() {
+function Contact({ t }: { t: T }) {
+  const c = t.contact;
+  const [producer, director] = c.people;
   return (
     <section id="contact" className="bg-sand-50 grain">
       <PerfSeam />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-7 reveal-lg">
-            <p className="kicker kicker-anim text-ochre-600 mb-4">Contact &amp; Support</p>
+            <p className="kicker kicker-anim text-ochre-600 mb-4">{c.kicker}</p>
             <h2 className="font-display text-5xl sm:text-6xl leading-[0.95] mb-8">
-              If this work matters to you,
-              <span className="italic text-ochre-600"> get in touch.</span>
+              {c.headingLead}
+              <span className="italic text-ochre-600">{` ${c.headingEmphasis}`}</span>
             </h2>
             <p className="text-ink/75 leading-relaxed mb-10 max-w-xl text-lg">
-              We&rsquo;re actively building partnerships, applying for grants,
-              and looking for friends who can help — through funding,
-              expertise, venues, or simply by carrying the word forward.
-              Write to us at{" "}
-              <a href="mailto:info@returningsands.org" className="hover-underline text-ink">
-                info@returningsands.org
+              {c.bodyLead}{" "}
+              <a href={`mailto:${c.email}`} className="hover-underline text-ink">
+                {c.email}
               </a>
-              , or reach the producer or the creative director directly.
+              {c.bodyTail}
             </p>
             <div className="flex flex-wrap gap-4">
               <a
-                href="mailto:paris@returningsands.org?subject=Returning%20Sands"
+                href={`mailto:${producer.email}?subject=${encodeURIComponent(c.mailSubject)}`}
                 className="inline-flex items-center gap-3 rounded-full bg-ochre-600 px-6 py-3 text-sand-50 hover:bg-ochre-500 transition-colors"
               >
-                Email the Producer
+                {producer.buttonLabel}
                 <Arrow />
               </a>
               <a
-                href="mailto:yusef@returningsands.org?subject=Returning%20Sands"
+                href={`mailto:${director.email}?subject=${encodeURIComponent(c.mailSubject)}`}
                 className="inline-flex items-center gap-3 rounded-full border border-ink/25 px-6 py-3 text-ink hover:bg-ink hover:text-sand-50 transition-colors"
               >
-                Email the Creative Director
+                {director.buttonLabel}
                 <Arrow />
               </a>
             </div>
             <div className="mt-10">
-              <p className="kicker text-ink/55 mb-3">Follow along</p>
-              <SocialLinks tone="dark" />
+              <p className="kicker text-ink/55 mb-3">{c.followKicker}</p>
+              <SocialLinks t={t.social} tone="dark" />
             </div>
           </Reveal>
 
@@ -1200,32 +893,21 @@ function Contact() {
               <StampBadge variant="magazine" size={150} tilt="5deg" className="mt-6" />
             </div>
             <div className="space-y-6">
-              <div>
-                <p className="kicker text-ink/55 mb-1">Producer</p>
-                <p className="font-display text-2xl">Paris Quetzal Sistilli</p>
-                <a
-                  href="mailto:paris@returningsands.org"
-                  className="block text-sm text-ink/70 hover-underline mt-1"
-                >
-                  paris@returningsands.org
-                </a>
-                <p className="text-sm text-ink/60 mt-1">
-                  +1 (443) 699 4957 · New York
-                </p>
-              </div>
-              <div>
-                <p className="kicker text-ink/55 mb-1">Creative Director</p>
-                <p className="font-display text-2xl">Yusef Bushara</p>
-                <a
-                  href="mailto:yusef@returningsands.org"
-                  className="block text-sm text-ink/70 hover-underline mt-1"
-                >
-                  yusef@returningsands.org
-                </a>
-                <p className="text-sm text-ink/60 mt-1">
-                  +44 (0) 7568 946890 · London
-                </p>
-              </div>
+              {c.people.map((p) => (
+                <div key={p.email}>
+                  <p className="kicker text-ink/55 mb-1">{p.role}</p>
+                  <p className="font-display text-2xl">{p.name}</p>
+                  <a
+                    href={`mailto:${p.email}`}
+                    className="block text-sm text-ink/70 hover-underline mt-1"
+                  >
+                    {p.email}
+                  </a>
+                  <p className="text-sm text-ink/60 mt-1">
+                    {`${p.phone} · ${p.city}`}
+                  </p>
+                </div>
+              ))}
             </div>
           </Reveal>
         </div>
@@ -1234,8 +916,9 @@ function Contact() {
   );
 }
 
-function Footer() {
-  const marqueeItems = [...partners, ...partners];
+function Footer({ t, locale }: { t: T; locale: Locale }) {
+  const f = t.footer;
+  const marqueeItems = [...f.partners, ...f.partners];
   return (
     <footer className="relative overflow-hidden bg-nile-900 text-sand-100">
       <PerfSeam dark />
@@ -1264,30 +947,22 @@ function Footer() {
         <div className="md:col-span-5 flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <Mark className="text-sand-300" />
-            <span className="font-display text-2xl">Returning Sands</span>
+            <span className="font-display text-2xl">{t.brand.name}</span>
           </div>
-          <p className="text-sand-100/70 max-w-sm leading-relaxed">
-            A Sudanese cultural heritage campaign and short documentary by
-            Paris Quetzal Sistilli, Yusef Bushara, and Camilla Marchese
-            González, in partnership with Blue Shield Sudan.
-          </p>
+          <p className="text-sand-100/70 max-w-sm leading-relaxed">{f.blurb}</p>
         </div>
         <div className="md:col-span-3">
-          <p className="kicker text-sand-300 mb-3">Navigate</p>
+          <p className="kicker text-sand-300 mb-3">{f.navigateKicker}</p>
           <ul className="space-y-2 text-sand-100/80">
-            <li><a href="#stake" className="hover-underline">At Stake</a></li>
-            <li><a href="#campaign" className="hover-underline">Campaign</a></li>
-            <li><a href="#documentary" className="hover-underline">Documentary</a></li>
-            <li><a href="#events" className="hover-underline">Events</a></li>
-            <li><a href="#team" className="hover-underline">Team</a></li>
-            <li><a href="#donate" className="hover-underline">Donate</a></li>
-            <li><a href="#contact" className="hover-underline">Contact</a></li>
+            {f.links.map((l) => (
+              <li key={l.href}><a href={l.href} className="hover-underline">{l.label}</a></li>
+            ))}
           </ul>
         </div>
         <div className="md:col-span-4">
-          <p className="kicker text-sand-300 mb-3">Partners</p>
+          <p className="kicker text-sand-300 mb-3">{f.partnersKicker}</p>
           <ul className="space-y-2 text-sand-100/80">
-            {partners.map((p) => (
+            {f.partners.map((p) => (
               <li key={p} className="font-display text-lg">{p}</li>
             ))}
           </ul>
@@ -1295,9 +970,12 @@ function Footer() {
       </div>
       <div className="border-t border-sand-100/10">
         <div className="mx-auto max-w-7xl px-6 sm:px-10 py-6 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-xs text-sand-100/55">
-          <span>© {new Date().getFullYear()} Returning Sands CIC</span>
-          <SocialLinks />
-          <span>New York · London · Cairo · Khartoum</span>
+          <span>{`${f.copyrightPrefix} `}{new Date().getFullYear()}{` ${f.copyrightSuffix}`}</span>
+          <div className="flex items-center gap-6">
+            <SocialLinks t={t.social} />
+            <LangSwitch locale={locale} label={t.langSwitch} />
+          </div>
+          <span>{f.cities}</span>
         </div>
       </div>
     </footer>

@@ -1,11 +1,13 @@
-import { ImageResponse } from "next/og";
+﻿import { ImageResponse } from "next/og";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { getContent } from "../content";
+
+const t = getContent("en");
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt =
-  "Returning Sands — A Sudanese Cultural Heritage Campaign & Film";
+export const alt = t.meta.ogImageAlt;
 
 export default async function OpengraphImage() {
   const bg = readFileSync(join(process.cwd(), "public/img/bridge.jpg"));
@@ -64,7 +66,7 @@ export default async function OpengraphImage() {
               fontWeight: 500,
             }}
           >
-            A Sudanese Cultural Heritage Campaign · 2026–2027
+            {t.ogImage.kicker}
           </div>
 
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -77,7 +79,7 @@ export default async function OpengraphImage() {
                 letterSpacing: -3,
               }}
             >
-              Returning
+              {t.ogImage.titleLead}
             </div>
             <div
               style={{
@@ -90,7 +92,7 @@ export default async function OpengraphImage() {
                 letterSpacing: -3,
               }}
             >
-              Sands
+              {t.ogImage.titleEmphasis}
             </div>
           </div>
 
@@ -110,7 +112,7 @@ export default async function OpengraphImage() {
                 lineHeight: 1.35,
               }}
             >
-              A campaign & short documentary by Paris Quetzal Sistilli and Yusef Bushara
+              {t.ogImage.byline}
             </span>
             <span
               style={{

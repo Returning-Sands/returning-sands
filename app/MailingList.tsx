@@ -6,10 +6,24 @@ import { useState } from "react";
 // form that forwards to info@returningsands.org.
 const WEB3FORMS_KEY = "b24cc743-7a95-4a52-9fcc-5427cf5e251b";
 const ENDPOINT = "https://api.web3forms.com/submit";
-const CONSENT_TEXT =
-  "Yes, email me occasionally about events, the film and how donations are used. Unsubscribe any time.";
 
 type Status = "idle" | "sending" | "done" | "error";
+
+/** Copy for the form; supplied by the server from app/content. */
+export type MailingListText = {
+  readonly label: string;
+  readonly placeholder: string;
+  readonly join: string;
+  readonly joining: string;
+  /** Consent statement; also sent to Web3Forms as the consent record. */
+  readonly consent: string;
+  /** Company name + registration number, shown after the consent statement. */
+  readonly consentSuffix: string;
+  readonly success: string;
+  /** "…or email" — followed by the info@ address, then `errorTail`. */
+  readonly errorLead: string;
+  readonly errorTail: string;
+};
 
 /**
  * Mailing-list sign-up. Posts to Web3Forms, which emails the submission to
@@ -17,7 +31,13 @@ type Status = "idle" | "sending" | "done" | "error";
  * is the consent record. Swap ENDPOINT for the newsletter provider's API
  * when one is chosen.
  */
-export function MailingListForm({ tone = "light" }: { tone?: "light" | "dark" }) {
+export function MailingListForm({
+  text,
+  tone = "light",
+}: {
+  text: MailingListText;
+  tone?: "light" | "dark";
+}) {
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
@@ -29,7 +49,7 @@ export function MailingListForm({ tone = "light" }: { tone?: "light" | "dark" })
   const button = light
     ? "bg-sand-50 text-nile-900 hover:bg-sand-200 disabled:opacity-40"
     : "bg-ochre-600 text-sand-50 hover:bg-ochre-500 disabled:opacity-40";
-  const text = light ? "text-sand-100/70" : "text-ink/65";
+  const textClass = light ? "text-sand-100/70" : "text-ink/65";
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -44,7 +64,7 @@ export function MailingListForm({ tone = "light" }: { tone?: "light" | "dark" })
           subject: "Mailing list sign-up — returningsands.org",
           from_name: "Returning Sands website",
           email,
-          consent: CONSENT_TEXT,
+          consent: text.consent,
           source: typeof window !== "undefined" ? window.location.href : "returningsands.org",
           botcheck: "",
         }),
@@ -58,17 +78,16 @@ export function MailingListForm({ tone = "light" }: { tone?: "light" | "dark" })
 
   if (status === "done") {
     return (
-      <p role="status" className={`text-sm leading-relaxed ${text}`}>
-        You&rsquo;re on the list. Thank you, we&rsquo;ll be in touch about
-        events, the film and how donations are being used.
+      <p role="status" className={`text-sm leading-relaxed ${textClass}`}>
+        {text.success}
       </p>
     );
   }
 
   return (
     <form onSubmit={submit} className="flex flex-col gap-3">
-      <label htmlFor={`ml-email-${tone}`} className={`text-sm ${text}`}>
-        Join the mailing list
+      <label htmlFor={`ml-email-${tone}`} className={`text-sm ${textClass}`}>
+        {text.label}
       </label>
       <div className="flex flex-col sm:flex-row gap-2">
         <input
@@ -77,7 +96,7 @@ export function MailingListForm({ tone = "light" }: { tone?: "light" | "dark" })
           name="email"
           required
           autoComplete="email"
-          placeholder="you@example.com"
+          placeholder={text.placeholder}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className={`flex-1 rounded-full border px-5 py-2.5 text-sm outline-none transition-colors ${input}`}
@@ -87,12 +106,12 @@ export function MailingListForm({ tone = "light" }: { tone?: "light" | "dark" })
           disabled={!agreed || !email || status === "sending"}
           className={`inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm transition-colors ${button}`}
         >
-          {status === "sending" ? "Joining…" : "Join"}
+          {status === "sending" ? text.joining : text.join}
         </button>
       </div>
       {/* Honeypot for bots; Web3Forms ignores submissions where this is filled. */}
       <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} aria-hidden />
-      <label className={`flex items-start gap-3 text-xs leading-relaxed ${text}`}>
+      <label className={`flex items-start gap-3 text-xs leading-relaxed ${textClass}`}>
         <input
           type="checkbox"
           checked={agreed}
@@ -100,17 +119,16 @@ export function MailingListForm({ tone = "light" }: { tone?: "light" | "dark" })
           className="mt-0.5 h-4 w-4 shrink-0 accent-[#b8651f]"
         />
         <span>
-          {CONSENT_TEXT} Returning Sands Community Interest Company, no.
-          17311689.
+          {text.consent}{` ${text.consentSuffix}`}
         </span>
       </label>
       {status === "error" && (
-        <p role="alert" className={`text-xs ${text}`}>
-          Something went wrong. Please try again, or email{" "}
+        <p role="alert" className={`text-xs ${textClass}`}>
+          {text.errorLead}{" "}
           <a href="mailto:info@returningsands.org" className="underline">
             info@returningsands.org
           </a>
-          .
+          {text.errorTail}
         </p>
       )}
     </form>
