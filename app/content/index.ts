@@ -1,4 +1,5 @@
 import { en } from "./en";
+import { ar } from "./ar";
 import type { SiteContent } from "./types";
 
 export type { SiteContent } from "./types";
@@ -38,15 +39,13 @@ export function deepMerge<T>(base: T, overrides: DeepPartial<T> | undefined): T 
   return out as T;
 }
 
-// TODO(arabic): import `ar` from "./ar" (a DeepPartial<SiteContent>) and
-// return `deepMerge(en, ar)` for locale "ar". Until then every locale resolves
-// to English so the existing route keeps building.
+// Arabic is a partial overlay: anything not yet translated in ./ar.ts falls
+// back to the English value, so /ar never renders an empty string.
+const cache: Partial<Record<Locale, SiteContent>> = {};
+
 export function getContent(locale: Locale): SiteContent {
-  switch (locale) {
-    case "ar":
-      return en;
-    case "en":
-    default:
-      return en;
-  }
+  if (locale === "en") return en;
+  // Widen `en` from its `as const` literal types to SiteContent so the
+  // Arabic overlay type-checks against the shape, not the English values.
+  return (cache[locale] ??= deepMerge<SiteContent>(en, ar));
 }

@@ -156,13 +156,13 @@ function Hero({ t }: { t: T }) {
       <StampBadge
         size={104}
         tilt="7deg"
-        className="hidden sm:block absolute top-28 right-6 sm:right-10 z-10"
+        className="hidden sm:block absolute top-28 end-6 sm:end-10 z-10"
       />
       <StampBadge
         variant="magazine"
         size={190}
         tilt="-6deg"
-        className="hidden md:block absolute top-28 left-6 lg:left-10 z-10"
+        className="hidden md:block absolute top-28 start-6 lg:start-10 z-10"
       />
       <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-10 pt-40 pb-20 sm:pb-28">
         <Reveal className="kicker-anim kicker text-sand-300 mb-6 flex items-center gap-3">
@@ -307,7 +307,7 @@ function Goals({ t }: { t: T["goals"] }) {
         variant="sudan"
         size={520}
         tilt="9deg"
-        className="-top-24 -right-24 hidden lg:block"
+        className="-top-24 -end-24 hidden lg:block"
       />
       <div className="relative mx-auto max-w-7xl px-6 sm:px-10 py-24 sm:py-32">
         <Reveal className="reveal-lg flex items-start justify-between gap-6">
@@ -465,7 +465,7 @@ function Events({ t }: { t: T["events"] }) {
         variant="magazine"
         size={170}
         tilt="5deg"
-        className="hidden lg:block absolute top-24 right-10 z-10 opacity-90"
+        className="hidden lg:block absolute top-24 end-10 z-10 opacity-90"
       />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
@@ -545,7 +545,7 @@ function OralHistory({ t }: { t: T["oralHistory"] }) {
               variant="magazine"
               size={210}
               tilt="-3deg"
-              className="hidden sm:block absolute -bottom-8 -right-8 z-10"
+              className="hidden sm:block absolute -bottom-8 -end-8 z-10"
             />
           </div>
           <Reveal className="md:col-span-6 md:col-start-7 reveal" delay={140}>
@@ -570,7 +570,7 @@ function Timeline({ t }: { t: T["timeline"] }) {
         variant="magazine"
         size={900}
         tilt="-3deg"
-        className="top-1/3 -right-40 hidden xl:block"
+        className="top-1/3 -end-40 hidden xl:block"
       />
       <div className="relative mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <Reveal className="reveal-lg flex items-start justify-between gap-6">
@@ -584,10 +584,10 @@ function Timeline({ t }: { t: T["timeline"] }) {
           </div>
           <StampBadge size={110} tilt="6deg" className="hidden sm:block" />
         </Reveal>
-        <ol className="relative border-l border-ink/20 pl-8 sm:pl-12 space-y-12">
+        <ol className="relative border-s border-ink/20 ps-8 sm:ps-12 space-y-12">
           {t.entries.map((entry, i) => (
             <Reveal as="li" key={entry.when} className="relative reveal" delay={i * 100}>
-              <span className="absolute -left-[2.6rem] sm:-left-[3.6rem] top-2 h-3 w-3 rounded-full bg-ochre-600 ring-4 ring-sand-50" />
+              <span className="absolute -start-[2.6rem] sm:-start-[3.6rem] top-2 h-3 w-3 rounded-full bg-ochre-600 ring-4 ring-sand-50" />
               <p className="kicker text-ochre-600 mb-2">{entry.when}</p>
               <h3 className="font-display text-3xl sm:text-4xl mb-3">
                 {entry.title}
@@ -716,7 +716,7 @@ function Donate({ t }: { t: T }) {
         opacity={0.06}
         size={520}
         tilt="-7deg"
-        className="-top-16 right-[4%] hidden lg:block"
+        className="-top-16 end-[4%] hidden lg:block"
       />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <ThanksBanner text={t.thanks} />
@@ -928,7 +928,7 @@ function Footer({ t, locale }: { t: T; locale: Locale }) {
         opacity={0.05}
         size={560}
         tilt="6deg"
-        className="bottom-10 right-[8%] hidden lg:block"
+        className="bottom-10 end-[8%] hidden lg:block"
       />
       <div className="marquee-wrap overflow-hidden border-y border-sand-100/10 py-8">
         <div className="marquee">
