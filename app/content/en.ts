@@ -48,6 +48,7 @@ export const en = {
       { label: "Contact", href: "#contact" },
     ],
     donate: "Donate",
+    sectionsLabel: "Sections",
   },
 
   langSwitch: {
@@ -124,6 +125,14 @@ export const en = {
     },
     p2: "The ambition extends beyond a single screening or exhibition. At its core is the production of a documentary film to be submitted to festivals across the SWANA region and internationally, fostering sustained engagement with the urgent issues of heritage preservation in Sudan and the deliberate targeting of cultural sites in conflict zones.",
     p3: "Through this work, we seek to engage Sudanese communities within the country and across the diaspora, while reaching a broader global audience — to amplify awareness and mobilize a wider call to action.",
+    passport: {
+      hint: "Tap a stamp to jump to that city’s events",
+      alt: "An open passport: the Returning Sands stamp on the left page, and visa stamps for Cairo, NYC and London on the right",
+      navLabel: "Events by city",
+      cairo: "Cairo events",
+      london: "London events",
+      nyc: "New York events",
+    },
   },
 
   goals: {
@@ -185,17 +194,20 @@ export const en = {
       "Each city combines exhibitions, academic panels, and fundraising moments — open to the public, with limited capacity.",
     cities: [
       {
+        id: "cairo",
         city: "Cairo",
         when: "Dec 2026",
         body: "Where much of the heritage work is now coordinated from exile.",
         items: [
           {
             label: "Access Art Space Exhibit",
+            stamp: "RS_Access_art_cairo_white",
             when: "Dec 18–20",
             body: "Fifteen Sudanese artists, curated by Reem Aljeally, exploring memory, return, and home.",
           },
           {
             label: "Educational Panel · AUC",
+            stamp: "RS_AU_cairo_white",
             when: "Dec 16",
             body: "A half-day series with Sudanese heritage expert Dr. Amira Ahmed — a refugee focus-group conversation, then a panel with ICROM, UNESCO, Blue Shield Sudan, and the National Archives.",
           },
@@ -207,39 +219,46 @@ export const en = {
         ],
       },
       {
+        id: "london",
         city: "London",
         when: "Jan 2027",
         body: "Carrying the project into the diaspora.",
         items: [
           {
             label: "London Exhibition",
+            stamp: "RS_Ruby_cruel_london_white",
             when: "One week · Jan",
             body: "Four artists — two Bermudian, two Sudanese — on the unlikely kinship of return. Sponsored by the Bermuda Arts Council.",
           },
           {
             label: "Culture House Fireside",
+            stamp: "RS_Culture_house_london_white",
             when: "January",
             body: "A conversation on collective memory and testimony with African heritage stakeholders, hosted by Culture House.",
           },
         ],
       },
       {
+        id: "nyc",
         city: "New York",
         when: "Nov 2026 – Feb 2027",
         body: "The campaign's primary fundraising engine.",
         items: [
           {
             label: "Private Donor Event",
+            stamp: "RS_Exclusive_NYC_white",
             when: "Nov 2026",
             body: "Philanthropists from the arts and culture world; impact trailer, remarks, and a silent auction of contemporary Sudanese art.",
           },
           {
             label: "Interactive Public Showcase",
+            stamp: "RS_PN_ABB_NYC_white",
             when: "Mid-Nov 2026",
             body: "With NYC-based Sudanese arts collectives — performance, mingling, and a live community-generated art installation.",
           },
           {
             label: "Exhibition",
+            stamp: "RS_Space360_NYC_white",
             when: "Feb 2027",
             body: "Curated by Paris Sistilli and Fatma Yasier — Sudanese artists on memory, return, and home.",
           },

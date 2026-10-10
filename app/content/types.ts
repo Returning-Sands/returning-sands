@@ -39,9 +39,13 @@ export type EventItem = {
   readonly label: string;
   readonly when: string;
   readonly body: string;
+  /** Non-translatable. Brand-kit stamp file name under /public/brand (no extension). */
+  readonly stamp?: string;
 };
 
 export type EventCity = {
+  /** Non-translatable anchor id: "cairo" | "london" | "nyc". */
+  readonly id: "cairo" | "london" | "nyc";
   readonly city: string;
   readonly when: string;
   readonly body: string;
@@ -101,6 +105,8 @@ export type SiteContent = {
   readonly nav: {
     readonly links: readonly LinkItem[];
     readonly donate: string;
+    /** aria-label for the phone section-chip strip. */
+    readonly sectionsLabel: string;
   };
 
   /**
@@ -158,6 +164,15 @@ export type SiteContent = {
     };
     readonly p2: string;
     readonly p3: string;
+    /** Passport spread with clickable city stamps. */
+    readonly passport: {
+      readonly hint: string;
+      readonly alt: string;
+      readonly navLabel: string;
+      readonly cairo: string;
+      readonly london: string;
+      readonly nyc: string;
+    };
   };
 
   readonly goals: {

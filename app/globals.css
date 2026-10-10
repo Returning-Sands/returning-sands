@@ -441,3 +441,7 @@ html[lang="ar"] [lang="en"] .font-display {
     stroke-dashoffset: 0 !important;
   }
 }
+
+/* Horizontal chip strip on phones: scrollable, no visible scrollbar. */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }

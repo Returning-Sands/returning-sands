@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal, WordStagger } from "./Reveal";
-import { StampBadge, StampWatermark, Postmark, PerfSeam } from "./Stamp";
+import { Postmark, PerfSeam } from "./Stamp";
 import { ThanksBanner } from "./Thanks";
 import { MailingListForm } from "./MailingList";
 import type { Locale, SiteContent } from "./content";
@@ -34,49 +34,117 @@ export function HomePage({ t, locale }: { t: SiteContent; locale: Locale }) {
 }
 
 function Nav({ t, locale }: { t: T; locale: Locale }) {
+  const home = locale === "ar" ? "/ar" : "/";
   return (
     <header className="absolute top-0 start-0 end-0 z-30">
-      <div className="mx-auto max-w-7xl px-6 sm:px-10 py-6 flex items-center justify-between">
-        <Link href={locale === "ar" ? "/ar" : "/"} className="flex items-center gap-3 group">
-          <Mark className="text-sand-50" />
-          <span className="font-display text-xl tracking-tight text-sand-50">
-            {t.brand.name}
-          </span>
+      <div className="mx-auto max-w-7xl px-5 sm:px-10 py-4 sm:py-6 flex items-center justify-between gap-3">
+        <Link href={home} className="flex items-center gap-3 group" aria-label={t.brand.name}>
+          <Mark tone="white" height={44} className="sm:hidden" />
+          <Mark tone="white" height={56} className="hidden sm:block" />
+          <span className="sr-only">{t.brand.name}</span>
         </Link>
         <nav className="hidden md:flex items-center gap-9 text-sm text-sand-100/85">
           {t.nav.links.map((l) => (
             <a key={l.href} href={l.href} className="hover-underline">{l.label}</a>
           ))}
         </nav>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3 sm:gap-5">
           <LangSwitch locale={locale} label={t.langSwitch} tone="light" />
+          {/* Donate is always visible, including on phones. */}
           <a
             href="#donate"
-            className="hidden md:inline-flex items-center gap-2 rounded-full bg-sand-50 px-4 py-2 text-sm text-nile-900 hover:bg-sand-200 transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-sand-50 px-4 py-2 text-sm text-nile-900 hover:bg-sand-200 transition-colors"
           >
             {t.nav.donate}
             <Arrow />
           </a>
         </div>
       </div>
+      {/* Phone: tappable section chips sit under the header, above the fold. */}
+      <nav
+        aria-label={t.nav.sectionsLabel}
+        className="md:hidden mx-auto max-w-7xl px-5 pb-2 flex gap-2 overflow-x-auto no-scrollbar"
+      >
+        {t.nav.links.map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
+            className="shrink-0 rounded-full border border-sand-50/35 bg-nile-900/40 backdrop-blur px-3.5 py-1.5 text-xs text-sand-50 whitespace-nowrap"
+          >
+            {l.label}
+          </a>
+        ))}
+      </nav>
     </header>
   );
 }
 
-function Mark({ className = "text-ochre-600" }: { className?: string }) {
+/** The Returning Sands oval stamp (brand logo). `tone` picks the white or black artwork. */
+function Mark({
+  tone = "white",
+  height = 44,
+  className = "",
+}: {
+  tone?: "white" | "black";
+  height?: number;
+  className?: string;
+}) {
+  // Artwork is 1702x1134.
+  const width = Math.round(height * (1702 / 1134));
   return (
-    <svg
-      width="34"
-      height="34"
-      viewBox="0 0 40 40"
-      fill="none"
+    <Image
+      src={tone === "white" ? "/brand/RS_logo_main_white.svg" : "/brand/RS_logo_main_blk.svg"}
+      alt=""
       aria-hidden
-      className={className}
-    >
-      <path d="M2 30 C 10 22, 14 22, 20 28 S 32 34, 38 26" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M2 24 C 10 16, 14 16, 20 22 S 32 28, 38 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.55" />
-      <path d="M2 18 C 10 10, 14 10, 20 16 S 32 22, 38 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
-    </svg>
+      width={width}
+      height={height}
+      className={`shrink-0 ${className}`}
+      priority
+    />
+  );
+}
+
+/** Event / section stamp from the brand kit (white artwork, for dark backgrounds). */
+function BrandStamp({
+  name,
+  height = 110,
+  className = "",
+  alt = "",
+}: {
+  name: string;
+  height?: number;
+  className?: string;
+  alt?: string;
+}) {
+  const width = Math.round(height * (1531 / 1135));
+  return (
+    <Image
+      src={`/brand/${name}.svg`}
+      alt={alt}
+      aria-hidden={alt === ""}
+      width={width}
+      height={height}
+      className={`shrink-0 ${className}`}
+    />
+  );
+}
+
+/** Wave-lines background texture from the brand kit. */
+function WaveLines({
+  tone = "black",
+  className = "",
+}: {
+  tone?: "black" | "white";
+  className?: string;
+}) {
+  return (
+    <div
+      aria-hidden
+      className={`pointer-events-none select-none absolute inset-0 bg-no-repeat bg-cover ${className}`}
+      style={{
+        backgroundImage: `url(/brand/Wave_lines_wide_${tone === "white" ? "white" : "blk"}.svg)`,
+      }}
+    />
   );
 }
 
@@ -153,18 +221,8 @@ function Hero({ t }: { t: T }) {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-nile-900/70 via-nile-900/20 to-nile-900/85" />
       <div className="absolute inset-0 grain" />
-      <StampBadge
-        size={104}
-        tilt="7deg"
-        className="hidden sm:block absolute top-28 end-6 sm:end-10 z-10"
-      />
-      <StampBadge
-        variant="magazine"
-        size={190}
-        tilt="-6deg"
-        className="hidden md:block absolute top-28 start-6 lg:start-10 z-10"
-      />
-      <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-10 pt-40 pb-20 sm:pb-28">
+      <WaveLines tone="white" className="opacity-[0.07]" />
+      <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-10 pt-36 sm:pt-40 pb-16 sm:pb-28">
         <Reveal className="kicker-anim kicker text-sand-300 mb-6 flex items-center gap-3">
           <span className="stamp-chip">{h.kicker}</span>
         </Reveal>
@@ -294,8 +352,54 @@ function Campaign({ t }: { t: T["campaign"] }) {
             <p>{t.p3}</p>
           </Reveal>
         </div>
+
+        <Passport t={t.passport} />
       </div>
     </section>
+  );
+}
+
+/**
+ * The passport spread from the brand kit. The three visa stamps on the right
+ * page are real links to each city's events. Hotspots are positioned as
+ * percentages of the image so they track any size.
+ */
+function Passport({ t }: { t: T["campaign"]["passport"] }) {
+  const hotspots = [
+    { id: "cairo", label: t.cairo, left: 56.5, top: 29.6, width: 15.5, height: 15 },
+    { id: "nyc", label: t.nyc, left: 66.5, top: 40, width: 12, height: 15 },
+    { id: "london", label: t.london, left: 55.5, top: 56.3, width: 21, height: 10 },
+  ] as const;
+  return (
+    <Reveal className="mt-20 sm:mt-28 reveal-lg" delay={160}>
+      <p className="kicker text-ochre-600 mb-6 text-center">{t.hint}</p>
+      <div className="relative mx-auto max-w-5xl">
+        <Image
+          src="/brand/passport-2000.webp"
+          alt={t.alt}
+          width={2000}
+          height={1414}
+          sizes="(max-width: 1024px) 100vw, 1024px"
+          className="w-full h-auto select-none"
+        />
+        <nav aria-label={t.navLabel} className="absolute inset-0">
+          {hotspots.map((h) => (
+            <a
+              key={h.id}
+              href={`#events-${h.id}`}
+              aria-label={h.label}
+              className="absolute rounded-xl ring-ochre-600/0 hover:ring-4 focus-visible:ring-4 ring-ochre-600/70 transition-shadow"
+              style={{
+                left: `${h.left}%`,
+                top: `${h.top}%`,
+                width: `${h.width}%`,
+                height: `${h.height}%`,
+              }}
+            />
+          ))}
+        </nav>
+      </div>
+    </Reveal>
   );
 }
 
@@ -303,12 +407,6 @@ function Goals({ t }: { t: T["goals"] }) {
   return (
     <section className="relative overflow-hidden bg-sand-50">
       <PerfSeam />
-      <StampWatermark
-        variant="sudan"
-        size={520}
-        tilt="9deg"
-        className="-top-24 -end-24 hidden lg:block"
-      />
       <div className="relative mx-auto max-w-7xl px-6 sm:px-10 py-24 sm:py-32">
         <Reveal className="reveal-lg flex items-start justify-between gap-6">
           <div className="flex-1">
@@ -317,12 +415,6 @@ function Goals({ t }: { t: T["goals"] }) {
               {t.heading}
             </h2>
           </div>
-          <StampBadge
-            variant="magazine"
-            size={140}
-            tilt="4deg"
-            className="hidden sm:block mt-2"
-          />
         </Reveal>
         <ol className="grid gap-px bg-ink/15 rounded-2xl overflow-hidden md:grid-cols-2">
           {t.items.map((g, i) => (
@@ -346,11 +438,13 @@ function Goals({ t }: { t: T["goals"] }) {
 
 function Documentary({ t }: { t: T["documentary"] }) {
   return (
-    <section id="documentary" className="bg-nile-900 text-sand-50 grain relative">
+    <section id="documentary" className="bg-nile-900 text-sand-50 grain relative overflow-hidden">
       <PerfSeam dark />
-      <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
+      <WaveLines tone="white" className="opacity-[0.05]" />
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="grid gap-14 md:grid-cols-12 mb-16">
           <Reveal className="md:col-span-5 reveal-lg">
+            <BrandStamp name="RS_Documentary_white" height={120} className="mb-8 -rotate-3" />
             <p className="kicker kicker-anim text-sand-300 mb-4">{t.kicker}</p>
             <h2 className="font-display text-5xl sm:text-6xl leading-[0.95]">
               {t.headingLead}
@@ -433,7 +527,6 @@ function DirectorsNote({ t }: { t: T["directorsNote"] }) {
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-24 sm:py-32">
         <div className="grid gap-14 md:grid-cols-12">
           <Reveal className="md:col-span-4 reveal-lg flex items-start gap-6">
-            <StampBadge size={92} tilt="-5deg" className="mt-1" />
             <div>
               <p className="kicker kicker-anim text-ochre-600 mb-4">{t.kicker}</p>
               <h2 className="font-display text-4xl leading-[0.95]">
@@ -461,12 +554,6 @@ function Events({ t }: { t: T["events"] }) {
   return (
     <section id="events" className="relative overflow-hidden bg-nile-900 text-sand-50 grain">
       <PerfSeam dark />
-      <StampBadge
-        variant="magazine"
-        size={170}
-        tilt="5deg"
-        className="hidden lg:block absolute top-24 end-10 z-10 opacity-90"
-      />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <Reveal className="reveal-lg flex items-start gap-5">
@@ -487,8 +574,9 @@ function Events({ t }: { t: T["events"] }) {
           {t.cities.map((e, i) => (
             <Reveal
               as="article"
-              key={e.city}
-              className="bg-nile-900 p-8 sm:p-10 flex flex-col gap-6 transition-colors hover:bg-nile-800 reveal-lg"
+              key={e.id}
+              id={`events-${e.id}`}
+              className="bg-nile-900 p-8 sm:p-10 flex flex-col gap-6 transition-colors hover:bg-nile-800 reveal-lg scroll-mt-24"
               delay={i * 140}
             >
               <div className="flex items-baseline justify-between">
@@ -500,9 +588,12 @@ function Events({ t }: { t: T["events"] }) {
               <p className="text-sand-100/70 text-sm leading-relaxed">
                 {e.body}
               </p>
-              <ul className="mt-2 flex flex-col gap-5 border-t border-sand-100/15 pt-6">
+              <ul className="mt-2 flex flex-col gap-6 border-t border-sand-100/15 pt-6">
                 {e.items.map((it) => (
                   <li key={it.label}>
+                    {it.stamp && (
+                      <BrandStamp name={it.stamp} height={82} className="mb-3 -rotate-2" />
+                    )}
                     <div className="flex items-baseline justify-between gap-3 mb-1">
                       <span className="font-display text-lg text-sand-50">
                         {it.label}
@@ -541,12 +632,6 @@ function OralHistory({ t }: { t: T["oralHistory"] }) {
                 className="object-cover object-center zoom-in"
               />
             </Reveal>
-            <StampBadge
-              variant="magazine"
-              size={210}
-              tilt="-3deg"
-              className="hidden sm:block absolute -bottom-8 -end-8 z-10"
-            />
           </div>
           <Reveal className="md:col-span-6 md:col-start-7 reveal" delay={140}>
             <p className="kicker kicker-anim text-ochre-600 mb-4">{t.kicker}</p>
@@ -566,12 +651,6 @@ function Timeline({ t }: { t: T["timeline"] }) {
   return (
     <section className="relative bg-sand-50 overflow-hidden">
       <PerfSeam />
-      <StampWatermark
-        variant="magazine"
-        size={900}
-        tilt="-3deg"
-        className="top-1/3 -end-40 hidden xl:block"
-      />
       <div className="relative mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <Reveal className="reveal-lg flex items-start justify-between gap-6">
           <div>
@@ -582,7 +661,6 @@ function Timeline({ t }: { t: T["timeline"] }) {
               {` ${t.headingTail}`}
             </h2>
           </div>
-          <StampBadge size={110} tilt="6deg" className="hidden sm:block" />
         </Reveal>
         <ol className="relative border-s border-ink/20 ps-8 sm:ps-12 space-y-12">
           {t.entries.map((entry, i) => (
@@ -645,7 +723,6 @@ function Team({ t }: { t: T["team"] }) {
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <div className="grid gap-10 md:grid-cols-12 mb-16">
           <Reveal className="md:col-span-5 reveal-lg flex items-start gap-5">
-            <StampBadge size={86} tilt="-8deg" className="mt-1 shrink-0" />
             <div>
               <p className="kicker kicker-anim text-ochre-600 mb-4">{t.kicker}</p>
               <h2 className="font-display text-5xl sm:text-6xl leading-[0.95]">
@@ -710,14 +787,6 @@ function Donate({ t }: { t: T }) {
   return (
     <section id="donate" className="relative overflow-hidden bg-nile-900 text-sand-50 grain">
       <PerfSeam dark />
-      <StampWatermark
-        variant="magazine"
-        mode="screen"
-        opacity={0.06}
-        size={520}
-        tilt="-7deg"
-        className="-top-16 end-[4%] hidden lg:block"
-      />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-28 sm:py-36">
         <ThanksBanner text={t.thanks} />
         <Reveal className="reveal-lg max-w-3xl">
@@ -888,10 +957,7 @@ function Contact({ t }: { t: T }) {
           </Reveal>
 
           <Reveal className="md:col-span-4 md:col-start-9 reveal flex flex-col gap-10" delay={140}>
-            <div className="flex items-start gap-4 self-end sm:self-start">
-              <StampBadge size={122} tilt="-3deg" />
-              <StampBadge variant="magazine" size={150} tilt="5deg" className="mt-6" />
-            </div>
+            <Mark tone="black" height={96} className="self-start opacity-90" />
             <div className="space-y-6">
               {c.people.map((p) => (
                 <div key={p.email}>
@@ -922,14 +988,6 @@ function Footer({ t, locale }: { t: T; locale: Locale }) {
   return (
     <footer className="relative overflow-hidden bg-nile-900 text-sand-100">
       <PerfSeam dark />
-      <StampWatermark
-        variant="sudan"
-        mode="screen"
-        opacity={0.05}
-        size={560}
-        tilt="6deg"
-        className="bottom-10 end-[8%] hidden lg:block"
-      />
       <div className="marquee-wrap overflow-hidden border-y border-sand-100/10 py-8">
         <div className="marquee">
           {marqueeItems.map((p, i) => (
@@ -945,10 +1003,7 @@ function Footer({ t, locale }: { t: T; locale: Locale }) {
       </div>
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-16 grid gap-10 md:grid-cols-12">
         <div className="md:col-span-5 flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <Mark className="text-sand-300" />
-            <span className="font-display text-2xl">{t.brand.name}</span>
-          </div>
+          <Mark tone="white" height={88} className="self-start" />
           <p className="text-sand-100/70 max-w-sm leading-relaxed">{f.blurb}</p>
         </div>
         <div className="md:col-span-3">
