@@ -15,7 +15,12 @@ export function AboutPage({ t, locale }: { t: SiteContent; locale: Locale }) {
     <>
       <Nav t={t} locale={locale} current="about" />
       <main>
-        <PageHero kicker={a.who.kicker} heading={a.who.heading} intro={a.who.body} />
+        <PageHero
+          kicker={a.who.kicker}
+          heading={a.who.heading}
+          intro={a.who.body}
+          image={{ src: "/img/meroe.jpg", alt: t.gallery.items.find((i) => i.src === "/img/meroe.jpg")?.alt ?? "", position: "50% 60%" }}
+        />
         <Goals t={a.goals} />
         <Film t={a.film} />
         <OralHistory t={a.oralHistory} />
