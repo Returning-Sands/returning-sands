@@ -1,22 +1,30 @@
 @import "tailwindcss";
 
+/*
+  Brand cheat sheet palette (Sept 26, V1) mapped onto the site's token roles.
+    Dusty Pink  #F0DDDF (#f8ecec / #fcf8f8)  -> light page backgrounds ("sand")
+    Golden Sand #f9ad15 (#fcd59b / #ffefd8)  -> warm highlight on dark ("sand-300/400")
+    Rust        #93210B (#ce9288 / #ecd3d0)  -> accent / links / buttons ("ochre")
+    Deep Water  #164A67 (#8ea5b5 / #d2dce1)  -> dark section backgrounds ("nile")
+    Umber       #5A3814 (#b19988 / #e1d6cf)  -> body text ("ink") and stamp tones
+*/
 :root {
-  --sand-50: #faf5ec;
-  --sand-100: #f1e8d4;
-  --sand-200: #e8dcc4;
-  --sand-300: #d4b886;
-  --sand-400: #c19a5b;
-  --ochre-500: #b8651f;
-  --ochre-600: #8b4513;
-  --nile-700: #1a3a52;
-  --nile-800: #122a3d;
-  --nile-900: #0a1825;
-  --ink: #18130c;
-  --stamp-200: #e2c9d3;
-  --stamp-400: #b487a0;
-  --stamp-500: #96617c;
-  --stamp-600: #7c4c66;
-  --stamp-700: #5f3a4f;
+  --sand-50: #fcf8f8;
+  --sand-100: #f8ecec;
+  --sand-200: #f0dddf;
+  --sand-300: #fcd59b;
+  --sand-400: #f9ad15;
+  --ochre-500: #b1361a;
+  --ochre-600: #93210b;
+  --nile-700: #1f5d80;
+  --nile-800: #164a67;
+  --nile-900: #0f3447;
+  --ink: #3a2410;
+  --stamp-200: #e1d6cf;
+  --stamp-400: #b19988;
+  --stamp-500: #8a6a4d;
+  --stamp-600: #5a3814;
+  --stamp-700: #42290e;
 }
 
 @theme inline {
@@ -47,15 +55,26 @@ body {
 }
 
 body {
-  font-family: var(--font-sans), system-ui, sans-serif;
-  font-feature-settings: "ss01", "cv11";
+  font-family: var(--font-sans), ui-monospace, "Courier New", monospace;
+  font-feature-settings: normal;
+  /* IBM Plex Mono is wide; pull body copy down a touch so measure stays readable. */
+  font-size: 0.95rem;
+  line-height: 1.65;
 }
 
 .font-display {
   font-family: var(--font-serif), Georgia, serif;
-  font-feature-settings: "lnum", "ss01", "liga", "dlig";
-  letter-spacing: -0.015em;
+  font-feature-settings: "lnum";
+  letter-spacing: -0.02em;
+  font-weight: 700;
 }
+/* Arvo sets ~35% wider than Cormorant: scale the display sizes down. */
+.font-display.text-5xl { font-size: 2.6rem; }
+.font-display.text-6xl, .font-display.sm\:text-6xl { font-size: 3.1rem; }
+.font-display.text-4xl { font-size: 2.1rem; }
+.font-display.text-3xl { font-size: 1.7rem; }
+.font-display.text-2xl { font-size: 1.35rem; }
+h1.font-display { letter-spacing: -0.035em; }
 
 ::selection {
   background: var(--ochre-500);
@@ -110,14 +129,14 @@ html[lang="ar"] [lang="en"] .font-display {
 
 .dune {
   background:
-    radial-gradient(1200px 600px at 80% -20%, rgba(184, 101, 31, 0.18), transparent 60%),
-    radial-gradient(900px 500px at -10% 30%, rgba(26, 58, 82, 0.12), transparent 60%),
+    radial-gradient(1200px 600px at 80% -20%, rgba(249, 173, 21, 0.16), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(22, 74, 103, 0.12), transparent 60%),
     linear-gradient(180deg, var(--sand-50), var(--sand-100));
 }
 
 .divider-rule {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(24, 19, 12, 0.25), transparent);
+  background: linear-gradient(90deg, transparent, rgba(58, 36, 16, 0.25), transparent);
 }
 
 .hover-underline {
@@ -338,12 +357,12 @@ html[lang="ar"] [lang="en"] .font-display {
 .perf-seam {
   position: relative;
   height: 1px;
-  background-image: radial-gradient(circle at 1px 1px, rgba(24, 19, 12, 0.22) 1.4px, transparent 1.6px);
+  background-image: radial-gradient(circle at 1px 1px, rgba(58, 36, 16, 0.22) 1.4px, transparent 1.6px);
   background-size: 14px 1px;
   background-repeat: repeat-x;
 }
 .perf-seam.on-dark {
-  background-image: radial-gradient(circle at 1px 1px, rgba(250, 245, 236, 0.28) 1.4px, transparent 1.6px);
+  background-image: radial-gradient(circle at 1px 1px, rgba(252, 248, 248, 0.28) 1.4px, transparent 1.6px);
 }
 
 /* Postage denomination chip — small bordered tag for kickers/numerals */
@@ -395,7 +414,7 @@ html[lang="ar"] [lang="en"] .font-display {
 }
 .stamp-hover:hover {
   transform: translateY(-6px) scale(1.05);
-  box-shadow: 0 20px 45px -10px rgba(24, 19, 12, 0.55);
+  box-shadow: 0 20px 45px -10px rgba(58, 36, 16, 0.55);
 }
 
 /* Postmark stamping-in — the cancellation marks draw themselves as the

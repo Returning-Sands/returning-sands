@@ -226,7 +226,7 @@ function Hero({ t }: { t: T }) {
         <Reveal className="kicker-anim kicker text-sand-300 mb-6 flex items-center gap-3">
           <span className="stamp-chip">{h.kicker}</span>
         </Reveal>
-        <h1 className="font-display text-[18vw] leading-[0.86] sm:text-[14vw] md:text-[11rem] lg:text-[13rem] xl:text-[15rem] text-sand-50">
+        <h1 className="font-display text-[15vw] leading-[0.9] sm:text-[11vw] md:text-[8.5rem] lg:text-[10rem] xl:text-[11.5rem] text-sand-50">
           <WordStagger as="span" text={h.titleLead} />
           <span className="block italic text-sand-300">
             <WordStagger as="span" text={h.titleEmphasis} />

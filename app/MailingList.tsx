@@ -116,7 +116,7 @@ export function MailingListForm({
           type="checkbox"
           checked={agreed}
           onChange={(e) => setAgreed(e.target.checked)}
-          className="mt-0.5 h-4 w-4 shrink-0 accent-[#b8651f]"
+          className="mt-0.5 h-4 w-4 shrink-0 accent-[#93210b]"
         />
         <span>
           {text.consent}{` ${text.consentSuffix}`}

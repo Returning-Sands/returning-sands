@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond, Noto_Naskh_Arabic } from "next/font/google";
+import { Arvo, IBM_Plex_Mono, Noto_Naskh_Arabic } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getContent, type Locale } from "./content";
@@ -15,16 +15,21 @@ import "./globals.css";
  * document direction and fonts change cleanly.
  */
 
-const sans = Inter({
+// Brand cheat sheet: IBM Plex Mono for text and secondary headings,
+// Arvo (the open-licence cousin of AVRO) for headlines. Both self-hosted
+// by next/font at build time; no runtime request to Google.
+const sans = IBM_Plex_Mono({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-const serif = Cormorant_Garamond({
+const serif = Arvo({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "700"],
   style: ["normal", "italic"],
   display: "swap",
 });

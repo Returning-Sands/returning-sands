@@ -40,7 +40,7 @@ export function StampBadge({
         }}
       >
         <div
-          className={`bg-sand-50 p-[6px] shadow-[0_10px_30px_-8px_rgba(24,19,12,0.45)] ${
+          className={`bg-sand-50 p-[6px] shadow-[0_10px_30px_-8px_rgba(58,36,16,0.45)] ${
             interactive ? "stamp-hover" : ""
           }`}
           style={{ width: size, height: size / stamp.aspect }}
