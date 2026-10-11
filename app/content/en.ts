@@ -356,17 +356,18 @@ export const en = {
       ],
     },
     partners: {
-      heading: "Partners",
+      heading: "Partners and supporters",
       items: [
-        "Bermuda Arts Council",
-        "British Council",
-        "Kalam Aflam",
-        "Sundance Institute",
-        "Sudan Human Rights Hub",
-        "Culture House",
-        "The American University in Cairo",
-        "SUDAAK",
-        "Blue Shield International",
+        { name: "British Council, Cultural Protection Fund", href: "https://www.britishcouncil.org/arts/culture-development/cultural-protection-fund" },
+        { name: "SIMA Studios", href: "https://simastudios.org/" },
+        { name: "Sundance Institute", href: "https://www.sundance.org/" },
+        { name: "Blue Shield International", href: "https://theblueshield.org/" },
+        { name: "Bermuda Arts Council", href: "https://culture.bm/arts/" },
+        { name: "The American University in Cairo", href: "https://www.aucegypt.edu/" },
+        { name: "Culture House", href: "https://culturehouse.org.uk/" },
+        { name: "SUDAAK", href: "https://sudaak.org/" },
+        { name: "Sudan Human Rights Hub", href: "https://sudanhrh.org/" },
+        { name: "Kalam Aflam", href: "https://kalamaflam.com/" },
       ],
     },
     contact: {
@@ -450,7 +451,13 @@ export const en = {
     trailerHeading: "Trailer",
     trailerComingSoon: "Trailer coming soon",
     instagramHeading: "Instagram",
-    instagramButton: "Follow @returningsands on Instagram",
+    instagramIntro: "Recent posts from @returningsands.",
+    instagramButton: "Follow @returningsands",
+    instagramPosts: [
+      { href: "https://www.instagram.com/p/Dd67U-WuAT8/" },
+      { href: "https://www.instagram.com/p/Dd67GhUOzIZ/" },
+      { href: "https://www.instagram.com/p/Dd62y7NRTn_/" },
+    ],
   },
 
   /* ---------------------------------------------------------- Donate */

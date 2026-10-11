@@ -98,6 +98,18 @@ export type GalleryItem = {
   readonly caption: string;
 };
 
+/** An Instagram post shown via Instagram's own embed. `href` is the permalink. */
+export type InstagramPost = {
+  /** Non-translatable. */
+  readonly href: string;
+};
+
+/** A partner or funder. `href` is optional and non-translatable. */
+export type Partner = {
+  readonly name: string;
+  readonly href?: string;
+};
+
 export type SiteContent = {
   readonly brand: {
     readonly name: string;
@@ -261,7 +273,7 @@ export type SiteContent = {
     };
     readonly partners: {
       readonly heading: string;
-      readonly items: readonly string[];
+      readonly items: readonly Partner[];
     };
     readonly contact: {
       readonly heading: string;
@@ -286,7 +298,10 @@ export type SiteContent = {
     readonly trailerHeading: string;
     readonly trailerComingSoon: string;
     readonly instagramHeading: string;
+    readonly instagramIntro: string;
     readonly instagramButton: string;
+    /** Curated posts, newest first. Rendered with Instagram's embed script. */
+    readonly instagramPosts: readonly InstagramPost[];
   };
 
   /* ---------------------------------------------------------- Donate */

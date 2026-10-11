@@ -1,9 +1,9 @@
 import type { SiteContent } from "../../content";
 import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
-import { SectionHeading } from "../primitives";
+import { ExternalArrow, SectionHeading } from "../primitives";
 
-/** Partner names as a simple grid. */
+/** Partners and funders as a grid; each links out to the organisation. */
 export function Partners({ t }: { t: SiteContent["about"]["partners"] }) {
   return (
     <section className="bg-sand-100 grain">
@@ -14,8 +14,20 @@ export function Partners({ t }: { t: SiteContent["about"]["partners"] }) {
         </Reveal>
         <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/10 rounded-2xl overflow-hidden">
           {t.items.map((p, i) => (
-            <Reveal as="li" key={p} className="bg-sand-100 px-8 py-6 font-display text-2xl text-ink reveal" delay={i * 60}>
-              {p}
+            <Reveal as="li" key={p.name} className="bg-sand-100 reveal" delay={i * 60}>
+              {p.href ? (
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start justify-between gap-4 px-8 py-6 font-display text-2xl text-ink hover:bg-sand-50 transition-colors"
+                >
+                  <span>{p.name}</span>
+                  <ExternalArrow className="mt-2 shrink-0 text-ink/40 group-hover:text-ochre-600 transition-colors" />
+                </a>
+              ) : (
+                <span className="block px-8 py-6 font-display text-2xl text-ink">{p.name}</span>
+              )}
             </Reveal>
           ))}
         </ul>

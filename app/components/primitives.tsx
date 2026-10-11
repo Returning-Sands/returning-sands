@@ -80,9 +80,9 @@ export function Arrow() {
   );
 }
 
-export function ExternalArrow() {
+export function ExternalArrow({ className = "" }: { className?: string }) {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden className="rtl:-scale-x-100">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden className={`rtl:-scale-x-100 ${className}`}>
       <path d="M4 10 10 4M5 4h5v5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );

@@ -48,7 +48,11 @@ export function Film({ t }: { t: SiteContent["about"]["film"] }) {
           </Reveal>
           <Reveal className="md:col-span-6 md:col-start-7 reveal" delay={120}>
             <h3 className="font-display text-4xl sm:text-5xl leading-[0.98]">{ali.name}</h3>
-            <p className="mt-2 text-sm text-sand-300">{ali.role}</p>
+            <p className="mt-2 text-sm text-sand-300">
+              <a href="https://theblueshield.org/" target="_blank" rel="noopener noreferrer" className="hover-underline">
+                {ali.role}
+              </a>
+            </p>
             <p className="mt-6 text-lg leading-relaxed text-sand-100/85">{ali.p1}</p>
             <p className="mt-4 text-lg leading-relaxed text-sand-100/85">{ali.p2}</p>
             <figure className="mt-10 border-s border-sand-300/40 ps-6">

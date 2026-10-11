@@ -4,7 +4,7 @@ import type { Locale, SiteContent } from "../../content";
 import { pagePath } from "../../routes";
 import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
-import { Arrow, ExternalArrow, btn } from "../primitives";
+import { Arrow, ExternalArrow, SocialIcon, btn } from "../primitives";
 
 export function GalleryTeaser({
   t,
@@ -34,6 +34,7 @@ export function GalleryTeaser({
               <Arrow />
             </Link>
             <a href={instagramHref} target="_blank" rel="noopener noreferrer" className={btn.darkOutline}>
+              <SocialIcon name="instagram" className="h-4 w-4" />
               {t.instagramButton}
               <ExternalArrow />
             </a>

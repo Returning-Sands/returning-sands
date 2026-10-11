@@ -3,6 +3,7 @@ import type { SiteContent } from "../../content";
 import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
 import { ExternalArrow, SectionHeading, SocialIcon, btn } from "../primitives";
+import { InstagramEmbed } from "./InstagramEmbed";
 
 type Gallery = SiteContent["gallery"];
 
@@ -71,14 +72,22 @@ export function InstagramBlock({ t, href }: { t: Gallery; href: string }) {
     <section className="bg-sand-100">
       <PerfSeam />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-20 sm:py-28">
-        <Reveal className="reveal-lg perf bg-sand-50 p-8 sm:p-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
-          <SectionHeading heading={t.instagramHeading} id="instagram" />
-          <a href={href} target="_blank" rel="noopener noreferrer" className={`${btn.darkFilled} text-lg px-8 py-4 self-start sm:self-center`}>
+        <Reveal className="reveal-lg flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
+          <div>
+            <SectionHeading heading={t.instagramHeading} id="instagram" />
+            <p className="mt-3 text-ink/70">{t.instagramIntro}</p>
+          </div>
+          <a href={href} target="_blank" rel="noopener noreferrer" className={`${btn.darkFilled} self-start sm:self-auto`}>
             <SocialIcon name="instagram" />
             {t.instagramButton}
             <ExternalArrow />
           </a>
         </Reveal>
+        {t.instagramPosts.length > 0 && (
+          <Reveal className="reveal" delay={100}>
+            <InstagramEmbed posts={t.instagramPosts} />
+          </Reveal>
+        )}
       </div>
     </section>
   );
