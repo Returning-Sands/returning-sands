@@ -3,10 +3,10 @@
  * locales overlay a DeepPartial of this onto `en` (see ./index.ts).
  *
  * Conventions
- * - Headings with inline emphasis are split into `headingLead` /
- *   `headingEmphasis` / `headingTail` rather than embedding markup.
- * - Keys named `links`, `bank`, `href`, `src`, `email`, `phone`, `network`
- *   and `id` are NOT translatable and can be skipped on a translator sheet.
+ * - One plain `heading` string per section. No split-emphasis headings.
+ * - Keys named `href`, `src`, `email`, `phone`, `network`, `id`, `key`,
+ *   `stamp`, `links`, `bank` and `trailerUrl` are NOT translatable and can be
+ *   skipped on a translator sheet.
  * - Arrays are replaced wholesale when overlaying a locale, never merged
  *   element-by-element.
  */
@@ -14,7 +14,19 @@
 import type { ThanksText } from "../Thanks";
 import type { MailingListText } from "../MailingList";
 
-export type LinkItem = { readonly label: string; readonly href: string };
+import type { PageKey } from "../routes";
+
+/** The five pages. Each exists at `/<path>` (en) and `/ar/<path>` (ar). */
+export type { PageKey };
+
+export type PageLink = { readonly key: PageKey; readonly label: string };
+
+export type PageMeta = {
+  /** Full <title> for the page. */
+  readonly title: string;
+  /** Meta description, 160 characters or fewer. */
+  readonly description: string;
+};
 
 export type Stat = { readonly value: string; readonly label: string };
 
@@ -29,22 +41,22 @@ export type Producer = {
 
 export type CoreTeamMember = { readonly name: string; readonly role: string };
 
-export type TimelineEntry = {
-  readonly when: string;
-  readonly title: string;
-  readonly points: readonly string[];
-};
+export type EventCta = { readonly label: string; readonly href: string };
 
 export type EventItem = {
-  readonly label: string;
-  readonly when: string;
-  readonly body: string;
+  readonly title: string;
+  readonly date: string;
+  /** Null renders the "venue to be announced" placeholder. */
+  readonly venue: string | null;
+  readonly description: string;
   /** Non-translatable. Brand-kit stamp file name under /public/brand (no extension). */
   readonly stamp?: string;
+  /** Null falls back to `events.defaultCta` (an email link). */
+  readonly cta: EventCta | null;
 };
 
 export type EventCity = {
-  /** Non-translatable anchor id: "cairo" | "london" | "nyc". */
+  /** Non-translatable anchor id on the Events page. */
   readonly id: "cairo" | "london" | "nyc";
   readonly city: string;
   readonly when: string;
@@ -66,8 +78,8 @@ export type ContactPerson = {
   readonly buttonLabel: string;
   /** Non-translatable. */
   readonly email: string;
-  /** Non-translatable. */
-  readonly phone: string;
+  /** Non-translatable. Omitted when the person has no listed number. */
+  readonly phone?: string;
   readonly city: string;
 };
 
@@ -79,22 +91,27 @@ export type BankDetails = {
   readonly bic?: string;
 };
 
+export type GalleryItem = {
+  /** Non-translatable path under /public. */
+  readonly src: string;
+  readonly alt: string;
+  readonly caption: string;
+};
+
 export type SiteContent = {
   readonly brand: {
     readonly name: string;
     readonly arabic: string;
   };
 
-  /** Strings for app/layout.tsx metadata (layout.tsx is not wired up yet). */
+  /** Per-page <title> and description, used by buildMetadata(). */
+  readonly pages: Record<PageKey, PageMeta>;
+
   readonly meta: {
-    readonly title: string;
-    readonly description: string;
-    readonly openGraph: { readonly title: string; readonly description: string };
-    readonly twitter: { readonly title: string; readonly description: string };
     readonly ogImageAlt: string;
   };
 
-  /** Visible text rendered inside app/opengraph-image.tsx. */
+  /** Visible text rendered inside app/(en)/opengraph-image.tsx. */
   readonly ogImage: {
     readonly kicker: string;
     readonly titleLead: string;
@@ -103,16 +120,16 @@ export type SiteContent = {
   };
 
   readonly nav: {
-    readonly links: readonly LinkItem[];
+    readonly links: readonly PageLink[];
+    /** Label of the filled Donate button. */
     readonly donate: string;
-    /** aria-label for the phone section-chip strip. */
+    /** aria-label for the phone chip strip. */
     readonly sectionsLabel: string;
   };
 
   /**
    * Language switcher labels. Each is written in the TARGET language and is
-   * the same in every locale file (the English site shows "عربي", the Arabic
-   * site shows "English"), so translators can leave these as they are.
+   * the same in every locale file, so translators can leave these as they are.
    */
   readonly langSwitch: {
     readonly toArabic: string;
@@ -125,142 +142,158 @@ export type SiteContent = {
     readonly networks: readonly SocialNetwork[];
   };
 
+  /* ------------------------------------------------------------ Home */
+
   readonly hero: {
     readonly imageAlt: string;
     readonly kicker: string;
     readonly titleLead: string;
     readonly titleEmphasis: string;
     readonly intro: string;
+    readonly donateButton: string;
+    readonly eventsButton: string;
     readonly schedule: readonly ScheduleRow[];
-  };
-
-  readonly openingQuote: {
-    readonly imageAlt: string;
-    readonly kicker: string;
-    readonly quote: string;
-    readonly attribution: string;
   };
 
   readonly stake: {
     readonly kicker: string;
-    readonly headingLead: string;
-    readonly headingEmphasis: string;
-    readonly paragraphs: readonly string[];
+    readonly heading: string;
+    readonly body: string;
     readonly stats: readonly Stat[];
   };
 
-  readonly campaign: {
-    readonly kicker: string;
-    readonly headingLead: string;
-    readonly headingEmphasis: string;
-    readonly headingTail: string;
-    /** "…events in <b>Cairo</b>, <b>London</b>, and <b>New York</b> — serving…" */
-    readonly p1: {
-      readonly lead: string;
-      readonly cities: readonly [string, string, string];
-      readonly separator: string;
-      readonly lastSeparator: string;
-      readonly tail: string;
-    };
-    readonly p2: string;
-    readonly p3: string;
-    /** Passport spread with clickable city stamps. */
-    readonly passport: {
-      readonly hint: string;
-      readonly alt: string;
-      readonly navLabel: string;
-      readonly cairo: string;
-      readonly london: string;
-      readonly nyc: string;
-    };
-  };
-
-  readonly goals: {
+  /** Passport spread with clickable city stamps. */
+  readonly cities: {
     readonly kicker: string;
     readonly heading: string;
-    readonly items: readonly string[];
+    readonly hint: string;
+    readonly alt: string;
+    readonly navLabel: string;
+    readonly cairo: string;
+    readonly london: string;
+    readonly nyc: string;
   };
 
-  readonly documentary: {
+  readonly filmTeaser: {
     readonly kicker: string;
-    readonly headingLead: string;
-    readonly headingEmphasis: string;
-    readonly headingTail: string;
-    readonly p1: string;
-    readonly p2Lead: string;
-    readonly p2Emphasis: string;
-    readonly p2Tail: string;
-    readonly imageAlt: string;
-    readonly loglineKicker: string;
+    readonly heading: string;
     readonly logline: string;
+    readonly body: string;
+    readonly button: string;
   };
 
-  readonly aliNour: {
-    readonly imageAlt: string;
-    readonly kicker: string;
+  readonly donateBand: {
     readonly heading: string;
-    readonly p1: string;
-    readonly p2: string;
-    readonly quote: string;
-    readonly attribution: string;
+    readonly body: string;
+    readonly button: string;
   };
 
-  readonly directorsNote: {
-    readonly kicker: string;
-    readonly name: string;
-    readonly role: string;
-    readonly quote: string;
-    readonly bodyLead: string;
-    readonly bodyTitle: string;
-    readonly bodyTail: string;
+  readonly galleryTeaser: {
+    readonly heading: string;
+    readonly body: string;
+    readonly button: string;
+    readonly instagramButton: string;
   };
+
+  /* ---------------------------------------------------------- Events */
 
   readonly events: {
     readonly kicker: string;
-    readonly headingLead: string;
-    readonly headingEmphasis: string;
+    readonly heading: string;
     readonly intro: string;
+    readonly venueTba: string;
+    /** Used when an event has `cta: null`. `{event}` is replaced with the event title. */
+    readonly defaultCta: {
+      readonly label: string;
+      /** Non-translatable. */
+      readonly email: string;
+      readonly subject: string;
+    };
     readonly cities: readonly EventCity[];
   };
 
-  readonly oralHistory: {
-    readonly imageAlt: string;
-    readonly kicker: string;
-    readonly heading: string;
-    readonly p1: string;
-    readonly p2: string;
+  /* ----------------------------------------------------------- About */
+
+  readonly about: {
+    readonly who: {
+      readonly kicker: string;
+      readonly heading: string;
+      readonly body: string;
+    };
+    readonly goals: {
+      readonly heading: string;
+      readonly items: readonly string[];
+    };
+    readonly film: {
+      readonly kicker: string;
+      readonly heading: string;
+      readonly loglineLabel: string;
+      readonly logline: string;
+      readonly body: string;
+      readonly imageAlt: string;
+      readonly ali: {
+        readonly imageAlt: string;
+        readonly name: string;
+        readonly role: string;
+        readonly p1: string;
+        readonly p2: string;
+        readonly quote: string;
+        readonly attribution: string;
+      };
+      readonly director: {
+        readonly label: string;
+        readonly name: string;
+        readonly role: string;
+        readonly quote: string;
+      };
+    };
+    readonly oralHistory: {
+      readonly heading: string;
+      readonly imageAlt: string;
+      readonly body: string;
+    };
+    readonly team: {
+      readonly heading: string;
+      readonly intro: string;
+      readonly producers: readonly Producer[];
+      readonly coreTeamHeading: string;
+      readonly coreTeam: readonly CoreTeamMember[];
+    };
+    readonly partners: {
+      readonly heading: string;
+      readonly items: readonly string[];
+    };
+    readonly contact: {
+      readonly heading: string;
+      readonly bodyLead: string;
+      /** Non-translatable. */
+      readonly email: string;
+      readonly bodyTail: string;
+      readonly mailSubject: string;
+      readonly followHeading: string;
+      readonly people: readonly ContactPerson[];
+    };
   };
 
-  readonly timeline: {
-    readonly kicker: string;
-    readonly headingLead: string;
-    readonly headingEmphasis: string;
-    readonly headingTail: string;
-    readonly entries: readonly TimelineEntry[];
-  };
+  /* --------------------------------------------------------- Gallery */
 
-  readonly closingQuote: {
-    readonly imageAlt: string;
-    readonly kicker: string;
-    readonly quote: string;
-    readonly attribution: string;
-  };
-
-  readonly team: {
-    readonly kicker: string;
-    readonly headingLead: string;
-    readonly headingEmphasis: string;
-    readonly headingTail: string;
+  readonly gallery: {
+    readonly title: string;
     readonly intro: string;
-    readonly producers: readonly Producer[];
-    readonly coreTeamKicker: string;
-    readonly coreTeam: readonly CoreTeamMember[];
+    readonly items: readonly GalleryItem[];
+    /** Non-translatable. Embeddable video URL, or null until the trailer exists. */
+    readonly trailerUrl: string | null;
+    readonly trailerHeading: string;
+    readonly trailerComingSoon: string;
+    readonly instagramHeading: string;
+    readonly instagramButton: string;
   };
+
+  /* ---------------------------------------------------------- Donate */
 
   readonly donate: {
     readonly kicker: string;
-    readonly headingLead: string;
-    readonly headingEmphasis: string;
+    readonly heading: string;
     readonly intro: string;
     readonly us: {
       readonly kicker: string;
@@ -308,25 +341,12 @@ export type SiteContent = {
 
   readonly mailingList: MailingListText;
 
-  readonly contact: {
-    readonly kicker: string;
-    readonly headingLead: string;
-    readonly headingEmphasis: string;
-    readonly bodyLead: string;
-    /** Non-translatable. */
-    readonly email: string;
-    readonly bodyTail: string;
-    readonly mailSubject: string;
-    readonly followKicker: string;
-    readonly people: readonly [ContactPerson, ContactPerson];
-  };
+  /* ---------------------------------------------------------- Footer */
 
   readonly footer: {
     readonly blurb: string;
     readonly navigateKicker: string;
-    readonly links: readonly LinkItem[];
-    readonly partnersKicker: string;
-    readonly partners: readonly string[];
+    readonly links: readonly PageLink[];
     /** Rendered as `${copyrightPrefix} ${year} ${copyrightSuffix}`. */
     readonly copyrightPrefix: string;
     readonly copyrightSuffix: string;

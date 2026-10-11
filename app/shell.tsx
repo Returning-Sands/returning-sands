@@ -3,6 +3,7 @@ import { Inter, Cormorant_Garamond, Noto_Naskh_Arabic } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getContent, type Locale } from "./content";
+import { pageKeyFromPath, pagePath, SITE_URL } from "./routes";
 import "./globals.css";
 
 /**
@@ -38,37 +39,42 @@ const arabic = Noto_Naskh_Arabic({
   display: "swap",
 });
 
-export const SITE_URL = "https://returningsands.org";
-
-const PATHS: Record<Locale, string> = { en: "/", ar: "/ar" };
-
-export function buildMetadata(locale: Locale): Metadata {
+/**
+ * Metadata for one page of one edition. `path` is the ENGLISH path of the
+ * page ("/", "/events", ...); the Arabic URL is derived from it, so every page
+ * gets its own canonical plus hreflang alternates (/events <-> /ar/events).
+ */
+export function buildMetadata(locale: Locale, path: string = "/"): Metadata {
   const t = getContent(locale);
-  const path = PATHS[locale];
+  const key = pageKeyFromPath(path);
+  const page = t.pages[key];
+  const enPath = pagePath("en", key);
+  const arPath = pagePath("ar", key);
+  const canonical = locale === "ar" ? arPath : enPath;
   return {
-    title: t.meta.title,
-    description: t.meta.description,
+    title: page.title,
+    description: page.description,
     metadataBase: new URL(SITE_URL),
     alternates: {
-      canonical: path,
+      canonical,
       languages: {
-        en: PATHS.en,
-        ar: PATHS.ar,
-        "x-default": PATHS.en,
+        en: enPath,
+        ar: arPath,
+        "x-default": enPath,
       },
     },
     openGraph: {
-      title: t.meta.openGraph.title,
-      description: t.meta.openGraph.description,
+      title: page.title,
+      description: page.description,
       type: "website",
-      url: `${SITE_URL}${path === "/" ? "" : path}`,
+      url: `${SITE_URL}${canonical === "/" ? "" : canonical}`,
       locale: locale === "ar" ? "ar" : "en_GB",
       alternateLocale: locale === "ar" ? ["en_GB"] : ["ar"],
     },
     twitter: {
       card: "summary_large_image",
-      title: t.meta.twitter.title,
-      description: t.meta.twitter.description,
+      title: page.title,
+      description: page.description,
     },
   };
 }

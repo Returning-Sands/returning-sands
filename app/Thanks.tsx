@@ -10,8 +10,9 @@ export type ThanksText = {
 
 /**
  * Shows a thank-you note when a donor is redirected back from Stripe
- * (the payment link returns to /?thanks=1#donate). Reads the query string
- * on the client so the page itself stays fully static.
+ * (the payment link returns to /donate?thanks=1; next.config.ts redirects the
+ * older /?thanks=1 there). Reads the query string on the client so the page
+ * itself stays fully static.
  */
 export function ThanksBanner({ text }: { text: ThanksText }) {
   const [show, setShow] = useState(false);
@@ -22,7 +23,7 @@ export function ThanksBanner({ text }: { text: ThanksText }) {
     if (params.get("thanks") === "1") {
       setShow(true);
       // Tidy the URL so a refresh doesn't re-show the banner.
-      window.history.replaceState(null, "", `${window.location.pathname}#donate`);
+      window.history.replaceState(null, "", window.location.pathname);
     }
   }, []);
 

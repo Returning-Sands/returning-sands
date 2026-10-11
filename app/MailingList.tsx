@@ -33,11 +33,15 @@ export type MailingListText = {
  */
 export function MailingListForm({
   text,
+  idSuffix,
   tone = "light",
 }: {
   text: MailingListText;
+  /** Unique per instance on a page, so two forms never share input ids. */
+  idSuffix: string;
   tone?: "light" | "dark";
 }) {
+  const inputId = `mailing-email-${idSuffix}`;
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
@@ -86,12 +90,12 @@ export function MailingListForm({
 
   return (
     <form onSubmit={submit} className="flex flex-col gap-3">
-      <label htmlFor={`ml-email-${tone}`} className={`text-sm ${textClass}`}>
+      <label htmlFor={inputId} className={`text-sm ${textClass}`}>
         {text.label}
       </label>
       <div className="flex flex-col sm:flex-row gap-2">
         <input
-          id={`ml-email-${tone}`}
+          id={inputId}
           type="email"
           name="email"
           required

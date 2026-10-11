@@ -2,10 +2,11 @@ import { en } from "./en";
 import { ar } from "./ar";
 import type { SiteContent } from "./types";
 
-export type { SiteContent } from "./types";
+export type { SiteContent, PageKey } from "./types";
+export type { Locale } from "../routes";
 export { en };
 
-export type Locale = "en" | "ar";
+import type { Locale } from "../routes";
 
 /** Recursive Partial: every object key optional, arrays replaced wholesale. */
 export type DeepPartial<T> = T extends readonly (infer U)[]

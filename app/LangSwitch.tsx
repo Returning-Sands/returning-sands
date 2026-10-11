@@ -1,4 +1,4 @@
-import type { Locale } from "./content";
+import { pagePath, type Locale, type PageKey } from "./routes";
 
 /**
  * Language switcher. Links to the same page in the other edition. Each
@@ -8,15 +8,17 @@ import type { Locale } from "./content";
  */
 export function LangSwitch({
   locale,
+  page,
   label,
   tone = "light",
 }: {
   locale: Locale;
+  page: PageKey;
   label: { readonly toArabic: string; readonly toEnglish: string };
   tone?: "light" | "dark";
 }) {
-  const target = locale === "ar" ? "en" : "ar";
-  const href = target === "ar" ? "/ar" : "/";
+  const target: Locale = locale === "ar" ? "en" : "ar";
+  const href = pagePath(target, page);
   const text = target === "ar" ? label.toArabic : label.toEnglish;
   const colour =
     tone === "light"

@@ -1,12 +1,11 @@
 import type { SiteContent } from "./types";
 
 /**
- * English copy — the source of truth for every user-visible string.
+ * English copy: the source of truth for every user-visible string.
  *
- * Keys named `links`, `bank`, `href`, `src`, `email`, `phone`, `network` and
- * `id` are not translatable; everything else is. Headings that carry inline
- * emphasis are split into lead / emphasis / tail parts (the component adds
- * the separating spaces).
+ * Keys named `href`, `src`, `email`, `phone`, `network`, `id`, `key`, `stamp`,
+ * `links`, `bank` and `trailerUrl` are not translatable; everything else is.
+ * Headings are plain, descriptive strings. No em or en dashes as punctuation.
  */
 export const en = {
   brand: {
@@ -14,41 +13,55 @@ export const en = {
     arabic: "عودة الرمال",
   },
 
+  pages: {
+    home: {
+      title: "Returning Sands: A Sudanese Cultural Heritage Campaign and Film",
+      description:
+        "A campaign and short documentary protecting Sudanese cultural memory, with events in Cairo, London, and New York from November 2026 to February 2027.",
+    },
+    events: {
+      title: "Events · Returning Sands",
+      description:
+        "Exhibitions, panels, and fundraising events in Cairo, London, and New York, November 2026 to February 2027.",
+    },
+    about: {
+      title: "About · Returning Sands",
+      description:
+        "Who we are, what we are working toward, the documentary about Ali Nour, the oral history project, our team, and our partners.",
+    },
+    gallery: {
+      title: "Gallery · Returning Sands",
+      description:
+        "Archival photographs from Sudan, the trailer, and Returning Sands on Instagram.",
+    },
+    donate: {
+      title: "Donate · Returning Sands",
+      description:
+        "Give through SIMA Studios in the United States (tax-deductible) or directly to Returning Sands CIC by card or bank transfer.",
+    },
+  },
+
   meta: {
-    title: "Returning Sands — A Sudanese Cultural Heritage Campaign & Film",
-    description:
-      "A campaign and short documentary by Paris Sistilli, Yusef Bushara, and Camilla Marchese González, protecting Sudanese cultural memory through events in Cairo, London, and New York (2026–2027).",
-    openGraph: {
-      title: "Returning Sands",
-      description:
-        "A Sudanese cultural heritage campaign and short documentary — events in Cairo, London, and New York, 2026–2027.",
-    },
-    twitter: {
-      title: "Returning Sands",
-      description:
-        "A Sudanese cultural heritage campaign and short documentary — events in Cairo, London, and New York, 2026–2027.",
-    },
-    ogImageAlt: "Returning Sands — A Sudanese Cultural Heritage Campaign & Film",
+    ogImageAlt: "Returning Sands: A Sudanese Cultural Heritage Campaign and Film",
   },
 
   ogImage: {
-    kicker: "A Sudanese Cultural Heritage Campaign · 2026–2027",
+    kicker: "A Sudanese Cultural Heritage Campaign · 2026 to 2027",
     titleLead: "Returning",
     titleEmphasis: "Sands",
-    byline: "A campaign & short documentary by Paris Quetzal Sistilli and Yusef Bushara",
+    byline: "A campaign and short documentary by Paris Quetzal Sistilli, Yusef Bushara, and Camilla Marchese González",
   },
 
   nav: {
     links: [
-      { label: "At Stake", href: "#stake" },
-      { label: "Campaign", href: "#campaign" },
-      { label: "Film", href: "#documentary" },
-      { label: "Events", href: "#events" },
-      { label: "Team", href: "#team" },
-      { label: "Contact", href: "#contact" },
+      { key: "home", label: "Home" },
+      { key: "events", label: "Events" },
+      { key: "about", label: "About" },
+      { key: "gallery", label: "Gallery" },
+      { key: "donate", label: "Donate" },
     ],
     donate: "Donate",
-    sectionsLabel: "Sections",
+    sectionsLabel: "Pages",
   },
 
   langSwitch: {
@@ -74,36 +87,29 @@ export const en = {
     ],
   },
 
+  /* ------------------------------------------------------------ Home */
+
   hero: {
     imageAlt: "Sunrise over a bridge in Khartoum",
-    kicker: "A Sudanese Cultural Heritage Campaign · 2026 – 2027",
+    kicker: "A Sudanese Cultural Heritage Campaign · 2026 to 2027",
     titleLead: "Returning",
     titleEmphasis: "Sands",
     intro:
-      "A campaign and short documentary by Paris Sistilli, Yusef Bushara, and Camilla Marchese González — protecting Sudanese cultural memory amid one of the world’s most devastating and underreported conflicts.",
+      "A campaign and short documentary protecting Sudanese cultural memory during one of the world’s most devastating and underreported wars.",
+    donateButton: "Donate",
+    eventsButton: "See the events",
     schedule: [
       { label: "Cairo", value: "Dec 2026" },
       { label: "London", value: "Jan 2027" },
-      { label: "New York", value: "Nov 2026 – Feb 2027" },
+      { label: "New York", value: "Nov 2026 to Feb 2027" },
     ],
-  },
-
-  openingQuote: {
-    imageAlt: "The pyramids of Meroë in Sudan",
-    kicker: "Opening Statement",
-    quote:
-      "“Beneath the wreckage of homes and hospitals lies another front in this war: the systematic erasure of a nation’s cultural memory.”",
-    attribution: "— Ali Nour · Blue Shield Sudan",
   },
 
   stake: {
-    kicker: "What’s at Stake",
-    headingLead: "Cultural heritage is a tangible expression of",
-    headingEmphasis: "identity.",
-    paragraphs: [
-      "In times of conflict, that identity becomes a strategic target — a way to erode the memory, cohesion, and continuity of a people. Although commonly framed as a “civil war,” Sudan since 2023 has been in the throes of a counter-revolutionary war. The country has witnessed widespread and irreversible damage to archaeological sites, archives, and museums.",
-      "Destruction in Sudan is ongoing, not confined to the past. Immediate documentation and action are essential. Heritage workers continue to operate under extreme, time-sensitive conditions with limited visibility and support — underscoring the urgent need for greater aid, technical expertise, and protective resources.",
-    ],
+    kicker: "Context",
+    heading: "What’s at stake",
+    body:
+      "Cultural heritage is a tangible expression of identity. In conflict it becomes a target: a way to erode a people’s memory, cohesion, and continuity. Since 2023, Sudan has seen widespread and irreversible damage to archaeological sites, archives, and museums. The destruction is ongoing. Heritage workers operate under extreme conditions with little visibility or support, and they need aid, expertise, and protective resources now.",
     stats: [
       { value: "60%", label: "of Sudan National Museum holdings looted in the last three years." },
       { value: "12M+", label: "people displaced since the war began in 2023." },
@@ -111,87 +117,54 @@ export const en = {
     ],
   },
 
-  campaign: {
-    kicker: "Impact Campaign",
-    headingLead: "Three cities,",
-    headingEmphasis: "one film,",
-    headingTail: "one global call.",
-    p1: {
-      lead: "Returning Sands is a global campaign that launches with education and art exhibition events in",
-      cities: ["Cairo", "London", "New York"],
-      separator: ", ",
-      lastSeparator: ", and",
-      tail: "— serving as both visibility platforms and fundraising catalysts for the short documentary at the heart of the project.",
-    },
-    p2: "The ambition extends beyond a single screening or exhibition. At its core is the production of a documentary film to be submitted to festivals across the SWANA region and internationally, fostering sustained engagement with the urgent issues of heritage preservation in Sudan and the deliberate targeting of cultural sites in conflict zones.",
-    p3: "Through this work, we seek to engage Sudanese communities within the country and across the diaspora, while reaching a broader global audience — to amplify awareness and mobilize a wider call to action.",
-    passport: {
-      hint: "Tap a stamp to jump to that city’s events",
-      alt: "An open passport: the Returning Sands stamp on the left page, and visa stamps for Cairo, NYC and London on the right",
-      navLabel: "Events by city",
-      cairo: "Cairo events",
-      london: "London events",
-      nyc: "New York events",
-    },
+  cities: {
+    kicker: "Campaign",
+    heading: "Three cities",
+    hint: "Tap a city stamp to see its events.",
+    alt: "An open passport: the Returning Sands stamp on the left page, and visa stamps for Cairo, NYC and London on the right",
+    navLabel: "Events by city",
+    cairo: "Cairo events",
+    london: "London events",
+    nyc: "New York events",
   },
 
-  goals: {
-    kicker: "Goals of the Project",
-    heading: "Five threads holding the work together.",
-    items: [
-      "Support the documentation of endangered heritage and lived memory.",
-      "Amplify the work of Sudanese heritage professionals, including emerging efforts tied to Blue Shield Sudan.",
-      "Collaborate with Sudanese artists and heritage experts to tackle the issue of futurity in an interdisciplinary fashion.",
-      "Enable future pathways to rebuild, recover, and sustain Sudanese cultural heritage — within the country and across the diaspora.",
-      "Position culture as a core component of humanitarian and post-conflict response.",
-    ],
-  },
-
-  documentary: {
-    kicker: "The Documentary",
-    headingLead: "From exile in Egypt,",
-    headingEmphasis: "a fight",
-    headingTail: "to keep memory alive.",
-    p1: "The film follows the story of Ali Nour, a Sudanese heritage professional leading efforts to protect his country’s cultural legacy amid one of the world’s most devastating and underreported conflicts — a war that has displaced over twelve million people and triggered the widespread, deliberate destruction of museums, archives, and historic sites.",
-    p2Lead:
-      "From Cairo, Ali and a network of displaced Sudanese experts coordinate high-risk safeguarding operations across Sudan, confronting the collapse of national infrastructure and the limits of international support. Expanding beyond preservation alone, the film also enters the lives of Sudanese artists, musicians, and scholars in exile — capturing the active creation and transmission of cultural heritage within the diaspora. Heritage stands not only as something under threat, but as a",
-    p2Emphasis: "living force",
-    p2Tail: ": central to identity, survival, and the future of Sudan itself.",
-    imageAlt: "Archival photograph from Sudan",
-    loglineKicker: "Logline",
+  filmTeaser: {
+    kicker: "Documentary",
+    heading: "The film",
     logline:
       "From exile in Egypt, Ali Nour coordinates Sudan’s fight to keep heritage alive. With national memory under siege, Ali and his crew of brave volunteers do everything to safeguard Sudan’s future while maintaining its thread to the past.",
+    body:
+      "Directed by Aicha Cherif, the film follows Ali Nour and a network of displaced Sudanese heritage workers protecting their country’s memory from Cairo.",
+    button: "About the film",
   },
 
-  aliNour: {
-    imageAlt: "Architectural heritage — historic gateway in Sudan",
-    kicker: "Introducing",
-    heading: "Ali Nour",
-    p1: "A grants-management specialist and cultural heritage advocate. Ali serves as Secretary General of Blue Shield Sudan and rapporteur of the Emergency Response Committee under Sudan’s National Corporation for Antiquities and Museums (NCAM).",
-    p2: "With a background in strategic fundraising, proposal development, and crisis coordination, he supports regional and international efforts to document, stabilise, and protect heritage in Sudan.",
-    quote:
-      "“Heritage workers operate under constant threat amidst an active war, with civilian attacks intensifying, even in the capital, Khartoum.”",
-    attribution: "— Ali Nour",
+  donateBand: {
+    heading: "Support the project",
+    body:
+      "Every contribution goes directly into documenting endangered heritage, supporting Sudanese heritage workers, and finishing the film.",
+    button: "Donate",
   },
 
-  directorsNote: {
-    kicker: "Director’s Note",
-    name: "Aicha Cherif",
-    role: "Director · 2026 Sundance x Adobe Ignite Fellow",
-    quote:
-      "“With Returning Sands I venture into thematics of memory and belonging, through my own experience with displacement. Fleeing gender-based violence in my homeland, Guinea, at age one, I have found solace in storytelling.”",
-    bodyLead: "My intention with my forthcoming feature documentary",
-    bodyTitle: "HEAT",
-    bodyTail:
-      "is to showcase a neighborhood filled with a rich and textured history — and with this project, I explore the same questions of identity and belonging from a different lens. As part of the creative process, I’m in open conversation with Sudanese filmmakers and creatives, as well as Ali and his community of heritage workers, to make sure to highlight their voices and stories in a collaborative manner.",
+  galleryTeaser: {
+    heading: "Gallery",
+    body: "Archival photographs from Sudan, and the trailer when it is ready.",
+    button: "See the gallery",
+    instagramButton: "Follow on Instagram",
   },
+
+  /* ---------------------------------------------------------- Events */
 
   events: {
-    kicker: "Events",
-    headingLead: "Three cities,",
-    headingEmphasis: "one thread.",
+    kicker: "2026 to 2027",
+    heading: "Events",
     intro:
-      "Each city combines exhibitions, academic panels, and fundraising moments — open to the public, with limited capacity.",
+      "Exhibitions, panels, and fundraising events in three cities. Open to the public, capacity limited.",
+    venueTba: "Venue to be announced",
+    defaultCta: {
+      label: "Email us about this event",
+      email: "info@returningsands.org",
+      subject: "Returning Sands: {event}",
+    },
     cities: [
       {
         id: "cairo",
@@ -200,21 +173,30 @@ export const en = {
         body: "Where much of the heritage work is now coordinated from exile.",
         items: [
           {
-            label: "Access Art Space Exhibit",
+            title: "Access Art Space Exhibit",
             stamp: "RS_Access_art_cairo_white",
-            when: "Dec 18–20",
-            body: "Fifteen Sudanese artists, curated by Reem Aljeally, exploring memory, return, and home.",
+            date: "Dec 18 to 20, 2026",
+            venue: "Access Art Space, Cairo",
+            description:
+              "Fifteen Sudanese artists, curated by Reem Aljeally, on memory, return, and home.",
+            cta: null,
           },
           {
-            label: "Educational Panel · AUC",
+            title: "Educational Panel · AUC",
             stamp: "RS_AU_cairo_white",
-            when: "Dec 16",
-            body: "A half-day series with Sudanese heritage expert Dr. Amira Ahmed — a refugee focus-group conversation, then a panel with ICROM, UNESCO, Blue Shield Sudan, and the National Archives.",
+            date: "Dec 16, 2026",
+            venue: "The American University in Cairo",
+            description:
+              "A half-day series with Dr. Amira Ahmed: a refugee focus group, then a panel with ICROM, UNESCO, Blue Shield Sudan, and the National Archives.",
+            cta: null,
           },
           {
-            label: "Oral History Project",
-            when: "Ongoing",
-            body: "With Oral Historian Afra Elagab — cultural heritage in exile, toward a digital repository and bilingual publication.",
+            title: "Oral History Project",
+            date: "Ongoing",
+            venue: null,
+            description:
+              "With Oral Historian Afra Elagab: heritage in exile, toward a digital repository and a bilingual publication.",
+            cta: null,
           },
         ],
       },
@@ -225,174 +207,259 @@ export const en = {
         body: "Carrying the project into the diaspora.",
         items: [
           {
-            label: "London Exhibition",
+            title: "London Exhibition",
             stamp: "RS_Ruby_cruel_london_white",
-            when: "One week · Jan",
-            body: "Four artists — two Bermudian, two Sudanese — on the unlikely kinship of return. Sponsored by the Bermuda Arts Council.",
+            date: "One week in January 2027",
+            venue: null,
+            description:
+              "Four artists, two Bermudian and two Sudanese, on the unlikely kinship of return. Sponsored by the Bermuda Arts Council.",
+            cta: null,
           },
           {
-            label: "Culture House Fireside",
+            title: "Culture House Fireside",
             stamp: "RS_Culture_house_london_white",
-            when: "January",
-            body: "A conversation on collective memory and testimony with African heritage stakeholders, hosted by Culture House.",
+            date: "January 2027",
+            venue: "Culture House, London",
+            description:
+              "A conversation on collective memory and testimony with African heritage stakeholders.",
+            cta: null,
           },
         ],
       },
       {
         id: "nyc",
         city: "New York",
-        when: "Nov 2026 – Feb 2027",
-        body: "The campaign's primary fundraising engine.",
+        when: "Nov 2026 to Feb 2027",
+        body: "The campaign’s primary fundraising engine.",
         items: [
           {
-            label: "Private Donor Event",
+            title: "Private Donor Event",
             stamp: "RS_Exclusive_NYC_white",
-            when: "Nov 2026",
-            body: "Philanthropists from the arts and culture world; impact trailer, remarks, and a silent auction of contemporary Sudanese art.",
+            date: "Nov 2026",
+            venue: null,
+            description:
+              "For arts and culture philanthropists: impact trailer, remarks, and a silent auction of contemporary Sudanese art.",
+            cta: null,
           },
           {
-            label: "Interactive Public Showcase",
+            title: "Interactive Public Showcase",
             stamp: "RS_PN_ABB_NYC_white",
-            when: "Mid-Nov 2026",
-            body: "With NYC-based Sudanese arts collectives — performance, mingling, and a live community-generated art installation.",
+            date: "Mid-Nov 2026",
+            venue: null,
+            description:
+              "With NYC-based Sudanese arts collectives: performance and a live community-made art installation.",
+            cta: null,
           },
           {
-            label: "Exhibition",
+            title: "Exhibition",
             stamp: "RS_Space360_NYC_white",
-            when: "Feb 2027",
-            body: "Curated by Paris Sistilli and Fatma Yasier — Sudanese artists on memory, return, and home.",
+            date: "Feb 2027",
+            venue: null,
+            description:
+              "Curated by Paris Sistilli and Fatma Yasier: Sudanese artists on memory, return, and home.",
+            cta: null,
           },
         ],
       },
     ],
   },
 
-  oralHistory: {
-    imageAlt: "Archival portrait — memory and adornment",
-    kicker: "Oral History Project",
-    heading: "Ten artists, in their own words.",
-    p1: "In consultation with Oral Historian Afra Elagab, the project will follow ten Sudanese artists in Cairo, documenting their experiences of exile, displacement, and cultural loss — collecting personal archives of photographs, documents, artworks, and objects that go beyond the artists themselves, drawing from the wider Sudanese community in Cairo and abroad.",
-    p2: "These materials will be digitized into a community-led digital archive, positioning civil-society collections as critical resources for post-conflict cultural recovery — ultimately becoming a virtual museum, making Sudanese cultural memory accessible to audiences worldwide.",
+  /* ----------------------------------------------------------- About */
+
+  about: {
+    who: {
+      kicker: "About",
+      heading: "Who we are",
+      body:
+        "Returning Sands is a Sudanese cultural heritage campaign and short documentary, run by Returning Sands CIC, a not-for-profit community interest company. It launches with exhibitions, panels, and fundraising events in Cairo, London, and New York between November 2026 and February 2027. At its centre is a documentary about Ali Nour and the Sudanese heritage workers protecting their country’s memory from exile. The film will go to festivals across the SWANA region and internationally, reaching Sudanese communities at home and in the diaspora, and a wider global audience.",
+    },
+    goals: {
+      heading: "What we’re working toward",
+      items: [
+        "Support the documentation of endangered heritage and lived memory.",
+        "Raise the profile of Sudanese heritage professionals, including Blue Shield Sudan.",
+        "Work with Sudanese artists and heritage experts on what comes next.",
+        "Open pathways to rebuild and sustain Sudanese heritage, at home and in the diaspora.",
+        "Make culture part of humanitarian and post-conflict response.",
+      ],
+    },
+    film: {
+      kicker: "Documentary",
+      heading: "The film",
+      loglineLabel: "Logline",
+      logline:
+        "From exile in Egypt, Ali Nour coordinates Sudan’s fight to keep heritage alive. With national memory under siege, Ali and his crew of brave volunteers do everything to safeguard Sudan’s future while maintaining its thread to the past.",
+      body:
+        "From Cairo, Ali Nour and a network of displaced Sudanese experts coordinate high-risk safeguarding operations across Sudan, facing collapsed national infrastructure and limited international support. The film also enters the lives of Sudanese artists, musicians, and scholars in exile, where heritage is still being made and passed on.",
+      imageAlt: "Archival photograph of a barber at work in Sudan",
+      ali: {
+        imageAlt: "Historic stone gateway in Sudan",
+        name: "Ali Nour",
+        role: "Secretary General, Blue Shield Sudan",
+        p1: "Ali is Secretary General of Blue Shield Sudan and rapporteur of the Emergency Response Committee under Sudan’s National Corporation for Antiquities and Museums (NCAM).",
+        p2: "A grants-management specialist, he supports regional and international efforts to document, stabilise, and protect heritage in Sudan.",
+        quote:
+          "“Beneath the wreckage of homes and hospitals lies another front in this war: the systematic erasure of a nation’s cultural memory.”",
+        attribution: "Ali Nour, Blue Shield Sudan",
+      },
+      director: {
+        label: "Director",
+        name: "Aicha Cherif",
+        role: "Director · 2026 Sundance x Adobe Ignite Fellow",
+        quote:
+          "“With Returning Sands I venture into thematics of memory and belonging, through my own experience with displacement.”",
+      },
+    },
+    oralHistory: {
+      heading: "Oral history project",
+      imageAlt: "Archival portrait of a woman with a comb",
+      body:
+        "With Oral Historian Afra Elagab, the project will follow ten Sudanese artists in Cairo and document their experiences of exile, displacement, and cultural loss, collecting photographs, documents, artworks, and objects from the wider Sudanese community in Cairo and abroad. These materials will be digitised into a community-led archive and, in time, a virtual museum open to audiences worldwide.",
+    },
+    team: {
+      heading: "The team",
+      intro:
+        "Where possible we work with friends pro bono, so that heritage workers and contributors are paid for their time.",
+      producers: [
+        {
+          name: "Paris Quetzal Sistilli",
+          role: "Producer · Co-Founder",
+          base: "New York",
+          bio: "A Mexican-American cultural heritage researcher focused on heritage protection, cultural policy, and collective memory. Degrees from Sciences Po and Columbia. Published in the Journal of Art Crime and art-law journals at UC Berkeley and Harvard.",
+        },
+        {
+          name: "Yusef Bushara",
+          role: "Producer · Co-Founder",
+          base: "London",
+          bio: "A Sudanese-Bermudian editor, writer, and researcher in global literatures and publishing. His debut poetry collection, Good News, came out in 2025. Degrees from Sciences Po, the University of Hong Kong, and SOAS.",
+        },
+        {
+          name: "Camilla Marchese González",
+          role: "Producer · Co-Founder",
+          base: "Brooklyn",
+          bio: "A Guatemalan-Italian writer and filmmaker drawn to storytelling as a means of preservation. Her short films have screened at DOC/NYC, Hamptons, Woodstock, and Athens International Film Festival.",
+        },
+        {
+          name: "Basma Khalifa",
+          role: "Executive Producer",
+          base: "London",
+          bio: "A Sudanese creative and founder of Zola Studios, making character-driven stories that centre underrepresented voices. Her debut feature reached over 30 million viewers and earned a Newcomer of the Year nomination at the Edinburgh TV Festival.",
+        },
+      ],
+      coreTeamHeading: "Core team",
+      coreTeam: [
+        { name: "Jenna Khalil", role: "Cairo Impact Coordinator" },
+        { name: "Afra Elagab", role: "Oral Historian" },
+        { name: "Anisa Estrada", role: "Researcher · Historic Preservation" },
+        { name: "Cillian Lavelle", role: "Director, Finance & Operations" },
+        { name: "Micheal Isaak", role: "Researcher" },
+      ],
+    },
+    partners: {
+      heading: "Partners",
+      items: [
+        "Bermuda Arts Council",
+        "British Council",
+        "Kalam Aflam",
+        "Sundance Institute",
+        "Sudan Human Rights Hub",
+        "Culture House",
+        "The American University in Cairo",
+        "SUDAAK",
+        "Blue Shield International",
+      ],
+    },
+    contact: {
+      heading: "Get in touch",
+      bodyLead: "For partnerships, grants, venues, or press, write to",
+      email: "info@returningsands.org",
+      bodyTail: " or reach a producer directly.",
+      mailSubject: "Returning Sands",
+      followHeading: "Follow",
+      people: [
+        {
+          role: "Producer",
+          name: "Paris Quetzal Sistilli",
+          buttonLabel: "Email Paris",
+          email: "paris@returningsands.org",
+          phone: "+1 (443) 699 4957",
+          city: "New York",
+        },
+        {
+          role: "Producer",
+          name: "Yusef Bushara",
+          buttonLabel: "Email Yusef",
+          email: "yusef@returningsands.org",
+          phone: "+44 (0) 7568 946890",
+          city: "London",
+        },
+        {
+          role: "Producer",
+          name: "Camilla Marchese González",
+          buttonLabel: "Email Camilla",
+          email: "camilla@returningsands.org",
+          city: "Brooklyn",
+        },
+      ],
+    },
   },
 
-  timeline: {
-    kicker: "Project Timeline",
-    headingLead: "A year of building,",
-    headingEmphasis: "gathering,",
-    headingTail: "and going to film.",
-    entries: [
+  /* --------------------------------------------------------- Gallery */
+
+  gallery: {
+    title: "Gallery",
+    intro: "Archival photographs from Sudan used across the campaign.",
+    items: [
       {
-        when: "Summer 2026",
-        title: "Development Begins",
-        points: [
-          "Onboarded Aicha Cherif as documentary director",
-          "Backed by the Sundance x Adobe Ignite Fellowship",
-          "Fundraising promo video assembled; crew comes together",
-          "Received fiscal sponsorship from SIMA",
-        ],
+        src: "/img/bridge.jpg",
+        alt: "Sunrise over a bridge in Khartoum",
+        caption: "Sunrise over a bridge in Khartoum.",
       },
       {
-        when: "Fall 2026",
-        title: "Fundraising Begins",
-        points: [
-          "NYC fundraising events and private donations begin",
-          "Grant application rollout continues",
-        ],
+        src: "/img/meroe.jpg",
+        alt: "The pyramids of Meroë in Sudan",
+        caption: "The pyramids of Meroë.",
       },
       {
-        when: "Nov – Dec 2026",
-        title: "Pre-Production · Cairo",
-        points: [
-          "Executing the Cairo exhibit and academic events",
-          "Film crew and shoot dates locked",
-          "Story arc finalized; oral history interviews begin",
-        ],
+        src: "/img/gateway.jpg",
+        alt: "Historic stone gateway with two towers in Sudan",
+        caption: "A historic gateway, with a man and a donkey in the foreground.",
       },
       {
-        when: "Jan – Feb 2027",
-        title: "London & New York",
-        points: [
-          "Executing the London exhibit and academic events",
-          "Impact trailer screens; NYC exhibit and academic events",
-          "Logistics finalized for the spring shoot",
-        ],
+        src: "/img/barbers.jpg",
+        alt: "Archival photograph of a barber cutting a customer’s hair",
+        caption: "A barber at work. Archival photograph.",
       },
       {
-        when: "May 2027",
-        title: "Production",
-        points: [
-          "Crew travels to Cairo",
-          "Filming conducted over a period of 2–3 weeks",
-        ],
+        src: "/img/portrait.jpg",
+        alt: "Sepia portrait of a woman wearing silver head and nose jewellery",
+        caption: "Portrait of a woman in silver jewellery. Archival photograph.",
       },
       {
-        when: "Fall 2027",
-        title: "Post-Production",
-        points: [
-          "Editing, coloring, and sound are executed",
-          "Festival submission strategy rolls out",
-        ],
+        src: "/img/woman.jpg",
+        alt: "Archival film still of a woman holding a comb",
+        caption: "A woman with a comb. Archival film still.",
+      },
+      {
+        src: "/img/ali.jpg",
+        alt: "Ali Nour and a colleague standing outdoors",
+        caption: "Ali Nour, Secretary General of Blue Shield Sudan, with a colleague.",
       },
     ],
+    trailerUrl: null as string | null,
+    trailerHeading: "Trailer",
+    trailerComingSoon: "Trailer coming soon",
+    instagramHeading: "Instagram",
+    instagramButton: "Follow @returningsands on Instagram",
   },
 
-  closingQuote: {
-    imageAlt: "Historical portrait — adornment and identity",
-    kicker: "Closing Statement",
-    quote:
-      "“Country is more than territory, it is memory… So if you protect that now, in the middle of this chaos, then we will have a foundation through which we can rebuild.”",
-    attribution: "— Ali Nour",
-  },
-
-  team: {
-    kicker: "Core Creative Team",
-    headingLead: "Built across",
-    headingEmphasis: "three cities,",
-    headingTail: "with friends.",
-    intro:
-      "Returning Sands is produced by Paris Quetzal Sistilli, Yusef Bushara, and Camilla Marchese González, directed by Aicha Cherif, with creative, advisory, and coordination support spanning New York, London, and Cairo. Where possible we work with friends and collaborators pro bono — the priority is paying heritage workers and contributors for their time.",
-    producers: [
-      {
-        name: "Paris Quetzal Sistilli",
-        role: "Producer · Co-Founder",
-        base: "New York",
-        bio: "A Mexican-American cultural heritage researcher and practitioner focused on heritage protection, cultural policy, and collective memory. She holds degrees in Middle Eastern Politics from Sciences Po and Political Science from Columbia. Her writing has appeared in the Journal of Art Crime and art-law journals at UC Berkeley and Harvard.",
-      },
-      {
-        name: "Yusef Bushara",
-        role: "Producer · Co-Founder",
-        base: "London",
-        bio: "A Sudanese-Bermudian editor, writer, and researcher specializing in global literatures and publishing. In 2025, he released his debut poetry collection, Good News. Yusef holds a degree in Middle Eastern politics from Sciences Po and one in English Literature from the University of Hong Kong, and earned his Master's in Comparative Literature from SOAS University of London.",
-      },
-      {
-        name: "Camilla Marchese González",
-        role: "Producer · Co-Founder",
-        base: "Brooklyn",
-        bio: "A Guatemalan-Italian writer and filmmaker drawn to storytelling as a means of preservation. Her short films have screened at DOC/NYC, Hamptons International Film Festival, Woodstock Film Festival, and Athens International Film Festival.",
-      },
-      {
-        name: "Basma Khalifa",
-        role: "Executive Producer",
-        base: "London",
-        bio: "A Sudanese creative and founder of Zola Studios, working in character-driven storytelling that foregrounds underrepresented voices. Her debut feature reached over 30 million viewers and earned a Newcomer of the Year nomination at the Edinburgh TV Festival.",
-      },
-    ],
-    coreTeamKicker: "Core Team",
-    coreTeam: [
-      { name: "Jenna Khalil", role: "Cairo Impact Coordinator" },
-      { name: "Afra Elagab", role: "Oral Historian" },
-      { name: "Anisa Estrada", role: "Researcher · Historic Preservation" },
-      { name: "Cillian Lavelle", role: "Director, Finance & Operations" },
-      { name: "Micheal Isaak", role: "Researcher" },
-    ],
-  },
+  /* ---------------------------------------------------------- Donate */
 
   donate: {
     kicker: "Donate",
-    headingLead: "Help carry this work",
-    headingEmphasis: "forward.",
+    heading: "Support the project",
     intro:
-      "Every contribution goes directly into documenting endangered heritage, supporting Sudanese heritage workers, and finishing the film. Choose the route that suits where you are.",
+      "Every contribution goes directly into documenting endangered heritage, supporting Sudanese heritage workers, and finishing the film.",
     us: {
       kicker: "United States",
       heading: "Give through SIMA Studios",
@@ -407,9 +474,9 @@ export const en = {
     },
     // UK / rest of world: Stripe Payment Link (donor chooses amount) + Co-op bank transfer.
     uk: {
-      kicker: "United Kingdom & elsewhere",
+      kicker: "United Kingdom and elsewhere",
       heading: "Give directly to Returning Sands CIC",
-      body: "Give by card, Apple Pay or Google Pay in the amount of your choice, in pounds, euros or your own currency. Or send a bank transfer using the details below, with your name as the reference so we can thank you.",
+      body: "Give by card, Apple Pay or Google Pay in any amount and currency, or send a bank transfer using the details below, with your name as the reference so we can thank you.",
       cardButton: "Donate by card",
       bankLabels: {
         accountName: "Account name",
@@ -465,62 +532,19 @@ export const en = {
     errorTail: ".",
   },
 
-  contact: {
-    kicker: "Contact & Support",
-    headingLead: "If this work matters to you,",
-    headingEmphasis: "get in touch.",
-    bodyLead:
-      "We’re actively building partnerships, applying for grants, and looking for friends who can help — through funding, expertise, venues, or simply by carrying the word forward. Write to us at",
-    email: "info@returningsands.org",
-    bodyTail: ", or reach the producer or the creative director directly.",
-    mailSubject: "Returning Sands",
-    followKicker: "Follow along",
-    people: [
-      {
-        role: "Producer",
-        name: "Paris Quetzal Sistilli",
-        buttonLabel: "Email the Producer",
-        email: "paris@returningsands.org",
-        phone: "+1 (443) 699 4957",
-        city: "New York",
-      },
-      {
-        role: "Creative Director",
-        name: "Yusef Bushara",
-        buttonLabel: "Email the Creative Director",
-        email: "yusef@returningsands.org",
-        phone: "+44 (0) 7568 946890",
-        city: "London",
-      },
-    ],
-  },
+  /* ---------------------------------------------------------- Footer */
 
   footer: {
     blurb:
-      "A Sudanese cultural heritage campaign and short documentary by Paris Quetzal Sistilli, Yusef Bushara, and Camilla Marchese González, in partnership with Blue Shield Sudan.",
-    navigateKicker: "Navigate",
+      "A Sudanese cultural heritage campaign and short documentary, in partnership with Blue Shield Sudan.",
+    navigateKicker: "Pages",
     links: [
-      { label: "At Stake", href: "#stake" },
-      { label: "Campaign", href: "#campaign" },
-      { label: "Documentary", href: "#documentary" },
-      { label: "Events", href: "#events" },
-      { label: "Team", href: "#team" },
-      { label: "Donate", href: "#donate" },
-      { label: "Contact", href: "#contact" },
+      { key: "home", label: "Home" },
+      { key: "events", label: "Events" },
+      { key: "about", label: "About" },
+      { key: "gallery", label: "Gallery" },
+      { key: "donate", label: "Donate" },
     ],
-    partnersKicker: "Partners",
-    partners: [
-      "Bermuda Arts Council",
-      "British Council",
-      "Kalam Aflam",
-      "Sundance Institute",
-      "Sudan Human Rights Hub",
-      "Culture House",
-      "The American University in Cairo",
-      "SUDAAK",
-      "Blue Shield International",
-    ],
-    /** Rendered as `${copyrightPrefix} ${year} ${copyrightSuffix}`. */
     copyrightPrefix: "©",
     copyrightSuffix: "Returning Sands CIC",
     cities: "New York · London · Cairo · Khartoum",
