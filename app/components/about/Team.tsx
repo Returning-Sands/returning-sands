@@ -37,15 +37,11 @@ export function Team({ t }: { t: SiteContent["about"]["team"] }) {
           <Reveal as="h3" className="font-display text-3xl mb-6 reveal">{t.coreTeamHeading}</Reveal>
           <ul className="grid sm:grid-cols-3 lg:grid-cols-5 gap-6">
             {t.coreTeam.map((p, i) => (
-              <Reveal
-                as="li"
-                key={p.name}
-                className="perf border border-ink/15 p-6 bg-sand-100/60 reveal"
-                style={{ ["--perf-bg" as string]: "var(--sand-50)" }}
-                delay={i * 80}
-              >
-                <p className="font-display text-xl mb-1">{p.name}</p>
-                <p className="text-sm text-ink/65 leading-relaxed">{p.role}</p>
+              <Reveal as="li" key={p.name} className="film-frame film-frame-sm reveal" delay={i * 80}>
+                <div className="film-frame-inner">
+                  <p className="font-display text-xl mb-1">{p.name}</p>
+                  <p className="text-sm text-ink/65 leading-relaxed">{p.role}</p>
+                </div>
               </Reveal>
             ))}
           </ul>

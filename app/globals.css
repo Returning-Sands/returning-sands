@@ -441,17 +441,18 @@ html[lang="ar"] [lang="en"] .font-display {
   background-position: 8px 9px, 0 0;
   background-repeat: repeat-x, no-repeat;
 }
-/* Inner shading so the frame edges feel darker, like light falling off. */
 .film-frame > .film-frame-inner {
   position: relative;
-  box-shadow:
-    inset 0 30px 28px -20px rgba(21, 17, 12, 0.6),
-    inset 0 -30px 28px -20px rgba(21, 17, 12, 0.6);
   padding: 1.75rem 2rem 1.5rem;
 }
 @media (min-width: 640px) {
   .film-frame > .film-frame-inner { padding: 2rem 2.5rem 1.75rem; }
 }
+/* Compact variant for small cards (team). */
+.film-frame.film-frame-sm { padding-top: 26px; padding-bottom: 26px; }
+.film-frame.film-frame-sm::before,
+.film-frame.film-frame-sm::after { height: 18px; background-size: 18px 6px, 100% 100%; background-position: 6px 6px, 0 0; }
+.film-frame.film-frame-sm > .film-frame-inner { padding: 1.25rem 1.5rem 1rem; }
 /* Tiny frame number, like edge markings on a strip. */
 .film-frame > .film-frame-index {
   position: absolute;
