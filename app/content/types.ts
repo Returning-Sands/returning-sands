@@ -39,7 +39,12 @@ export type Producer = {
   readonly bio: string;
 };
 
-export type CoreTeamMember = { readonly name: string; readonly role: string };
+export type CoreTeamMember = {
+  readonly name: string;
+  readonly role: string;
+  /** Non-translatable. LinkedIn profile URL; omit if not public. */
+  readonly linkedin?: string;
+};
 
 export type EventCta = { readonly label: string; readonly href: string };
 

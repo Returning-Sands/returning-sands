@@ -24,11 +24,11 @@ export function Contact({
             {t.bodyTail}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            {t.people.map((p, i) => (
+            {t.people.map((p) => (
               <a
                 key={p.email}
                 href={`mailto:${p.email}?subject=${encodeURIComponent(t.mailSubject)}`}
-                className={i === 0 ? btn.darkFilled : btn.darkOutline}
+                className={btn.darkFilled}
               >
                 {p.buttonLabel}
                 <Arrow />

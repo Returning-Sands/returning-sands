@@ -12,22 +12,22 @@ export function Film({ t }: { t: SiteContent["about"]["film"] }) {
       <PerfSeam dark />
       <WaveLines tone="white" className="opacity-[0.05]" />
       <div className="relative mx-auto max-w-7xl px-6 sm:px-10 py-24 sm:py-32">
-        <div className="grid gap-12 md:grid-cols-12">
-          <Reveal className="md:col-span-5 reveal-lg">
+        <div className="grid gap-12 md:grid-cols-12 md:items-center">
+          <Reveal className="md:col-span-6 reveal-lg">
             <BrandStamp name="RS_Documentary_white" height={110} className="mb-8 -rotate-3" />
             <SectionHeading kicker={t.kicker} heading={t.heading} tone="light" id="film" />
+            <p className="mt-8 text-lg leading-relaxed text-sand-100/85 max-w-prose">{t.body}</p>
           </Reveal>
-          <Reveal className="md:col-span-6 md:col-start-7 reveal" delay={120}>
-            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-nile-800 mb-8 parallax">
+          <Reveal className="md:col-span-5 md:col-start-8 reveal" delay={120}>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-nile-800 parallax">
               <Image
                 src="/img/barbers.jpg"
                 alt={t.imageAlt}
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover object-center zoom-in"
               />
             </div>
-            <p className="text-lg leading-relaxed text-sand-100/85">{t.body}</p>
           </Reveal>
         </div>
 

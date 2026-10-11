@@ -1,7 +1,7 @@
 import type { SiteContent } from "../../content";
 import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
-import { SectionHeading } from "../primitives";
+import { SectionHeading, SocialIcon } from "../primitives";
 
 export function Team({ t }: { t: SiteContent["about"]["team"] }) {
   return (
@@ -41,6 +41,18 @@ export function Team({ t }: { t: SiteContent["about"]["team"] }) {
                 <div className="film-frame-inner">
                   <p className="font-display text-xl mb-1">{p.name}</p>
                   <p className="text-sm text-ink/65 leading-relaxed">{p.role}</p>
+                  {p.linkedin && (
+                    <a
+                      href={p.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${p.name} on LinkedIn`}
+                      className="mt-3 inline-flex items-center gap-1.5 text-xs text-ink/60 hover:text-ink transition-colors"
+                    >
+                      <SocialIcon name="linkedin" className="h-3.5 w-3.5" />
+                      <span className="hover-underline">LinkedIn</span>
+                    </a>
+                  )}
                 </div>
               </Reveal>
             ))}
