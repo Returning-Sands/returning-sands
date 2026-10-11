@@ -81,6 +81,8 @@ export type ContactPerson = {
   /** Non-translatable. Omitted when the person has no listed number. */
   readonly phone?: string;
   readonly city: string;
+  /** Non-translatable. LinkedIn profile URL; omit if not public. */
+  readonly linkedin?: string;
 };
 
 export type BankDetails = {

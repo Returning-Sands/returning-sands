@@ -1,7 +1,7 @@
 import type { SiteContent } from "../../content";
 import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
-import { Arrow, SectionHeading, SocialLinks, btn } from "../primitives";
+import { Arrow, SectionHeading, SocialIcon, SocialLinks, btn } from "../primitives";
 
 export function Contact({
   t,
@@ -53,6 +53,18 @@ export function Contact({
                 <p className="text-sm text-ink/60 mt-1">
                   {p.phone ? `${p.phone} · ${p.city}` : p.city}
                 </p>
+                {p.linkedin && (
+                  <a
+                    href={p.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${p.name} on LinkedIn`}
+                    className="mt-2 inline-flex items-center gap-2 text-sm text-ink/70 hover:text-ink transition-colors"
+                  >
+                    <SocialIcon name="linkedin" className="h-4 w-4" />
+                    <span className="hover-underline">LinkedIn</span>
+                  </a>
+                )}
               </li>
             ))}
           </ul>

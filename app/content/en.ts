@@ -385,6 +385,7 @@ export const en = {
           email: "paris@returningsands.org",
           phone: "+1 (443) 699 4957",
           city: "New York",
+          linkedin: "https://www.linkedin.com/in/paris-quetzal-sistilli-960b341b2/",
         },
         {
           role: "Producer",
