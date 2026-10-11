@@ -7,19 +7,19 @@ import { Arrow, WaveLines, btn } from "../primitives";
 
 export function Hero({ t, locale }: { t: SiteContent["hero"]; locale: Locale }) {
   return (
-    <section className="relative min-h-[92svh] flex flex-col justify-start overflow-hidden bg-nile-900 text-sand-50">
+    <section className="relative flex flex-col justify-start overflow-hidden bg-nile-900 text-sand-50">
       <Image
         src="/img/bridge.jpg"
         alt={t.imageAlt}
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center opacity-70"
+        className="object-cover object-[50%_72%] opacity-70"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-nile-900/85 via-nile-900/35 to-nile-900/60" />
       <div className="absolute inset-0 grain" />
       <WaveLines tone="white" className="opacity-[0.07]" />
-      <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-10 pt-32 sm:pt-32 pb-16 sm:pb-24">
+      <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-10 pt-36 sm:pt-40 pb-12 sm:pb-16">
         <h1 className="font-display text-[17vw] leading-[0.92] sm:text-[11vw] sm:whitespace-nowrap lg:text-[9.5rem] xl:text-[11rem] text-sand-50">
           <WordStagger as="span" text={`${t.titleLead} ${t.titleEmphasis}`} />
         </h1>

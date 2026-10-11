@@ -23,11 +23,11 @@ export function Nav({
     <header className="absolute top-0 start-0 end-0 z-30">
       <div className="mx-auto max-w-7xl px-5 sm:px-10 py-4 sm:py-6 flex items-center justify-between gap-3">
         <Link href={pagePath(locale, "home")} className="flex items-center gap-3 group" aria-label={t.brand.name}>
-          <Mark tone="white" height={44} className="sm:hidden" priority />
-          <Mark tone="white" height={56} className="hidden sm:block" priority />
+          <Mark tone="white" height={52} className="sm:hidden" priority />
+          <Mark tone="white" height={72} className="hidden sm:block" priority />
           <span className="sr-only">{t.brand.name}</span>
         </Link>
-        <nav className="hidden md:flex items-center gap-9 text-sm text-sand-100/85">
+        <nav className="hidden md:flex items-center gap-10 text-base text-sand-100/90">
           {textLinks.map((l) => (
             <Link
               key={l.key}
@@ -45,7 +45,7 @@ export function Nav({
           <Link
             href={donate}
             aria-current={current === "donate" ? "page" : undefined}
-            className="inline-flex items-center gap-2 rounded-full bg-sand-50 px-4 py-2 text-sm text-nile-900 hover:bg-sand-200 transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-sand-50 px-5 py-2.5 text-base text-nile-900 hover:bg-sand-200 transition-colors"
           >
             {t.nav.donate}
             <Arrow />
