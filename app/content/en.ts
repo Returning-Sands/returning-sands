@@ -231,7 +231,7 @@ export const en = {
         id: "london",
         city: "London",
         when: "Jan 2027",
-        body: "Carrying the project into the diaspora.",
+        body: null,
         items: [
           {
             title: "London Exhibition",
@@ -257,7 +257,7 @@ export const en = {
         id: "nyc",
         city: "New York",
         when: "Nov 2026 to Feb 2027",
-        body: "The campaign’s primary fundraising engine.",
+        body: null,
         items: [
           {
             title: "Private Donor Event",

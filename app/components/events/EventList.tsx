@@ -28,7 +28,7 @@ export function EventList({ t }: { t: Events }) {
                 <p className="kicker text-sand-300 mb-3">{c.when}</p>
                 <h2 className="font-display text-5xl sm:text-6xl leading-none">{c.city}</h2>
               </div>
-              <p className="text-sand-100/70 max-w-md">{c.body}</p>
+              {c.body ? <p className="text-sand-100/70 max-w-md">{c.body}</p> : null}
             </div>
             <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {c.items.map((it, i) => {

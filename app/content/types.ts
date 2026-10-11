@@ -74,7 +74,8 @@ export type EventCity = {
   readonly id: "cairo" | "london" | "nyc";
   readonly city: string;
   readonly when: string;
-  readonly body: string;
+  /** Optional one-line tagline beside the city heading. `null` hides it. */
+  readonly body: string | null;
   readonly items: readonly EventItem[];
 };
 

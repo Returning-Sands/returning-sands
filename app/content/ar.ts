@@ -195,7 +195,7 @@ export const ar: DeepPartial<SiteContent> = {
         id: "london",
         city: "لندن",
         when: "يناير 2027",
-        body: "حمل المشروع إلى الشتات.",
+        body: null,
         items: [
           {
             title: "معرض لندن",
@@ -219,7 +219,7 @@ export const ar: DeepPartial<SiteContent> = {
         id: "nyc",
         city: "نيويورك",
         when: "نوفمبر 2026 إلى فبراير 2027",
-        body: "المحرّك الرئيسي لجمع التبرعات في الحملة.",
+        body: null,
         items: [
           {
             title: "فعالية خاصة للمتبرعين",
