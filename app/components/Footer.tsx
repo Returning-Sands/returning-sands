@@ -50,9 +50,18 @@ export function Footer({
         </div>
       </div>
       <div className="border-t border-sand-100/10">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10 py-6 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-xs text-sand-100/55">
-          <span>{`${f.copyrightPrefix} `}{new Date().getFullYear()}{` ${f.copyrightSuffix}`}</span>
-          <span>{f.cities}</span>
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 py-6 flex flex-col gap-3 text-xs text-sand-100/55">
+          <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+            <span>{`${f.copyrightPrefix} `}{new Date().getFullYear()}{` ${f.copyrightSuffix}`}</span>
+            <span>{f.cities}</span>
+          </div>
+          {/* Companies Act 2006 s.82: registered name, number, place of registration and office. */}
+          <div className="flex flex-col sm:flex-row gap-x-6 gap-y-1 sm:items-center sm:justify-between">
+            <span>{f.legal}</span>
+            <Link href={pagePath(locale, "privacy")} className="hover-underline shrink-0">
+              {f.privacyLabel}
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -2,12 +2,12 @@
  * Page paths for both editions. Pure, no content import, so client components
  * may use it too.
  */
-export type PageKey = "home" | "events" | "about" | "gallery" | "donate";
+export type PageKey = "home" | "events" | "about" | "gallery" | "donate" | "privacy";
 export type Locale = "en" | "ar";
 
 export const SITE_URL = "https://returningsands.org";
 
-export const PAGE_KEYS: readonly PageKey[] = ["home", "events", "about", "gallery", "donate"];
+export const PAGE_KEYS: readonly PageKey[] = ["home", "events", "about", "gallery", "donate", "privacy"];
 
 /** English path for a page: "/" or "/events". */
 export const PAGE_PATHS: Record<PageKey, string> = {
@@ -16,6 +16,7 @@ export const PAGE_PATHS: Record<PageKey, string> = {
   about: "/about",
   gallery: "/gallery",
   donate: "/donate",
+  privacy: "/privacy",
 };
 
 /** Path for a page in a given edition: "/ar/events", "/ar", "/events", "/". */

@@ -39,6 +39,11 @@ export const en = {
       description:
         "Give through SIMA Studios in the United States (tax-deductible) or directly to Returning Sands CIC by card or bank transfer.",
     },
+    privacy: {
+      title: "Privacy · Returning Sands",
+      description:
+        "How Returning Sands CIC handles personal information from the mailing list, donations and this website.",
+    },
   },
 
   meta: {
@@ -373,9 +378,9 @@ export const en = {
       ],
       coreTeamHeading: "Core team",
       coreTeam: [
-        { name: "Jenna Khalil", role: "Cairo Impact Coordinator" },
+        { name: "Jenna Khalil", role: "Cairo Impact Coordinator", linkedin: "https://www.linkedin.com/in/jenna-khalil/" },
         { name: "Afra Elagab", role: "Oral Historian" },
-        { name: "Anisa Estrada", role: "Researcher · Historic Preservation" },
+        { name: "Anisa Estrada", role: "Researcher · Historic Preservation", linkedin: "https://www.linkedin.com/in/anisa-estrada-9a23b22b1/" },
         { name: "Cillian Lavelle", role: "Director, Finance & Operations", email: "cillian@returningsands.org", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
         { name: "Micheal Isaak", role: "Researcher" },
       ],
@@ -583,5 +588,53 @@ export const en = {
     copyrightPrefix: "©",
     copyrightSuffix: "Returning Sands CIC",
     cities: "New York · London · Cairo · Khartoum",
+    legal:
+      "Returning Sands Community Interest Company, registered in England and Wales, no. 17311689. Registered office: 5 Brayford Square, London E1 0SG.",
+    privacyLabel: "Privacy",
+  },
+
+  /* --------------------------------------------------------- Privacy */
+
+  privacy: {
+    heading: "Privacy",
+    intro: "How Returning Sands CIC handles the small amount of personal information this website collects.",
+    updated: "Last updated October 2026.",
+    sections: [
+      {
+        heading: "Who we are",
+        paragraphs: [
+          "Returning Sands Community Interest Company (company no. 17311689, registered office 5 Brayford Square, London E1 0SG) runs this website and is the data controller for the information described here.",
+        ],
+      },
+      {
+        heading: "What we collect and why",
+        paragraphs: [
+          "Mailing list: if you join, we keep your email address and the date and wording of your consent so we can send occasional updates about events, the film and how donations are used. The form is processed by Web3Forms, which forwards your submission to our inbox. You can unsubscribe at any time by replying to any email or writing to the address below.",
+          "Donations: card payments are handled by Stripe and US donations by PayPal on behalf of our fiscal sponsor, SIMA Studios. We receive your name, email address, donation amount and, if you choose, your mailing list preference. We do not see or store card details. Stripe and PayPal process your data under their own privacy policies.",
+          "Bank transfers: if you donate by bank transfer we see the name and reference that your bank sends with the payment.",
+          "Email: if you write to us, we keep the correspondence for as long as needed to deal with it.",
+        ],
+      },
+      {
+        heading: "Cookies and analytics",
+        paragraphs: [
+          "This site uses Vercel Analytics, which counts visits without cookies or personal identifiers. The Gallery page embeds posts from Instagram; when that page loads, Instagram may set its own cookies under Meta's privacy policy. No other tracking is used.",
+        ],
+      },
+      {
+        heading: "Legal basis and retention",
+        paragraphs: [
+          "We rely on your consent for the mailing list, on our legitimate interests in running the organisation for donation records and correspondence, and on legal obligation for financial records, which we keep for six years as required by UK law. Mailing list data is deleted when you unsubscribe.",
+        ],
+      },
+      {
+        heading: "Your rights",
+        paragraphs: [
+          "Under UK GDPR you can ask to see, correct or delete the personal information we hold about you, and object to or restrict how we use it. You can also complain to the Information Commissioner's Office at ico.org.uk.",
+        ],
+      },
+    ],
+    contactLead: "Questions about this notice, or to exercise any of these rights, email",
+    contactEmail: "info@returningsands.org",
   },
 } as const satisfies SiteContent;

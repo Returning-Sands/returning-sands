@@ -386,5 +386,20 @@ export type SiteContent = {
     readonly copyrightPrefix: string;
     readonly copyrightSuffix: string;
     readonly cities: string;
+    /** Statutory company details line (name, number, registered office). */
+    readonly legal: string;
+    readonly privacyLabel: string;
+  };
+
+  /* --------------------------------------------------------- Privacy */
+
+  readonly privacy: {
+    readonly heading: string;
+    readonly intro: string;
+    readonly updated: string;
+    readonly sections: readonly { readonly heading: string; readonly paragraphs: readonly string[] }[];
+    readonly contactLead: string;
+    /** Non-translatable. */
+    readonly contactEmail: string;
   };
 };
