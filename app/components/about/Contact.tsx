@@ -1,7 +1,7 @@
 import type { SiteContent } from "../../content";
 import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
-import { Arrow, Mark, SectionHeading, SocialLinks, btn } from "../primitives";
+import { Arrow, SectionHeading, SocialLinks, btn } from "../primitives";
 
 export function Contact({
   t,
@@ -42,7 +42,6 @@ export function Contact({
         </Reveal>
 
         <Reveal className="md:col-span-4 md:col-start-9 reveal flex flex-col gap-8" delay={120}>
-          <Mark tone="black" height={88} className="self-start opacity-90" />
           <ul className="space-y-6">
             {t.people.map((p) => (
               <li key={p.email}>

@@ -187,7 +187,7 @@ export const en = {
             date: "Dec 16, 2026",
             venue: "The American University in Cairo",
             description:
-              "A half-day series with Dr. Amira Ahmed: a refugee focus group, then a panel with ICROM, UNESCO, Blue Shield Sudan, and the National Archives.",
+              "A half-day series with Dr. Amira Ahmed: a refugee focus group, then a panel with ICCROM, UNESCO, Blue Shield Sudan, and the National Archives.",
             cta: null,
           },
           {
