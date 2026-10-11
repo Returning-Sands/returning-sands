@@ -410,7 +410,7 @@ export const en = {
 
   gallery: {
     title: "Gallery",
-    intro: "Archival photographs from Sudan used across the campaign.",
+    intro: "Recent posts, the trailer when it is ready, and archival photographs from Sudan.",
     items: [
       {
         src: "/img/bridge.jpg",

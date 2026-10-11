@@ -12,9 +12,9 @@ export function GalleryPage({ t, locale }: { t: SiteContent; locale: Locale }) {
       <Nav t={t} locale={locale} current="gallery" />
       <main>
         <PageHero heading={g.title} intro={g.intro} />
-        <PhotoGrid items={g.items} />
-        <Trailer t={g} />
         <InstagramBlock t={g} href={instagram} />
+        <Trailer t={g} />
+        <PhotoGrid items={g.items} />
       </main>
       <Footer t={t} locale={locale} current="gallery" />
     </>
