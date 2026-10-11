@@ -74,10 +74,23 @@ export const ar: DeepPartial<SiteContent> = {
 
   stake: {
     stats: [
-      { value: "60%", label: "من مقتنيات المتحف القومي السوداني نُهبت خلال السنوات الثلاث الأخيرة." },
-      { value: "+12 مليون", label: "شخص نزحوا منذ بداية الحرب في 2023." },
-      { value: "مستمر", label: "تدمير متعمد للمتاحف والأرشيفات والمواقع التاريخية." },
+      {
+        value: "60%",
+        label: "من مقتنيات المتحف القومي السوداني نُهبت خلال احتلال الخرطوم.",
+        source: { label: "NBC News، مارس 2026، نقلًا عن الهيئة العامة للآثار والمتاحف", href: "https://www.nbcnews.com/world/africa/museums-looted-priceless-artifacts-sudan-counts-cost-deadly-conflict-rcna260473" },
+      },
+      {
+        value: "+12 مليون",
+        label: "شخص نزحوا في ذروة الحرب التي بدأت في أبريل 2023.",
+        source: { label: "المنظمة الدولية للهجرة، أبريل 2026", href: "https://www.iom.int/news/aid-system-under-pressure-needs-continue-grow-three-years-sudan-war" },
+      },
+      {
+        value: "+20",
+        label: "متحفًا تضررت، مع تأكيد نهب المجموعات وتهريبها.",
+        source: { label: "اليونسكو، 2025 إلى 2026", href: "https://www.unesco.org/en/culture-emergencies/heritage-emergency-fund/urgent-safeguarding-response-damaged-collections-sudan-national-museum" },
+      },
     ],
+    sourcesLabel: "المصادر",
   },
 
   cities: {

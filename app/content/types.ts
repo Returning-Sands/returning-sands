@@ -28,7 +28,7 @@ export type PageMeta = {
   readonly description: string;
 };
 
-export type Stat = { readonly value: string; readonly label: string };
+export type Stat = { readonly value: string; readonly label: string; readonly source?: Source };
 
 export type ScheduleRow = { readonly label: string; readonly value: string };
 
@@ -37,14 +37,23 @@ export type Producer = {
   readonly role: string;
   readonly base: string;
   readonly bio: string;
+  /** Non-translatable. Omit if not public. */
+  readonly email?: string;
+  /** Non-translatable. Omit if not public. */
+  readonly linkedin?: string;
 };
 
 export type CoreTeamMember = {
   readonly name: string;
   readonly role: string;
+  /** Non-translatable. Omit if not public. */
+  readonly email?: string;
   /** Non-translatable. LinkedIn profile URL; omit if not public. */
   readonly linkedin?: string;
 };
+
+/** A cited source for a figure. */
+export type Source = { readonly label: string; readonly href: string };
 
 export type EventCta = { readonly label: string; readonly href: string };
 
@@ -181,6 +190,8 @@ export type SiteContent = {
     readonly heading: string;
     readonly body: string;
     readonly stats: readonly Stat[];
+    /** Label for the sources line under the stats, e.g. "Sources". */
+    readonly sourcesLabel: string;
   };
 
   /** Passport spread with clickable city stamps. */

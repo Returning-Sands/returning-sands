@@ -1,7 +1,8 @@
 import type { SiteContent } from "../../content";
 import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
-import { SectionHeading, SocialIcon } from "../primitives";
+import { SectionHeading } from "../primitives";
+import { PersonLinks } from "./PersonLinks";
 
 export function Team({ t }: { t: SiteContent["about"]["team"] }) {
   return (
@@ -28,7 +29,10 @@ export function Team({ t }: { t: SiteContent["about"]["team"] }) {
               <h3 className="font-display text-2xl sm:text-3xl leading-tight">{p.name}</h3>
               <p className="text-sm text-ink/65 leading-relaxed">{p.role}</p>
               <p className="text-sm text-ink/60 leading-relaxed">{p.bio}</p>
-              <p className="kicker text-ochre-600 mt-auto pt-4">{p.base}</p>
+              <div className="mt-auto pt-4 flex items-center justify-between gap-3">
+                <p className="kicker text-ochre-600">{p.base}</p>
+                <PersonLinks name={p.name} email={p.email} linkedin={p.linkedin} />
+              </div>
             </Reveal>
           ))}
         </ul>
@@ -41,18 +45,9 @@ export function Team({ t }: { t: SiteContent["about"]["team"] }) {
                 <div className="film-frame-inner">
                   <p className="font-display text-xl mb-1">{p.name}</p>
                   <p className="text-sm text-ink/65 leading-relaxed">{p.role}</p>
-                  {p.linkedin && (
-                    <a
-                      href={p.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${p.name} on LinkedIn`}
-                      className="mt-3 inline-flex items-center gap-1.5 text-xs text-ink/60 hover:text-ink transition-colors"
-                    >
-                      <SocialIcon name="linkedin" className="h-3.5 w-3.5" />
-                      <span className="hover-underline">LinkedIn</span>
-                    </a>
-                  )}
+                  <div className="mt-3">
+                    <PersonLinks name={p.name} email={p.email} linkedin={p.linkedin} size="sm" />
+                  </div>
                 </div>
               </Reveal>
             ))}

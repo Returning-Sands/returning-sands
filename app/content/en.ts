@@ -111,10 +111,32 @@ export const en = {
     body:
       "Cultural heritage is a tangible expression of identity. In conflict it becomes a target: a way to erode a people’s memory, cohesion, and continuity. Since 2023, Sudan has seen widespread and irreversible damage to archaeological sites, archives, and museums. The destruction is ongoing. Heritage workers operate under extreme conditions with little visibility or support, and they need aid, expertise, and protective resources now.",
     stats: [
-      { value: "60%", label: "of Sudan National Museum holdings looted in the last three years." },
-      { value: "12M+", label: "people displaced since the war began in 2023." },
-      { value: "Ongoing", label: "deliberate destruction of museums, archives, and historic sites." },
+      {
+        value: "60%",
+        label: "of Sudan National Museum holdings looted during the occupation of Khartoum.",
+        source: {
+          label: "NBC News, March 2026, quoting the General Authority for Antiquities and Museums",
+          href: "https://www.nbcnews.com/world/africa/museums-looted-priceless-artifacts-sudan-counts-cost-deadly-conflict-rcna260473",
+        },
+      },
+      {
+        value: "12M+",
+        label: "people displaced at the height of the war that began in April 2023.",
+        source: {
+          label: "IOM, April 2026",
+          href: "https://www.iom.int/news/aid-system-under-pressure-needs-continue-grow-three-years-sudan-war",
+        },
+      },
+      {
+        value: "20+",
+        label: "museums damaged, with looting and trafficking of collections confirmed.",
+        source: {
+          label: "UNESCO, 2025 to 2026",
+          href: "https://www.unesco.org/en/culture-emergencies/heritage-emergency-fund/urgent-safeguarding-response-damaged-collections-sudan-national-museum",
+        },
+      },
     ],
+    sourcesLabel: "Sources",
   },
 
   cities: {
@@ -322,18 +344,24 @@ export const en = {
           name: "Paris Quetzal Sistilli",
           role: "Producer · Co-Founder",
           base: "New York",
+          email: "paris@returningsands.org",
+          linkedin: "https://www.linkedin.com/in/paris-quetzal-sistilli-960b341b2/",
           bio: "A Mexican-American cultural heritage researcher focused on heritage protection, cultural policy, and collective memory. Degrees from Sciences Po and Columbia. Published in the Journal of Art Crime and art-law journals at UC Berkeley and Harvard.",
         },
         {
           name: "Yusef Bushara",
           role: "Producer · Co-Founder",
           base: "London",
+          email: "yusef@returningsands.org",
+          linkedin: "https://www.linkedin.com/in/yusefbushara/",
           bio: "A Sudanese-Bermudian editor, writer, and researcher in global literatures and publishing. His debut poetry collection, Good News, came out in 2025. Degrees from Sciences Po, the University of Hong Kong, and SOAS.",
         },
         {
           name: "Camilla Marchese González",
           role: "Producer · Co-Founder",
           base: "New York",
+          email: "camilla@returningsands.org",
+          linkedin: "https://www.linkedin.com/in/camilla-marchese-gonzalez/",
           bio: "A Guatemalan-Italian writer and filmmaker drawn to storytelling as a means of preservation. Her short films have screened at DOC/NYC, Hamptons, Woodstock, and Athens International Film Festival.",
         },
         {
@@ -348,7 +376,7 @@ export const en = {
         { name: "Jenna Khalil", role: "Cairo Impact Coordinator" },
         { name: "Afra Elagab", role: "Oral Historian" },
         { name: "Anisa Estrada", role: "Researcher · Historic Preservation" },
-        { name: "Cillian Lavelle", role: "Director, Finance & Operations", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
+        { name: "Cillian Lavelle", role: "Director, Finance & Operations", email: "cillian@returningsands.org", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
         { name: "Micheal Isaak", role: "Researcher" },
       ],
     },

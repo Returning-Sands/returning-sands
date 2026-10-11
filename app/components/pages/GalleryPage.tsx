@@ -11,7 +11,11 @@ export function GalleryPage({ t, locale }: { t: SiteContent; locale: Locale }) {
     <>
       <Nav t={t} locale={locale} current="gallery" />
       <main>
-        <PageHero heading={g.title} intro={g.intro} />
+        <PageHero
+          heading={g.title}
+          intro={g.intro}
+          image={{ src: "/img/woman.jpg", alt: g.items.find((i) => i.src === "/img/woman.jpg")?.alt ?? "", position: "50% 30%" }}
+        />
         <InstagramBlock t={g} href={instagram} />
         <Trailer t={g} />
         <PhotoGrid items={g.items} heading={g.photosHeading} intro={g.photosIntro} />
