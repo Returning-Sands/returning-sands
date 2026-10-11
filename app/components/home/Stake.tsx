@@ -19,17 +19,13 @@ export function Stake({ t }: { t: SiteContent["stake"] }) {
 
         <ul className="grid sm:grid-cols-3 gap-6 mt-14 reveal-stagger">
           {t.stats.map((s, i) => (
-            <Reveal
-              as="li"
-              key={s.value}
-              className="perf bg-sand-100 p-8 sm:p-10 reveal"
-              style={{ ["--perf-bg" as string]: "var(--sand-50)" }}
-              delay={i * 110}
-            >
-              <p className="font-display text-6xl sm:text-7xl text-ochre-600 leading-none mb-4">
-                {s.value}
-              </p>
-              <p className="text-ink/75 leading-relaxed">{s.label}</p>
+            <Reveal as="li" key={s.value} className="film-frame reveal" delay={i * 110}>
+              <div className="film-frame-inner">
+                <p className="font-display text-6xl sm:text-7xl text-ochre-600 leading-none mb-4">
+                  {s.value}
+                </p>
+                <p className="text-ink/75 leading-relaxed">{s.label}</p>
+              </div>
             </Reveal>
           ))}
         </ul>

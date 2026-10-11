@@ -392,3 +392,73 @@ html[lang="ar"] [lang="en"] .font-display {
 @media (prefers-reduced-motion: reduce) {
   .passport-stamp { opacity: 1; transform: none; filter: none; transition: none; }
 }
+
+/* ---------------------------------------------------------------------------
+   Film frame: a card that looks like one frame of 35mm film. Dark sprocket
+   strips run along the top and bottom with punched holes; the frame has a
+   black border and a soft inner vignette. Used for the headline stats.
+   ------------------------------------------------------------------------- */
+.film-frame {
+  --film: #15110c;
+  --film-hole: var(--sand-50);
+  position: relative;
+  border: 2px solid var(--film);
+  border-radius: 6px;
+  background: var(--sand-100);
+  padding-top: 38px;    /* room for the sprocket strip */
+  padding-bottom: 38px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px -22px rgba(21, 17, 12, 0.45);
+}
+.film-frame::before,
+.film-frame::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 26px;
+  background-color: var(--film);
+  /* punched sprocket holes */
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    var(--film-hole) 0 4px,
+    transparent 4.5px
+  );
+  background-size: 26px 26px;
+  background-position: 6px 0;
+  background-repeat: repeat-x;
+}
+.film-frame::before { top: 0; }
+.film-frame::after  { bottom: 0; }
+/* Rectangular sprocket holes read more like real film than round ones:
+   an 11px hole every 24px, with a slight gloss across the strip. */
+.film-frame::before,
+.film-frame::after {
+  background-image:
+    linear-gradient(90deg, var(--film-hole) 0 11px, transparent 11px),
+    linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0) 45%, rgba(0,0,0,0.25));
+  background-size: 24px 8px, 100% 100%;
+  background-position: 8px 9px, 0 0;
+  background-repeat: repeat-x, no-repeat;
+}
+/* Inner shading so the frame edges feel darker, like light falling off. */
+.film-frame > .film-frame-inner {
+  position: relative;
+  box-shadow:
+    inset 0 30px 28px -20px rgba(21, 17, 12, 0.6),
+    inset 0 -30px 28px -20px rgba(21, 17, 12, 0.6);
+  padding: 1.75rem 2rem 1.5rem;
+}
+@media (min-width: 640px) {
+  .film-frame > .film-frame-inner { padding: 2rem 2.5rem 1.75rem; }
+}
+/* Tiny frame number, like edge markings on a strip. */
+.film-frame > .film-frame-index {
+  position: absolute;
+  bottom: 7px;
+  inset-inline-end: 12px;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--sand-300);
+  z-index: 1;
+}
