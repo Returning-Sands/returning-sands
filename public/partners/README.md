@@ -1,0 +1,1 @@
+Partner logos go here (SVG preferred, dark artwork on transparent). Reference them from app/content/en.ts as logo: '/partners/<file>'. Only use files supplied by the organisation, following their brand guidelines.

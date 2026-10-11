@@ -16,10 +16,6 @@ export function Film({ t }: { t: SiteContent["about"]["film"] }) {
           <Reveal className="md:col-span-5 reveal-lg">
             <BrandStamp name="RS_Documentary_white" height={110} className="mb-8 -rotate-3" />
             <SectionHeading kicker={t.kicker} heading={t.heading} tone="light" id="film" />
-            <figure className="mt-8 bg-nile-800 p-8 rounded-2xl">
-              <p className="kicker text-sand-300 mb-3">{t.loglineLabel}</p>
-              <blockquote className="font-display text-2xl leading-[1.25] text-sand-50">{t.logline}</blockquote>
-            </figure>
           </Reveal>
           <Reveal className="md:col-span-6 md:col-start-7 reveal" delay={120}>
             <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-nile-800 mb-8 parallax">

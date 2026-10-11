@@ -106,10 +106,12 @@ export type InstagramPost = {
   readonly href: string;
 };
 
-/** A partner or funder. `href` is optional and non-translatable. */
+/** A partner or funder. `href` and `logo` are optional and non-translatable. */
 export type Partner = {
   readonly name: string;
   readonly href?: string;
+  /** Path under /public/partners to the organisation's supplied logo (SVG or PNG, dark-on-transparent). */
+  readonly logo?: string;
 };
 
 export type SiteContent = {
@@ -241,8 +243,6 @@ export type SiteContent = {
     readonly film: {
       readonly kicker: string;
       readonly heading: string;
-      readonly loglineLabel: string;
-      readonly logline: string;
       readonly body: string;
       readonly imageAlt: string;
       readonly ali: {

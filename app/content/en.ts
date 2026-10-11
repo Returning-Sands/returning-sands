@@ -286,11 +286,8 @@ export const en = {
     film: {
       kicker: "Documentary",
       heading: "The film",
-      loglineLabel: "Logline",
-      logline:
-        "From exile in Egypt, Ali Nour coordinates Sudan’s fight to keep heritage alive. With national memory under siege, Ali and his crew of brave volunteers do everything to safeguard Sudan’s future while maintaining its thread to the past.",
       body:
-        "From Cairo, Ali Nour and a network of displaced Sudanese experts coordinate high-risk safeguarding operations across Sudan, facing collapsed national infrastructure and limited international support. The film also enters the lives of Sudanese artists, musicians, and scholars in exile, where heritage is still being made and passed on.",
+        "From exile in Egypt, Ali Nour coordinates Sudan’s fight to keep its heritage alive. With national memory under siege, he and a network of displaced Sudanese experts run high-risk safeguarding operations across the country, facing collapsed infrastructure and limited international support. The film also enters the lives of Sudanese artists, musicians, and scholars in exile, where heritage is still being made and passed on.",
       imageAlt: "Archival photograph of a barber at work in Sudan",
       ali: {
         imageAlt: "Historic stone gateway in Sudan",
