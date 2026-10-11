@@ -14,7 +14,7 @@ export function GalleryPage({ t, locale }: { t: SiteContent; locale: Locale }) {
         <PageHero heading={g.title} intro={g.intro} />
         <InstagramBlock t={g} href={instagram} />
         <Trailer t={g} />
-        <PhotoGrid items={g.items} />
+        <PhotoGrid items={g.items} heading={g.photosHeading} intro={g.photosIntro} />
       </main>
       <Footer t={t} locale={locale} current="gallery" />
     </>

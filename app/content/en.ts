@@ -411,6 +411,8 @@ export const en = {
   gallery: {
     title: "Gallery",
     intro: "Recent posts, the trailer when it is ready, and archival photographs from Sudan.",
+    photosHeading: "Archive",
+    photosIntro: "Archival photographs from Sudan used across the campaign.",
     items: [
       {
         src: "/img/bridge.jpg",

@@ -7,11 +7,15 @@ import { InstagramEmbed } from "./InstagramEmbed";
 
 type Gallery = SiteContent["gallery"];
 
-export function PhotoGrid({ items }: { items: Gallery["items"] }) {
+export function PhotoGrid({ items, heading, intro }: { items: Gallery["items"]; heading: string; intro: string }) {
   return (
     <section className="bg-sand-50">
       <PerfSeam />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-16 sm:py-24">
+        <Reveal className="reveal-lg mb-10">
+          <SectionHeading heading={heading} id="photographs" />
+          <p className="mt-3 text-ink/70">{intro}</p>
+        </Reveal>
         <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((img, i) => (
             <Reveal as="li" key={img.src} className="reveal" delay={(i % 3) * 90}>

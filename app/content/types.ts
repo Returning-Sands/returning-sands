@@ -294,6 +294,8 @@ export type SiteContent = {
   readonly gallery: {
     readonly title: string;
     readonly intro: string;
+    readonly photosHeading: string;
+    readonly photosIntro: string;
     readonly items: readonly GalleryItem[];
     /** Non-translatable. Embeddable video URL, or null until the trailer exists. */
     readonly trailerUrl: string | null;
