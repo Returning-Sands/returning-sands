@@ -17,7 +17,7 @@ export const en = {
     home: {
       title: "Returning Sands: A Sudanese Cultural Heritage Campaign and Film",
       description:
-        "A campaign and short documentary protecting Sudanese cultural memory, with events in Cairo, London, and New York from November 2026 to February 2027.",
+        "A campaign and documentary protecting Sudanese cultural memory, with events in Cairo, London, and New York from November 2026 to February 2027.",
     },
     events: {
       title: "Events · Returning Sands",
@@ -54,7 +54,7 @@ export const en = {
     kicker: "A Sudanese Cultural Heritage Campaign · 2026 to 2027",
     titleLead: "Returning",
     titleEmphasis: "Sands",
-    byline: "A campaign and short documentary by Paris Quetzal Sistilli, Yusef Bushara, and Camilla Marchese González",
+    byline: "A campaign and documentary by Paris Quetzal Sistilli, Yusef Bushara, and Camilla Marchese González",
   },
 
   nav: {
@@ -100,7 +100,7 @@ export const en = {
     titleLead: "Returning",
     titleEmphasis: "Sands",
     intro:
-      "A campaign and short documentary protecting Sudanese cultural memory during one of the world’s most devastating and underreported wars.",
+      "A campaign and documentary protecting Sudanese cultural memory during one of the world’s most devastating and underreported wars.",
     donateButton: "Donate",
     eventsButton: "See the events",
     schedule: [
@@ -145,14 +145,12 @@ export const en = {
   },
 
   cities: {
-    kicker: "Campaign",
-    heading: "Three cities",
-    hint: "Tap a city stamp to see its events.",
+    hint: "Tap a city stamp to see its events, or the Returning Sands stamp to donate.",
     alt: "An open passport: the Returning Sands stamp on the left page, and visa stamps for Cairo, NYC and London on the right",
-    navLabel: "Events by city",
     cairo: "Cairo events",
     london: "London events",
     nyc: "New York events",
+    donate: "Donate",
   },
 
   filmTeaser: {
@@ -298,7 +296,7 @@ export const en = {
       kicker: "About",
       heading: "Who we are",
       body:
-        "Returning Sands is a Sudanese cultural heritage campaign and short documentary, run by Returning Sands CIC, a not-for-profit community interest company. It launches with exhibitions, panels, and fundraising events in Cairo, London, and New York between November 2026 and February 2027. At its centre is a documentary about Ali Nour and the Sudanese heritage workers protecting their country’s memory from exile. The film will go to festivals across the SWANA region and internationally, reaching Sudanese communities at home and in the diaspora, and a wider global audience.",
+        "Returning Sands is a Sudanese cultural heritage campaign and documentary, run by Returning Sands CIC, a not-for-profit community interest company. It launches with exhibitions, panels, and fundraising events in Cairo, London, and New York between November 2026 and February 2027. At its centre is a documentary about Ali Nour and the Sudanese heritage workers protecting their country’s memory from exile. The film will go to festivals across the SWANA region and internationally, reaching Sudanese communities at home and in the diaspora, and a wider global audience.",
     },
     goals: {
       heading: "What we’re working toward",
@@ -576,7 +574,7 @@ export const en = {
 
   footer: {
     blurb:
-      "A Sudanese cultural heritage campaign and short documentary, in partnership with Blue Shield Sudan.",
+      "A Sudanese cultural heritage campaign and documentary, in partnership with Blue Shield Sudan.",
     navigateKicker: "Pages",
     links: [
       { key: "home", label: "Home" },

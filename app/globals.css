@@ -392,6 +392,24 @@ html[lang="ar"] [lang="en"] .font-display {
 @media (prefers-reduced-motion: reduce) {
   .passport-stamp { opacity: 1; transform: none; filter: none; transition: none; }
 }
+/* Clickable ink. The hit element is clipped to the stamp's outline, so hover
+   and the pointer cursor only apply over the ink. Hovering it lifts the stamp
+   layer (the hit sits inside the same group) and tints the hit itself. */
+.passport-hit {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0);
+  transition: background-color 0.25s ease;
+}
+.passport-hit:hover,
+.passport-hit:focus-visible {
+  background: rgba(255, 255, 255, 0.14);
+  outline: none;
+}
+.passport-stage.is-visible .passport-group:has(.passport-hit:hover) .passport-stamp,
+.passport-stage.is-visible .passport-group:has(.passport-hit:focus-visible) .passport-stamp {
+  filter: brightness(1.12) drop-shadow(0 5px 8px rgba(0, 0, 0, 0.3));
+  transition: filter 0.25s ease;
+}
 
 /* ---------------------------------------------------------------------------
    Film frame: a card that looks like one frame of 35mm film. Dark sprocket

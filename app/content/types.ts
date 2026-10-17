@@ -196,15 +196,15 @@ export type SiteContent = {
   };
 
   /** Passport spread with clickable city stamps. */
+  /** The passport in the home hero: hint line and accessible labels for the clickable stamps. */
   readonly cities: {
-    readonly kicker: string;
-    readonly heading: string;
     readonly hint: string;
     readonly alt: string;
-    readonly navLabel: string;
     readonly cairo: string;
     readonly london: string;
     readonly nyc: string;
+    /** Label for the Returning Sands stamp on the left page, which links to Donate. */
+    readonly donate: string;
   };
 
   readonly filmTeaser: {
