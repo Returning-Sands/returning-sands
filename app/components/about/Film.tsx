@@ -35,7 +35,7 @@ export function Film({ t }: { t: SiteContent["about"]["film"] }) {
         <div className="mt-20 sm:mt-28 grid gap-12 md:grid-cols-12 items-center">
           <Reveal className="md:col-span-5 relative aspect-[4/5] overflow-hidden rounded-2xl bg-nile-800 reveal-lg parallax">
             <Image
-              src="/img/gateway.jpg"
+              src="/img/ali.jpg"
               alt={ali.imageAlt}
               fill
               sizes="(max-width: 768px) 100vw, 40vw"

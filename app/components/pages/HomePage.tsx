@@ -11,7 +11,7 @@ export function HomePage({ t, locale }: { t: SiteContent; locale: Locale }) {
   const instagram = t.social.networks.find((n) => n.network === "instagram")?.href ?? "#";
   return (
     <>
-      <Nav t={t} locale={locale} current="home" />
+      <Nav t={t} locale={locale} current="home" tone="dark" />
       <main>
         <Hero t={t.hero} cities={t.cities} locale={locale} />
         <Stake t={t.stake} />

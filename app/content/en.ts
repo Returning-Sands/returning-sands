@@ -315,7 +315,7 @@ export const en = {
         "From exile in Egypt, Ali Nour coordinates Sudan’s fight to keep its heritage alive. With national memory under siege, he and a network of displaced Sudanese experts run high-risk safeguarding operations across the country, facing collapsed infrastructure and limited international support. The film also enters the lives of Sudanese artists, musicians, and scholars in exile, where heritage is still being made and passed on.",
       imageAlt: "Archival photograph of a barber at work in Sudan",
       ali: {
-        imageAlt: "Historic stone gateway in Sudan",
+        imageAlt: "Ali Nour seated in an armchair in a gallery, paintings on the stone wall behind him",
         name: "Ali Nour",
         role: "Secretary General, Blue Shield Sudan",
         p1: "Ali is Secretary General of Blue Shield Sudan and rapporteur of the Emergency Response Committee under Sudan’s National Corporation for Antiquities and Museums (NCAM).",
@@ -474,8 +474,8 @@ export const en = {
       },
       {
         src: "/img/ali.jpg",
-        alt: "Ali Nour and a colleague standing outdoors",
-        caption: "Ali Nour, Secretary General of Blue Shield Sudan, with a colleague.",
+        alt: "Ali Nour seated in an armchair in a gallery, paintings on the stone wall behind him",
+        caption: "Ali Nour, Secretary General of Blue Shield Sudan.",
       },
     ],
     trailerUrl: null as string | null,
