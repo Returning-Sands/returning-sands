@@ -375,45 +375,62 @@ html[lang="ar"] [lang="en"] .font-display {
 /* Passport visa stamps ink in one after another once the stage is visible.
    Each stamp layer is ink only (the page texture under it is rebuilt in the
    base image), and transform-origin is set inline to that stamp's own centre,
-   so it presses straight down onto its spot: slightly large and rotated, then
-   settles. Nothing is clipped, so the circle, hexagon and angled box keep
-   their own outlines throughout. */
+   so it presses straight down onto its spot. The ink-in is a keyframe
+   animation (fill: backwards), so once it has played the stamp's own
+   transition is free for the hover lift and reacts instantly, both on enter
+   and on leave. */
 .passport-stamp {
   opacity: 0;
-  transform: scale(1.12) rotate(-3deg);
-  filter: blur(1.2px);
-  transition:
-    opacity 0.28s ease-out var(--stamp-delay, 0ms),
-    transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.15) var(--stamp-delay, 0ms),
-    filter 0.35s ease-out var(--stamp-delay, 0ms);
+  transition: transform 0.22s ease-out, filter 0.22s ease-out;
 }
 .passport-stage.is-visible .passport-stamp {
-  transition-delay: var(--stamp-delay, 0ms);
   opacity: 1;
-  transform: none;
-  filter: none;
+  animation: passport-stamp-in 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.15) var(--stamp-delay, 0ms) backwards;
+}
+@keyframes passport-stamp-in {
+  0% { opacity: 0; transform: scale(1.12) rotate(-3deg); filter: blur(1.2px); }
+  55% { opacity: 1; }
+  100% { opacity: 1; transform: none; filter: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .passport-stamp { opacity: 1; transform: none; filter: none; transition: none; }
+  .passport-stamp,
+  .passport-stage.is-visible .passport-stamp { opacity: 1; animation: none; transition: none; }
 }
 /* Clickable ink. The hit element is clipped to the traced outline of the
-   stamp, so hover and the pointer cursor only apply over the stamp. It draws
-   nothing itself; the stamp layer lifts and casts a shadow that follows the
-   ink's own shape. */
+   stamp, so the pointer cursor only applies over the stamp. The link itself
+   never paints anything: no tap highlight on phones (which ignores clip-path
+   and shows the full rectangle), no focus outline box. */
 .passport-hit {
   cursor: pointer;
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
-.passport-stage.is-visible .passport-group:has(.passport-hit:hover) .passport-stamp,
+.passport-hit:focus,
+.passport-hit:focus-visible {
+  outline: none;
+}
+/* Lift only while a real mouse pointer is over the stamp. Touch screens keep
+   :hover stuck after a tap, so they are excluded. */
+@media (hover: hover) and (pointer: fine) {
+  .passport-stage.is-visible .passport-group:has(.passport-hit:hover) .passport-stamp {
+    transform: scale(1.04);
+    filter: drop-shadow(0 6px 6px rgba(40, 10, 0, 0.28));
+  }
+}
+/* Keyboard users still need to see where they are: an ink-coloured glow that
+   follows the stamp's own outline, with no movement. */
 .passport-stage.is-visible .passport-group:has(.passport-hit:focus-visible) .passport-stamp {
-  transform: scale(1.04);
-  filter: drop-shadow(0 6px 6px rgba(40, 10, 0, 0.28));
-  transition: transform 0.22s ease-out, filter 0.22s ease-out;
-  transition-delay: 0ms;
+  filter: drop-shadow(0 0 2px #c2410c) drop-shadow(0 0 2px #c2410c);
 }
-/* Keyboard focus also gets a visible ring around the stamp's outline. */
-.passport-group:has(.passport-hit:focus-visible) .passport-stamp {
-  filter: drop-shadow(0 0 0 #c2410c) drop-shadow(0 0 3px #c2410c) drop-shadow(0 6px 6px rgba(40, 10, 0, 0.28));
+/* Home title in the brand mono. Arabic falls back to the Arabic face. */
+.title-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+html[lang="ar"] .title-mono {
+  font-family: var(--font-arabic), var(--font-serif), serif;
+  letter-spacing: 0;
 }
 /* ---------------------------------------------------------------------------
    Film frame: a card that looks like one frame of 35mm film. Dark sprocket

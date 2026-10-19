@@ -22,7 +22,9 @@ export function Hero({
   return (
     <section className="relative overflow-hidden bg-white text-ink">
       <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-10 pt-36 sm:pt-44 pb-2 flex flex-col items-center text-center">
-        <h1 className="font-display text-[17vw] leading-[0.92] sm:text-[11vw] sm:whitespace-nowrap lg:text-[9.5rem] xl:text-[11rem] text-ink">
+        {/* Plex Mono is wide (every letter 0.6em), so it runs smaller than
+            the serif did to keep "Returning Sands" on one line from tablets up. */}
+        <h1 className="title-mono text-[15vw] leading-[0.95] sm:text-[9vw] sm:whitespace-nowrap lg:text-[7rem] xl:text-[7.75rem] text-ink">
           <WordStagger as="span" text={`${t.titleLead} ${t.titleEmphasis}`} />
         </h1>
         <Reveal className="mt-8 max-w-2xl reveal-lg flex flex-col items-center" delay={150}>

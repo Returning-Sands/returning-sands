@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond, Noto_Naskh_Arabic } from "next/font/google";
+import { Inter, Cormorant_Garamond, Noto_Naskh_Arabic, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getContent, type Locale } from "./content";
@@ -27,6 +27,14 @@ const serif = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   style: ["normal", "italic"],
+  display: "swap",
+});
+
+// Brand-kit mono (IBM Plex Mono Regular), used for the home page title.
+const mono = IBM_Plex_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400"],
   display: "swap",
 });
 
@@ -87,7 +95,7 @@ export function RootShell({
     <html
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
-      className={`${sans.variable} ${serif.variable} ${arabic.variable} h-full antialiased`}
+      className={`${sans.variable} ${serif.variable} ${mono.variable} ${arabic.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-sand-50 text-ink">
         {children}
