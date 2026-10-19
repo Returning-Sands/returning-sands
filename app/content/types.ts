@@ -35,7 +35,8 @@ export type ScheduleRow = { readonly label: string; readonly value: string };
 export type Producer = {
   readonly name: string;
   readonly role: string;
-  readonly base: string;
+  /** City. Omit if not confirmed. */
+  readonly base?: string;
   readonly bio: string;
   /** Non-translatable. Omit if not public. */
   readonly email?: string;

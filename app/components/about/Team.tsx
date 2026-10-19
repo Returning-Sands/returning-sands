@@ -19,23 +19,31 @@ export function Team({ t }: { t: SiteContent["about"]["team"] }) {
           </Reveal>
         </div>
 
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/10 rounded-2xl overflow-hidden">
-          {t.producers.map((p, i) => (
-            <Reveal
-              as="li"
-              key={p.name}
-              className="bg-sand-50 p-8 sm:p-10 flex flex-col gap-3 transition-colors hover:bg-sand-100 reveal"
-              delay={i * 100}
-            >
-              <h3 className="font-display text-2xl sm:text-3xl leading-tight">{p.name}</h3>
-              <p className="text-sm text-ink/65 leading-relaxed">{p.role}</p>
-              <p className="text-sm text-ink/60 leading-relaxed">{p.bio}</p>
-              <div className="mt-auto pt-4 flex items-center justify-between gap-3">
-                <p className="kicker text-ochre-600">{p.base}</p>
-                <PersonLinks name={p.name} email={p.email} linkedin={p.linkedin} />
-              </div>
-            </Reveal>
-          ))}
+        {/* Six-column grid on desktop: three cards per row, and when a row is
+            left with two they each take half the width, so there is never an
+            empty cell. On tablets, an odd last card spans both columns. */}
+        <ul className="grid sm:grid-cols-2 lg:grid-cols-6 gap-px bg-ink/10 rounded-2xl overflow-hidden">
+          {t.producers.map((p, i) => {
+            const n = t.producers.length;
+            const lastRowOfTwo = n % 3 === 2 && i >= n - 2;
+            const lastOddOnTablet = n % 2 === 1 && i === n - 1;
+            return (
+              <Reveal
+                as="li"
+                key={p.name}
+                className={`bg-sand-50 p-8 sm:p-10 flex flex-col gap-3 transition-colors hover:bg-sand-100 reveal ${lastRowOfTwo ? "lg:col-span-3" : "lg:col-span-2"} ${lastOddOnTablet ? "sm:col-span-2" : ""}`}
+                delay={i * 100}
+              >
+                <h3 className="font-display text-2xl sm:text-3xl leading-tight">{p.name}</h3>
+                <p className="text-sm text-ink/65 leading-relaxed">{p.role}</p>
+                <p className="text-sm text-ink/60 leading-relaxed">{p.bio}</p>
+                <div className="mt-auto pt-4 flex items-center justify-between gap-3">
+                  {p.base ? <p className="kicker text-ochre-600">{p.base}</p> : <span />}
+                  <PersonLinks name={p.name} email={p.email} linkedin={p.linkedin} />
+                </div>
+              </Reveal>
+            );
+          })}
         </ul>
 
         <div className="mt-14">
