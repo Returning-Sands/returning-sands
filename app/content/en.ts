@@ -17,7 +17,7 @@ export const en = {
     home: {
       title: "Returning Sands: A Sudanese Cultural Heritage Campaign and Film",
       description:
-        "A campaign and documentary protecting Sudanese cultural memory, with events in Cairo, London, and New York from November 2026 to February 2027.",
+        "A campaign and documentary protecting Sudanese cultural heritage, with events in Cairo, London, and New York from November 2026 to February 2027.",
     },
     events: {
       title: "Events · Returning Sands",
@@ -106,7 +106,7 @@ export const en = {
     titleLead: "Returning",
     titleEmphasis: "Sands",
     intro:
-      "A campaign and documentary protecting Sudanese cultural memory during one of the world’s most devastating and underreported wars.",
+      "A campaign and documentary protecting Sudanese cultural heritage during one of the world’s most devastating and underreported wars.",
     donateButton: "Donate",
     eventsButton: "See the events",
     schedule: [
