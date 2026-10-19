@@ -125,26 +125,14 @@ export const en = {
       {
         value: "60%",
         label: "of Sudan National Museum holdings looted during the occupation of Khartoum.",
-        source: {
-          label: "NBC News, March 2026, quoting the General Authority for Antiquities and Museums",
-          href: "https://www.nbcnews.com/world/africa/museums-looted-priceless-artifacts-sudan-counts-cost-deadly-conflict-rcna260473",
-        },
       },
       {
         value: "12M+",
         label: "people displaced at the height of the war that began in April 2023.",
-        source: {
-          label: "IOM, April 2026",
-          href: "https://www.iom.int/news/aid-system-under-pressure-needs-continue-grow-three-years-sudan-war",
-        },
       },
       {
         value: "20+",
         label: "museums damaged, with looting and trafficking of collections confirmed.",
-        source: {
-          label: "UNESCO, 2025 to 2026",
-          href: "https://www.unesco.org/en/culture-emergencies/heritage-emergency-fund/urgent-safeguarding-response-damaged-collections-sudan-national-museum",
-        },
       },
     ],
     sourcesLabel: "Sources",
@@ -201,7 +189,7 @@ export const en = {
         id: "cairo",
         city: "Cairo",
         when: "Dec 2026",
-        body: "Where much of the heritage work is now coordinated from exile.",
+        body: null,
         items: [
           {
             title: "Access Art Space Exhibit",
@@ -308,16 +296,16 @@ export const en = {
       kicker: "About",
       heading: "Who we are",
       body:
-        "Returning Sands is a Sudanese cultural heritage campaign and documentary, run by Returning Sands CIC, a not-for-profit community interest company. Events run in Cairo, London, and New York from November 2026 to February 2027.",
+        "Founded in 2026 by Camilla Marchese, Yusef Bushara, and Paris Sistilli, Returning Sands is a kaleidoscopic arts-and-culture campaign focused on amplifying the fight for Sudan’s cultural heritage around the world. Working at the intersection of documentary filmmaking, public exhibition, and intercultural education, Returning Sands seeks to ensure that Sudanese heritage remains visible, accessible, and understood for generations to come. As a registered CIC, Returning Sands is entirely not-for-profit, and all funds generated are reinvested in the mission.",
     },
     goals: {
       heading: "What we’re working toward",
       items: [
-        "Support the documentation of endangered heritage and lived memory.",
-        "Raise the profile of Sudanese heritage professionals, including Blue Shield Sudan.",
-        "Work with Sudanese artists and heritage experts on what comes next.",
-        "Open pathways to rebuild and sustain Sudanese heritage, at home and in the diaspora.",
-        "Make culture part of humanitarian and post-conflict response.",
+        "Support the documentation of endangered Sudanese heritage and lived memory.",
+        "Amplify the work of Sudanese heritage professionals, including the emerging work of Blue Shield Sudan.",
+        "Collaborate with Sudanese artists and heritage experts to tackle the issue of futurity in an interdisciplinary fashion.",
+        "Enable future pathways to rebuild, recover, and sustain Sudanese cultural heritage, within the country and across the diaspora.",
+        "Position culture as a core component of humanitarian and conflict response.",
       ],
     },
     film: {
@@ -348,7 +336,7 @@ export const en = {
       heading: "Oral history project",
       imageAlt: "Archival portrait of a woman with a comb",
       body:
-        "The project will follow ten Sudanese artists in Cairo and document their experiences of exile, displacement, and cultural loss, collecting photographs, documents, artworks, and objects from the wider Sudanese community in Cairo and abroad. These materials will be digitised into a community-led archive and, in time, a virtual museum open to audiences worldwide.",
+        "With the generous support of the British Council’s Cultural Protection Fund, our oral history project will follow upwards of 10 Sudanese artists in Cairo, documenting their experiences of exile, displacement, and cultural loss while collecting personal archives of photographs, documents, artworks, and objects. The archive will ultimately become a bilingual virtual museum, making Sudanese cultural memory accessible to audiences worldwide and preserving these stories and materials for future generations.\n\nCollection and scanning of personal archives and photographs will also go beyond the artists highlighted, and will include personal heritage from the Sudanese community in Cairo and abroad, positioning civil society’s archives as key in post-conflict settings.",
     },
     team: {
       heading: "The team",
@@ -496,8 +484,8 @@ export const en = {
       },
     ],
     trailerUrl: null as string | null,
-    trailerHeading: "Trailer",
-    trailerComingSoon: "Trailer coming soon",
+    trailerHeading: "Impact Trailer",
+    trailerComingSoon: "Impact Trailer coming soon",
     instagramHeading: "Instagram",
     instagramIntro: "Recent posts from @returningsands.",
     instagramButton: "Follow @returningsands",

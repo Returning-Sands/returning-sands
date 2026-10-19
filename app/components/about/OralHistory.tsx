@@ -20,7 +20,12 @@ export function OralHistory({ t }: { t: SiteContent["about"]["oralHistory"] }) {
         </Reveal>
         <Reveal className="md:col-span-7 md:col-start-6 reveal" delay={120}>
           <SectionHeading heading={t.heading} id="oral-history" />
-          <p className="mt-6 text-lg text-ink/80 leading-relaxed">{t.body}</p>
+          {/* Blank lines in the copy become separate paragraphs. */}
+          {t.body.split(/\n\s*\n/).map((para) => (
+            <p key={para.slice(0, 24)} className="mt-6 text-lg text-ink/80 leading-relaxed">
+              {para}
+            </p>
+          ))}
         </Reveal>
       </div>
     </section>
