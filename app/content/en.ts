@@ -226,7 +226,7 @@ export const en = {
             date: "Ongoing",
             venue: null,
             description:
-              "With Oral Historian Afra Elagab: heritage in exile, toward a digital repository and a bilingual publication.",
+              "Recording Sudanese heritage in exile, toward a digital repository and a bilingual publication.",
             cta: null,
           },
         ],
@@ -348,7 +348,7 @@ export const en = {
       heading: "Oral history project",
       imageAlt: "Archival portrait of a woman with a comb",
       body:
-        "With Oral Historian Afra Elagab, the project will follow ten Sudanese artists in Cairo and document their experiences of exile, displacement, and cultural loss, collecting photographs, documents, artworks, and objects from the wider Sudanese community in Cairo and abroad. These materials will be digitised into a community-led archive and, in time, a virtual museum open to audiences worldwide.",
+        "The project will follow ten Sudanese artists in Cairo and document their experiences of exile, displacement, and cultural loss, collecting photographs, documents, artworks, and objects from the wider Sudanese community in Cairo and abroad. These materials will be digitised into a community-led archive and, in time, a virtual museum open to audiences worldwide.",
     },
     team: {
       heading: "The team",
