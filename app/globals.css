@@ -372,15 +372,19 @@ html[lang="ar"] [lang="en"] .font-display {
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 
-/* Passport visa stamps ink in one after another once the stage is visible. */
+/* Passport visa stamps ink in one after another once the stage is visible.
+   Each stamp layer is ink only (the page texture under it is rebuilt in the
+   base image), and transform-origin is set inline to that stamp's own centre,
+   so it presses straight down onto its spot: slightly large and rotated, then
+   settles. Nothing is clipped, so the circle, hexagon and angled box keep
+   their own outlines throughout. */
 .passport-stamp {
   opacity: 0;
-  transform: scale(1.18) rotate(-4deg);
-  transform-origin: 62% 45%;
-  filter: blur(1.5px);
+  transform: scale(1.12) rotate(-3deg);
+  filter: blur(1.2px);
   transition:
-    opacity 0.3s ease-out var(--stamp-delay, 0ms),
-    transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2) var(--stamp-delay, 0ms),
+    opacity 0.28s ease-out var(--stamp-delay, 0ms),
+    transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.15) var(--stamp-delay, 0ms),
     filter 0.35s ease-out var(--stamp-delay, 0ms);
 }
 .passport-stage.is-visible .passport-stamp {
@@ -392,25 +396,25 @@ html[lang="ar"] [lang="en"] .font-display {
 @media (prefers-reduced-motion: reduce) {
   .passport-stamp { opacity: 1; transform: none; filter: none; transition: none; }
 }
-/* Clickable ink. The hit element is clipped to the stamp's outline, so hover
-   and the pointer cursor only apply over the ink. Hovering it lifts the stamp
-   layer (the hit sits inside the same group) and tints the hit itself. */
+/* Clickable ink. The hit element is clipped to the traced outline of the
+   stamp, so hover and the pointer cursor only apply over the stamp. It draws
+   nothing itself; the stamp layer lifts and casts a shadow that follows the
+   ink's own shape. */
 .passport-hit {
   cursor: pointer;
-  background: rgba(255, 255, 255, 0);
-  transition: background-color 0.25s ease;
-}
-.passport-hit:hover,
-.passport-hit:focus-visible {
-  background: rgba(255, 255, 255, 0.14);
   outline: none;
 }
 .passport-stage.is-visible .passport-group:has(.passport-hit:hover) .passport-stamp,
 .passport-stage.is-visible .passport-group:has(.passport-hit:focus-visible) .passport-stamp {
-  filter: brightness(1.12) drop-shadow(0 5px 8px rgba(0, 0, 0, 0.3));
-  transition: filter 0.25s ease;
+  transform: scale(1.04);
+  filter: drop-shadow(0 6px 6px rgba(40, 10, 0, 0.28));
+  transition: transform 0.22s ease-out, filter 0.22s ease-out;
+  transition-delay: 0ms;
 }
-
+/* Keyboard focus also gets a visible ring around the stamp's outline. */
+.passport-group:has(.passport-hit:focus-visible) .passport-stamp {
+  filter: drop-shadow(0 0 0 #c2410c) drop-shadow(0 0 3px #c2410c) drop-shadow(0 6px 6px rgba(40, 10, 0, 0.28));
+}
 /* ---------------------------------------------------------------------------
    Film frame: a card that looks like one frame of 35mm film. Dark sprocket
    strips run along the top and bottom with punched holes; the frame has a

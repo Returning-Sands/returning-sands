@@ -80,7 +80,11 @@ export function Passport({
               sizes={sizes}
               loading="eager"
               className="passport-stamp absolute inset-0 w-full h-auto select-none"
-              style={{ ["--stamp-delay" as string]: `${s.delay}ms` }}
+              style={{
+                ["--stamp-delay" as string]: `${s.delay}ms`,
+                // Press and lift around the stamp's own centre, not the page's.
+                transformOrigin: `${PASSPORT_HITS[s.id].left + PASSPORT_HITS[s.id].width / 2}% ${PASSPORT_HITS[s.id].top + PASSPORT_HITS[s.id].height / 2}%`,
+              }}
             />
             <Link
               href={pagePath(locale, "events", s.id)}
