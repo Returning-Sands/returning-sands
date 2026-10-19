@@ -308,7 +308,7 @@ export const en = {
       kicker: "About",
       heading: "Who we are",
       body:
-        "Returning Sands is a Sudanese cultural heritage campaign and documentary, run by Returning Sands CIC, a not-for-profit community interest company. It launches with exhibitions, panels, and fundraising events in Cairo, London, and New York between November 2026 and February 2027. At its centre is a documentary about Ali Nour and the Sudanese heritage workers protecting their country’s memory from exile. The film will go to festivals across the SWANA region and internationally, reaching Sudanese communities at home and in the diaspora, and a wider global audience.",
+        "Returning Sands is a Sudanese cultural heritage campaign and documentary, run by Returning Sands CIC, a not-for-profit community interest company. Events run in Cairo, London, and New York from November 2026 to February 2027.",
     },
     goals: {
       heading: "What we’re working toward",
@@ -324,7 +324,7 @@ export const en = {
       kicker: "Documentary",
       heading: "The film",
       body:
-        "From exile in Egypt, Ali Nour coordinates Sudan’s fight to keep its heritage alive. With national memory under siege, he and a network of displaced Sudanese experts run high-risk safeguarding operations across the country, facing collapsed infrastructure and limited international support. The film also enters the lives of Sudanese artists, musicians, and scholars in exile, where heritage is still being made and passed on.",
+        "From exile in Egypt, Ali Nour coordinates Sudan’s fight to keep its heritage alive. With national memory under siege, he and a network of displaced Sudanese experts run high-risk safeguarding operations across the country, facing collapsed infrastructure and limited international support. The film also enters the lives of Sudanese artists, musicians, and scholars in exile, where heritage is still being made and passed on. The film will screen at festivals across the SWANA region and internationally.",
       imageAlt: "Archival photograph of a barber at work in Sudan",
       ali: {
         imageAlt: "Ali Nour seated in an armchair in a gallery, paintings on the stone wall behind him",
