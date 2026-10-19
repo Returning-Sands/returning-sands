@@ -3,41 +3,8 @@ import type { SiteContent } from "../../content";
 import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
 import { ExternalArrow, SectionHeading, SocialIcon, btn } from "../primitives";
-import { InstagramEmbed } from "./InstagramEmbed";
 
 type Gallery = SiteContent["gallery"];
-
-export function PhotoGrid({ items, heading, intro }: { items: Gallery["items"]; heading: string; intro: string }) {
-  return (
-    <section className="bg-sand-50">
-      <PerfSeam />
-      <div className="mx-auto max-w-7xl px-6 sm:px-10 py-16 sm:py-24">
-        <Reveal className="reveal-lg mb-10">
-          <SectionHeading heading={heading} id="photographs" />
-          <p className="mt-3 text-ink/70">{intro}</p>
-        </Reveal>
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {items.map((img, i) => (
-            <Reveal as="li" key={img.src} className="reveal" delay={(i % 3) * 90}>
-              <figure>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-ink">
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover"
-                  />
-                </div>
-                <figcaption className="mt-3 text-sm text-ink/65 leading-relaxed">{img.caption}</figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
 
 export function Trailer({ t }: { t: Gallery }) {
   return (
@@ -71,6 +38,11 @@ export function Trailer({ t }: { t: Gallery }) {
   );
 }
 
+/**
+ * Curated Instagram posts as plain image tiles that open the post. The images
+ * are local copies (public/instagram), so they appear as fast as the rest of
+ * the page; Instagram's embed script took several seconds and set cookies.
+ */
 export function InstagramBlock({ t, href }: { t: Gallery; href: string }) {
   return (
     <section className="bg-sand-100">
@@ -88,9 +60,30 @@ export function InstagramBlock({ t, href }: { t: Gallery; href: string }) {
           </a>
         </Reveal>
         {t.instagramPosts.length > 0 && (
-          <Reveal className="reveal" delay={100}>
-            <InstagramEmbed posts={t.instagramPosts} />
-          </Reveal>
+          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {t.instagramPosts.map((p, i) => (
+              <Reveal as="li" key={p.href} className="reveal" delay={i * 90}>
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block aspect-square overflow-hidden rounded-2xl bg-white shadow-sm"
+                >
+                  <Image
+                    src={p.image}
+                    alt={p.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                  <span className="absolute bottom-3 end-3 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-xs text-ink shadow-sm opacity-90 group-hover:opacity-100 transition-opacity">
+                    <SocialIcon name="instagram" className="h-4 w-4" />
+                    @returningsands
+                  </span>
+                </a>
+              </Reveal>
+            ))}
+          </ul>
         )}
       </div>
     </section>

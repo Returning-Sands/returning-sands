@@ -4,7 +4,7 @@ import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
 import { ExternalArrow, SectionHeading } from "../primitives";
 
-/** Logo when the organisation has supplied one, otherwise its name in the display face. */
+/** Logo when the organisation has supplied one, otherwise its name in the display face. Centred in the tile. */
 function PartnerMark({ p }: { p: SiteContent["about"]["partners"]["items"][number] }) {
   if (p.logo) {
     return (
@@ -16,16 +16,17 @@ function PartnerMark({ p }: { p: SiteContent["about"]["partners"]["items"][numbe
           fill
           sizes="200px"
           unoptimized={p.logo.endsWith(".svg")}
-          className="object-contain object-left rtl:object-right"
+          className="object-contain object-center"
         />
       </span>
     );
   }
-  return <span className="font-display text-2xl leading-tight">{p.name}</span>;
+  return <span className="font-display text-2xl leading-tight text-center">{p.name}</span>;
 }
 
 /** Partners and funders as a grid; each links out to the organisation. */
 export function Partners({ t }: { t: SiteContent["about"]["partners"] }) {
+  const tile = "relative flex h-full min-h-28 items-center justify-center rounded-2xl px-10 py-6 text-ink";
   return (
     <section className="bg-sand-100 grain">
       <PerfSeam />
@@ -41,13 +42,14 @@ export function Partners({ t }: { t: SiteContent["about"]["partners"] }) {
                   href={p.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex h-full min-h-28 items-center justify-between gap-4 rounded-2xl px-8 py-6 text-ink hover:bg-sand-50 transition-colors"
+                  className={`group ${tile} hover:bg-sand-50 transition-colors`}
                 >
                   <PartnerMark p={p} />
-                  <ExternalArrow className="shrink-0 text-ink/40 group-hover:text-ochre-600 transition-colors" />
+                  {/* Out of the flow so it doesn't push the logo off centre. */}
+                  <ExternalArrow className="absolute top-4 end-4 text-ink/35 group-hover:text-ochre-600 transition-colors" />
                 </a>
               ) : (
-                <div className="flex h-full min-h-28 items-center px-8 py-6 text-ink">
+                <div className={tile}>
                   <PartnerMark p={p} />
                 </div>
               )}

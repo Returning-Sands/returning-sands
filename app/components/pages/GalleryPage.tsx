@@ -2,7 +2,7 @@ import type { Locale, SiteContent } from "../../content";
 import { Nav } from "../Nav";
 import { Footer } from "../Footer";
 import { PageHero } from "../PageHero";
-import { PhotoGrid, Trailer, InstagramBlock } from "../gallery/Gallery";
+import { Trailer, InstagramBlock } from "../gallery/Gallery";
 
 export function GalleryPage({ t, locale }: { t: SiteContent; locale: Locale }) {
   const g = t.gallery;
@@ -14,11 +14,10 @@ export function GalleryPage({ t, locale }: { t: SiteContent; locale: Locale }) {
         <PageHero
           heading={g.title}
           intro={g.intro}
-          image={{ src: "/img/woman.jpg", alt: g.items.find((i) => i.src === "/img/woman.jpg")?.alt ?? "", position: "50% 30%" }}
+          image={{ src: "/img/bridge.jpg", alt: t.hero.imageAlt, position: "50% 65%" }}
         />
         <InstagramBlock t={g} href={instagram} />
         <Trailer t={g} />
-        <PhotoGrid items={g.items} heading={g.photosHeading} intro={g.photosIntro} />
       </main>
       <Footer t={t} locale={locale} current="gallery" />
     </>

@@ -37,7 +37,7 @@ export const en = {
     gallery: {
       title: "Gallery · Returning Sands",
       description:
-        "Archival photographs from Sudan, the trailer, and Returning Sands on Instagram.",
+        "Returning Sands on Instagram, and the trailer when it is ready.",
     },
     donate: {
       title: "Donate · Returning Sands",
@@ -178,7 +178,7 @@ export const en = {
 
   galleryTeaser: {
     heading: "Gallery",
-    body: "Archival photographs from Sudan, and the trailer when it is ready.",
+    body: "Recent posts from Instagram, and the trailer when it is ready.",
     button: "See the gallery",
     instagramButton: "Follow on Instagram",
   },
@@ -455,7 +455,7 @@ export const en = {
 
   gallery: {
     title: "Gallery",
-    intro: "Recent posts, the trailer when it is ready, and archival photographs from Sudan.",
+    intro: "Recent posts from Instagram, and the trailer when it is ready.",
     photosHeading: "Archive",
     photosIntro: "Archival photographs from Sudan used across the campaign.",
     items: [
@@ -502,9 +502,21 @@ export const en = {
     instagramIntro: "Recent posts from @returningsands.",
     instagramButton: "Follow @returningsands",
     instagramPosts: [
-      { href: "https://www.instagram.com/p/Dd67U-WuAT8/" },
-      { href: "https://www.instagram.com/p/Dd67GhUOzIZ/" },
-      { href: "https://www.instagram.com/p/Dd62y7NRTn_/" },
+      {
+        href: "https://www.instagram.com/p/Dd67U-WuAT8/",
+        image: "/instagram/Dd67U-WuAT8.jpg",
+        alt: "A Returning Sands passport tucked in an envelope with a Sudan postage stamp and Cairo, NYC and London stamps",
+      },
+      {
+        href: "https://www.instagram.com/p/Dd67GhUOzIZ/",
+        image: "/instagram/Dd67GhUOzIZ.jpg",
+        alt: "The Returning Sands stamp logo",
+      },
+      {
+        href: "https://www.instagram.com/p/Dd62y7NRTn_/",
+        image: "/instagram/Dd62y7NRTn_.jpg",
+        alt: "Collage of a 1970s Sudanese radio, television and theatre magazine cover with a Sudan postage stamp",
+      },
     ],
   },
 
@@ -590,8 +602,7 @@ export const en = {
   /* ---------------------------------------------------------- Footer */
 
   footer: {
-    blurb:
-      "A Sudanese cultural heritage campaign and documentary, in partnership with Blue Shield Sudan.",
+    blurb: "A Sudanese cultural heritage campaign and documentary.",
     navigateKicker: "Pages",
     links: [
       { key: "home", label: "Home" },
@@ -634,7 +645,7 @@ export const en = {
       {
         heading: "Cookies and analytics",
         paragraphs: [
-          "This site uses Vercel Analytics, which counts visits without cookies or personal identifiers. The Gallery page embeds posts from Instagram; when that page loads, Instagram may set its own cookies under Meta's privacy policy. No other tracking is used.",
+          "This site uses Vercel Analytics, which counts visits without cookies or personal identifiers. Links to Instagram and LinkedIn take you to those sites, which have their own privacy policies. No other tracking is used.",
         ],
       },
       {

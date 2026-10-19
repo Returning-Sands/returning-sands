@@ -37,7 +37,7 @@ export const ar: DeepPartial<SiteContent> = {
     },
     gallery: {
       title: "المعرض · عودة الرمال",
-      description: "صور أرشيفية من السودان، والإعلان التشويقي، وعودة الرمال على إنستغرام.",
+      description: "عودة الرمال على إنستغرام، والإعلان التشويقي عند جاهزيته.",
     },
     donate: {
       title: "تبرّع · عودة الرمال",
@@ -149,7 +149,7 @@ export const ar: DeepPartial<SiteContent> = {
 
   galleryTeaser: {
     heading: "المعرض",
-    body: "صور أرشيفية من السودان، والإعلان التشويقي عندما يكون جاهزًا.",
+    body: "أحدث المنشورات على إنستغرام، والإعلان التشويقي عند جاهزيته.",
     button: "اذهب إلى المعرض",
     instagramButton: "تابعونا على إنستغرام",
   },
@@ -388,7 +388,7 @@ export const ar: DeepPartial<SiteContent> = {
 
   gallery: {
     title: "المعرض",
-    intro: "أحدث المنشورات، والإعلان التشويقي عندما يكون جاهزًا، وصور أرشيفية من السودان.",
+    intro: "أحدث المنشورات على إنستغرام، والإعلان التشويقي عند جاهزيته.",
     photosHeading: "الأرشيف",
     photosIntro: "صور أرشيفية من السودان استُخدمت في الحملة.",
     items: [
@@ -407,9 +407,21 @@ export const ar: DeepPartial<SiteContent> = {
     instagramIntro: "أحدث المنشورات من @returningsands.",
     instagramButton: "تابعوا @returningsands",
     instagramPosts: [
-      { href: "https://www.instagram.com/p/Dd67U-WuAT8/" },
-      { href: "https://www.instagram.com/p/Dd67GhUOzIZ/" },
-      { href: "https://www.instagram.com/p/Dd62y7NRTn_/" },
+      {
+        href: "https://www.instagram.com/p/Dd67U-WuAT8/",
+        image: "/instagram/Dd67U-WuAT8.jpg",
+        alt: "جواز سفر عودة الرمال داخل ظرف مع طابع بريد سوداني وأختام القاهرة ونيويورك ولندن",
+      },
+      {
+        href: "https://www.instagram.com/p/Dd67GhUOzIZ/",
+        image: "/instagram/Dd67GhUOzIZ.jpg",
+        alt: "شعار ختم عودة الرمال",
+      },
+      {
+        href: "https://www.instagram.com/p/Dd62y7NRTn_/",
+        image: "/instagram/Dd62y7NRTn_.jpg",
+        alt: "كولاج لغلاف مجلة سودانية للإذاعة والتلفزيون والمسرح من السبعينيات مع طابع بريد سوداني",
+      },
     ],
   },
 
@@ -462,7 +474,7 @@ export const ar: DeepPartial<SiteContent> = {
   /* ---------------------------------------------------------- Footer */
 
   footer: {
-    blurb: "حملة لحماية التراث الثقافي السوداني وفيلم وثائقي، بالشراكة مع الدرع الأزرق السودان.",
+    blurb: "حملة لحماية التراث الثقافي السوداني وفيلم وثائقي.",
     navigateKicker: "الصفحات",
     links: [
       { key: "home", label: "الرئيسية" },
@@ -504,7 +516,7 @@ export const ar: DeepPartial<SiteContent> = {
       {
         heading: "ملفات تعريف الارتباط والتحليلات",
         paragraphs: [
-          "يستخدم هذا الموقع Vercel Analytics الذي يحصي الزيارات دون ملفات تعريف ارتباط أو معرّفات شخصية. تعرض صفحة المعرض منشورات مضمَّنة من إنستغرام؛ وعند تحميل تلك الصفحة قد يضع إنستغرام ملفات تعريف الارتباط الخاصة به وفق سياسة خصوصية Meta. لا تُستخدم أي وسائل تتبّع أخرى.",
+          "يستخدم هذا الموقع Vercel Analytics الذي يحصي الزيارات دون ملفات تعريف ارتباط أو معرّفات شخصية. تأخذك روابط إنستغرام ولينكدإن إلى تلك المواقع، ولكلٍّ منها سياسة خصوصية خاصة بها. لا تُستخدم أي وسائل تتبّع أخرى.",
         ],
       },
       {

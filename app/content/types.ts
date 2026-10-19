@@ -116,10 +116,13 @@ export type GalleryItem = {
   readonly caption: string;
 };
 
-/** An Instagram post shown via Instagram's own embed. `href` is the permalink. */
+/** An Instagram post, shown as a local image that links to the post. */
 export type InstagramPost = {
-  /** Non-translatable. */
+  /** Non-translatable. Permalink. */
   readonly href: string;
+  /** Non-translatable. Local copy of the post image (public/instagram), so the tile loads instantly. */
+  readonly image: string;
+  readonly alt: string;
 };
 
 /** A partner or funder. `href` and `logo` are optional and non-translatable. */
@@ -328,7 +331,7 @@ export type SiteContent = {
     readonly instagramHeading: string;
     readonly instagramIntro: string;
     readonly instagramButton: string;
-    /** Curated posts, newest first. Rendered with Instagram's embed script. */
+    /** Curated posts, newest first. Brand/ig_thumbs: _ig_thumbs.mjs saves their images. */
     readonly instagramPosts: readonly InstagramPost[];
   };
 
