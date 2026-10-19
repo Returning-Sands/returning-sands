@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { SiteContent } from "../../content";
 import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
-import { BrandStamp, SectionHeading, WaveLines } from "../primitives";
+import { BrandStamp, SectionHeading } from "../primitives";
 
 /** About -> The film: logline, synopsis, Ali Nour profile with his quote, director. */
 export function Film({ t }: { t: SiteContent["about"]["film"] }) {
@@ -10,7 +10,6 @@ export function Film({ t }: { t: SiteContent["about"]["film"] }) {
   return (
     <section className="bg-nile-900 text-sand-50 grain relative overflow-hidden">
       <PerfSeam dark />
-      <WaveLines tone="white" className="opacity-[0.05]" />
       <div className="relative mx-auto max-w-7xl px-6 sm:px-10 py-24 sm:py-32">
         <div className="grid gap-12 md:grid-cols-12 md:items-center">
           <Reveal className="md:col-span-6 reveal-lg">

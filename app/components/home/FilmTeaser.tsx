@@ -4,7 +4,7 @@ import type { Locale, SiteContent } from "../../content";
 import { pagePath } from "../../routes";
 import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
-import { Arrow, BrandStamp, SectionHeading, WaveLines, btn } from "../primitives";
+import { Arrow, BrandStamp, SectionHeading, btn } from "../primitives";
 
 export function FilmTeaser({
   t,
@@ -18,7 +18,6 @@ export function FilmTeaser({
   return (
     <section className="bg-nile-900 text-sand-50 grain relative overflow-hidden">
       <PerfSeam dark />
-      <WaveLines tone="white" className="opacity-[0.05]" />
       <div className="relative mx-auto max-w-7xl px-6 sm:px-10 py-24 sm:py-32">
         <div className="grid md:grid-cols-12 gap-10 items-center">
           <Reveal className="md:col-span-6 relative aspect-[16/10] overflow-hidden rounded-2xl bg-nile-800 reveal parallax">

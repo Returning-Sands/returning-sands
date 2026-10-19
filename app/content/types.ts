@@ -247,6 +247,12 @@ export type SiteContent = {
 
   /* ----------------------------------------------------------- About */
 
+  /** Team page hero. The sections below it reuse about.team / partners / contact. */
+  readonly teamPage: {
+    readonly heading: string;
+    readonly intro: string;
+  };
+
   readonly about: {
     readonly who: {
       readonly kicker: string;

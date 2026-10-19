@@ -3,7 +3,7 @@ import { PAGE_KEYS, pagePath, SITE_URL } from "./routes";
 
 const abs = (path: string) => `${SITE_URL}${path === "/" ? "" : path}`;
 
-/** All ten URLs: five English pages and their five Arabic mirrors. */
+/** Every page in both editions: the English URL and its Arabic mirror. */
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   return PAGE_KEYS.flatMap((key) => {

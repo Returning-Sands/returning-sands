@@ -1,14 +1,15 @@
+import Link from "next/link";
 import type { Locale, SiteContent } from "../../content";
+import { pagePath } from "../../routes";
 import { Nav } from "../Nav";
 import { Footer } from "../Footer";
 import { PageHero } from "../PageHero";
 import { Goals } from "../about/Goals";
 import { Film } from "../about/Film";
 import { OralHistory } from "../about/OralHistory";
-import { Team } from "../about/Team";
-import { Partners } from "../about/Partners";
-import { Contact } from "../about/Contact";
+import { Arrow, btn } from "../primitives";
 
+/** About: who we are, goals, the film, the oral history project. Team, partners and contacts live on /team. */
 export function AboutPage({ t, locale }: { t: SiteContent; locale: Locale }) {
   const a = t.about;
   return (
@@ -24,9 +25,14 @@ export function AboutPage({ t, locale }: { t: SiteContent; locale: Locale }) {
         <Goals t={a.goals} />
         <Film t={a.film} />
         <OralHistory t={a.oralHistory} />
-        <Team t={a.team} />
-        <Partners t={a.partners} />
-        <Contact t={a.contact} social={t.social} />
+        <section className="bg-sand-50 border-t border-ink/10">
+          <div className="mx-auto max-w-7xl px-6 sm:px-10 py-14 flex justify-center">
+            <Link href={pagePath(locale, "team")} className={btn.darkOutline}>
+              {t.teamPage.heading}
+              <Arrow />
+            </Link>
+          </div>
+        </section>
       </main>
       <Footer t={t} locale={locale} current="about" />
     </>

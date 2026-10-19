@@ -29,7 +29,11 @@ export const ar: DeepPartial<SiteContent> = {
     },
     about: {
       title: "من نحن · عودة الرمال",
-      description: "من نحن، وما نعمل من أجله، والفيلم الوثائقي عن علي نور، ومشروع التاريخ الشفوي، وفريقنا، وشركاؤنا.",
+      description: "من نحن، وما نعمل من أجله، والفيلم الوثائقي عن علي نور، ومشروع التاريخ الشفوي.",
+    },
+    team: {
+      title: "الفريق والشركاء · عودة الرمال",
+      description: "المنتجون والفريق الأساسي وراء عودة الرمال، وشركاؤنا وداعمونا، وكيفية التواصل معنا.",
     },
     gallery: {
       title: "المعرض · عودة الرمال",
@@ -59,6 +63,7 @@ export const ar: DeepPartial<SiteContent> = {
       { key: "home", label: "الرئيسية" },
       { key: "events", label: "الفعاليات" },
       { key: "about", label: "من نحن" },
+      { key: "team", label: "الفريق" },
       { key: "gallery", label: "المعرض" },
       { key: "donate", label: "تبرّع" },
     ],
@@ -249,6 +254,11 @@ export const ar: DeepPartial<SiteContent> = {
   },
 
   /* ----------------------------------------------------------- About */
+
+  teamPage: {
+    heading: "الفريق والشركاء",
+    intro: "المنتجون والفريق الأساسي وراء عودة الرمال، والمؤسسات التي تدعم العمل، وكيفية التواصل معنا.",
+  },
 
   about: {
     who: {
@@ -453,6 +463,7 @@ export const ar: DeepPartial<SiteContent> = {
       { key: "home", label: "الرئيسية" },
       { key: "events", label: "الفعاليات" },
       { key: "about", label: "من نحن" },
+      { key: "team", label: "الفريق" },
       { key: "gallery", label: "المعرض" },
       { key: "donate", label: "تبرّع" },
     ],

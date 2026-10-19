@@ -27,7 +27,12 @@ export const en = {
     about: {
       title: "About · Returning Sands",
       description:
-        "Who we are, what we are working toward, the documentary about Ali Nour, the oral history project, our team, and our partners.",
+        "Who we are, what we are working toward, the documentary about Ali Nour, and the oral history project.",
+    },
+    team: {
+      title: "Team and partners · Returning Sands",
+      description:
+        "The producers and core team behind Returning Sands, our partners and supporters, and how to get in touch.",
     },
     gallery: {
       title: "Gallery · Returning Sands",
@@ -62,6 +67,7 @@ export const en = {
       { key: "home", label: "Home" },
       { key: "events", label: "Events" },
       { key: "about", label: "About" },
+      { key: "team", label: "Team" },
       { key: "gallery", label: "Gallery" },
       { key: "donate", label: "Donate" },
     ],
@@ -290,6 +296,12 @@ export const en = {
   },
 
   /* ----------------------------------------------------------- About */
+
+  teamPage: {
+    heading: "Team and partners",
+    intro:
+      "The producers and core team behind Returning Sands, the organisations supporting the work, and how to reach us.",
+  },
 
   about: {
     who: {
@@ -580,6 +592,7 @@ export const en = {
       { key: "home", label: "Home" },
       { key: "events", label: "Events" },
       { key: "about", label: "About" },
+      { key: "team", label: "Team" },
       { key: "gallery", label: "Gallery" },
       { key: "donate", label: "Donate" },
     ],

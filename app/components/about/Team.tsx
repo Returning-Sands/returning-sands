@@ -4,6 +4,7 @@ import { PerfSeam } from "../../Stamp";
 import { SectionHeading } from "../primitives";
 import { PersonLinks } from "./PersonLinks";
 
+/** Producers grid, then the core team in small film frames. */
 export function Team({ t }: { t: SiteContent["about"]["team"] }) {
   return (
     <section className="bg-sand-50">

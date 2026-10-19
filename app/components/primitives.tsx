@@ -53,25 +53,6 @@ export function BrandStamp({
   );
 }
 
-/** Wave-lines background texture from the brand kit. */
-export function WaveLines({
-  tone = "black",
-  className = "",
-}: {
-  tone?: "black" | "white";
-  className?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`pointer-events-none select-none absolute inset-0 bg-no-repeat bg-cover ${className}`}
-      style={{
-        backgroundImage: `url(/brand/Wave_lines_wide_${tone === "white" ? "white" : "blk"}.svg)`,
-      }}
-    />
-  );
-}
-
 export function Arrow() {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden className="rtl:-scale-x-100">
