@@ -6,19 +6,26 @@ import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
 import { Arrow, ExternalArrow, SocialIcon, btn } from "../primitives";
 
+/**
+ * Home page gallery strip: the curated Instagram posts as square tiles, each
+ * opening the post. Four across on desktop; while there are only three posts
+ * the last slot holds the Returning Sands stamp, linking to the profile.
+ */
 export function GalleryTeaser({
   t,
-  items,
+  posts,
   instagramHref,
+  brandName,
   locale,
 }: {
   t: SiteContent["galleryTeaser"];
-  items: SiteContent["gallery"]["items"];
+  posts: SiteContent["gallery"]["instagramPosts"];
   instagramHref: string;
+  brandName: string;
   locale: Locale;
 }) {
-  const thumbs = items.slice(0, 6);
-  const gallery = pagePath(locale, "gallery");
+  const shown = posts.slice(0, 4);
+  const placeholders = Math.max(0, 4 - shown.length);
   return (
     <section className="bg-sand-100">
       <PerfSeam />
@@ -29,7 +36,7 @@ export function GalleryTeaser({
             <p className="mt-3 text-ink/70">{t.body}</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link href={gallery} className={btn.darkOutline}>
+            <Link href={pagePath(locale, "gallery")} className={btn.darkOutline}>
               {t.button}
               <Arrow />
             </Link>
@@ -40,22 +47,43 @@ export function GalleryTeaser({
             </a>
           </div>
         </Reveal>
-        <ul className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          {thumbs.map((img, i) => (
-            <Reveal as="li" key={img.src} className="reveal" delay={i * 70}>
-              <Link
-                href={gallery}
-                className="group relative block aspect-square overflow-hidden rounded-xl bg-ink"
-                aria-label={img.alt}
+        <ul className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {shown.map((p, i) => (
+            <Reveal as="li" key={p.href} className="reveal" delay={i * 80}>
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block aspect-square overflow-hidden rounded-2xl bg-white shadow-sm"
               >
                 <Image
-                  src={img.src}
-                  alt=""
+                  src={p.image}
+                  alt={p.alt}
                   fill
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 />
-              </Link>
+              </a>
+            </Reveal>
+          ))}
+          {Array.from({ length: placeholders }, (_, k) => (
+            <Reveal as="li" key={`placeholder-${k}`} className="reveal" delay={(shown.length + k) * 80}>
+              <a
+                href={instagramHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.instagramButton}
+                className="group relative flex aspect-square items-center justify-center overflow-hidden rounded-2xl border border-ink/10 bg-sand-50"
+              >
+                <Image
+                  src="/brand/RS_logo_main_blk.svg"
+                  alt={brandName}
+                  width={240}
+                  height={150}
+                  unoptimized
+                  className="w-3/5 h-auto opacity-85 transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+              </a>
             </Reveal>
           ))}
         </ul>

@@ -23,8 +23,8 @@ export function TeamPage({ t, locale }: { t: SiteContent; locale: Locale }) {
           }}
         />
         <Team t={a.team} />
-        <Partners t={a.partners} />
         <Contact t={a.contact} social={t.social} />
+        <Partners t={a.partners} />
       </main>
       <Footer t={t} locale={locale} current="team" />
     </>

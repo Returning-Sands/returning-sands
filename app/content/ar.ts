@@ -357,16 +357,16 @@ export const ar: DeepPartial<SiteContent> = {
     partners: {
       heading: "الشركاء والداعمون",
       items: [
-        { name: "المجلس الثقافي البريطاني، صندوق حماية الثقافة", href: "https://www.britishcouncil.org/arts/culture-development/cultural-protection-fund" },
+        { name: "المجلس الثقافي البريطاني، صندوق حماية الثقافة", href: "https://www.britishcouncil.org/arts/culture-development/cultural-protection-fund", logo: "/partners/british-council.png" },
         { name: "SIMA Studios", href: "https://simastudios.org/", logo: "/partners/sima-studios.png" },
         { name: "معهد Sundance", href: "https://www.sundance.org/", logo: "/partners/sundance-institute.png" },
         { name: "الدرع الأزرق الدولي", href: "https://theblueshield.org/", logo: "/partners/blue-shield-international.png" },
-        { name: "مجلس الفنون في برمودا", href: "https://culture.bm/arts/" },
+        { name: "مجلس الفنون في برمودا", href: "https://culture.bm/contributions-awards/bermuda-arts-council/", logo: "/partners/bermuda-arts-council.png" },
         { name: "الجامعة الأمريكية بالقاهرة", href: "https://www.aucegypt.edu/", logo: "/partners/auc.svg" },
         { name: "Culture House", href: "https://culturehouse.org.uk/", logo: "/partners/culture-house.svg" },
-        { name: "SUDAAK", href: "https://sudaak.org/" },
+        { name: "SUDAAK", href: "https://sudaak.org/", logo: "/partners/sudaak.png" },
         { name: "Sudan Human Rights Hub", href: "https://sudanhrh.org/", logo: "/partners/sudan-human-rights-hub.png" },
-        { name: "كلام أفلام", href: "https://kalamaflam.com/" },
+        { name: "كلام أفلام", href: "https://www.instagram.com/kalamaflam.fr/", logo: "/partners/kalam-aflam.png" },
       ],
     },
     contact: {

@@ -17,7 +17,13 @@ export function HomePage({ t, locale }: { t: SiteContent; locale: Locale }) {
         <Stake t={t.stake} />
         <FilmTeaser t={t.filmTeaser} imageAlt={t.about.film.imageAlt} locale={locale} />
         <DonateBand t={t.donateBand} locale={locale} />
-        <GalleryTeaser t={t.galleryTeaser} items={t.gallery.items} instagramHref={instagram} locale={locale} />
+        <GalleryTeaser
+          t={t.galleryTeaser}
+          posts={t.gallery.instagramPosts}
+          instagramHref={instagram}
+          brandName={t.brand.name}
+          locale={locale}
+        />
       </main>
       <Footer t={t} locale={locale} current="home" />
     </>

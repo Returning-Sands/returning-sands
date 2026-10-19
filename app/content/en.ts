@@ -403,16 +403,16 @@ export const en = {
     partners: {
       heading: "Partners and supporters",
       items: [
-        { name: "British Council, Cultural Protection Fund", href: "https://www.britishcouncil.org/arts/culture-development/cultural-protection-fund" },
+        { name: "British Council, Cultural Protection Fund", href: "https://www.britishcouncil.org/arts/culture-development/cultural-protection-fund", logo: "/partners/british-council.png" },
         { name: "SIMA Studios", href: "https://simastudios.org/", logo: "/partners/sima-studios.png" },
         { name: "Sundance Institute", href: "https://www.sundance.org/", logo: "/partners/sundance-institute.png" },
         { name: "Blue Shield International", href: "https://theblueshield.org/", logo: "/partners/blue-shield-international.png" },
-        { name: "Bermuda Arts Council", href: "https://culture.bm/arts/" },
+        { name: "Bermuda Arts Council", href: "https://culture.bm/contributions-awards/bermuda-arts-council/", logo: "/partners/bermuda-arts-council.png" },
         { name: "The American University in Cairo", href: "https://www.aucegypt.edu/", logo: "/partners/auc.svg" },
         { name: "Culture House", href: "https://culturehouse.org.uk/", logo: "/partners/culture-house.svg" },
-        { name: "SUDAAK", href: "https://sudaak.org/" },
+        { name: "SUDAAK", href: "https://sudaak.org/", logo: "/partners/sudaak.png" },
         { name: "Sudan Human Rights Hub", href: "https://sudanhrh.org/", logo: "/partners/sudan-human-rights-hub.png" },
-        { name: "Kalam Aflam", href: "https://kalamaflam.com/" },
+        { name: "Kalam Aflam", href: "https://www.instagram.com/kalamaflam.fr/", logo: "/partners/kalam-aflam.png" },
       ],
     },
     contact: {
