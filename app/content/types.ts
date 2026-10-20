@@ -44,6 +44,8 @@ export type Producer = {
   readonly email?: string;
   /** Non-translatable. Omit if not public. */
   readonly linkedin?: string;
+  /** Non-translatable. Personal website; omit if none. */
+  readonly website?: string;
 };
 
 export type CoreTeamMember = {

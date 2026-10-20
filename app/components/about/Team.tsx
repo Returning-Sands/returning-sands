@@ -52,7 +52,7 @@ export function Team({ t }: { t: SiteContent["about"]["team"] }) {
                 <p className="text-sm text-ink/60 leading-relaxed">{p.bio}</p>
                 <div className="mt-auto pt-4 flex items-center justify-between gap-3">
                   {p.base ? <p className="kicker text-ochre-600">{p.base}</p> : <span />}
-                  <PersonLinks name={p.name} email={p.email} linkedin={p.linkedin} />
+                  <PersonLinks name={p.name} email={p.email} linkedin={p.linkedin} website={p.website} />
                 </div>
               </Reveal>
             );
@@ -61,16 +61,22 @@ export function Team({ t }: { t: SiteContent["about"]["team"] }) {
 
         <div className="mt-14">
           <Reveal as="h3" className="font-display text-3xl mb-6 reveal">{t.coreTeamHeading}</Reveal>
-          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+          {/* Same card style as the producers above: hairline grid, centred arch headshot. */}
+          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-px bg-ink/10 rounded-2xl overflow-hidden">
             {t.coreTeam.map((p, i) => (
-              <Reveal as="li" key={p.name} className="film-frame film-frame-sm reveal" delay={i * 80}>
-                <div className="film-frame-inner">
-                  {p.photo && <Headshot src={p.photo} name={p.name} className="w-full mb-4" sizes="(max-width: 640px) 45vw, 200px" />}
-                  <p className="font-display text-xl mb-1">{p.name}</p>
-                  <p className="text-sm text-ink/65 leading-relaxed">{p.role}</p>
-                  <div className="mt-3">
-                    <PersonLinks name={p.name} email={p.email} linkedin={p.linkedin} size="sm" />
-                  </div>
+              <Reveal
+                as="li"
+                key={p.name}
+                className="bg-sand-50 p-5 sm:p-6 flex flex-col gap-1 transition-colors hover:bg-sand-100 reveal"
+                delay={i * 80}
+              >
+                {p.photo && (
+                  <Headshot src={p.photo} name={p.name} className="w-full max-w-[180px] mx-auto mb-4" sizes="(max-width: 640px) 45vw, 180px" />
+                )}
+                <p className="font-display text-xl sm:text-2xl leading-tight">{p.name}</p>
+                <p className="text-sm text-ink/65 leading-relaxed">{p.role}</p>
+                <div className="mt-auto pt-3">
+                  <PersonLinks name={p.name} email={p.email} linkedin={p.linkedin} size="sm" />
                 </div>
               </Reveal>
             ))}

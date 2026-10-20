@@ -336,6 +336,8 @@ export const ar: DeepPartial<SiteContent> = {
         {
           name: "بسمة خليفة",
           photo: "/team/basma-khalifa.jpg",
+          linkedin: "https://www.linkedin.com/in/basma-khalifa-47009830/",
+          website: "https://www.basmakhalifa.com/",
           role: "منتجة منفذة",
           base: "لندن",
           bio: "مبدعة سودانية ومؤسسة Zola Studios، تصنع قصصًا تقوم على الشخصيات وتقدّم الأصوات غير الممثَّلة. وصل فيلمها الطويل الأول إلى أكثر من 10 ملايين مشاهد ورُشّحت لجائزة الوافد الجديد للعام في مهرجان إدنبرة التلفزيوني.",
@@ -343,6 +345,8 @@ export const ar: DeepPartial<SiteContent> = {
         {
           name: "عائشة شريف",
           photo: "/team/aicha-cherif.jpg",
+          linkedin: "https://www.linkedin.com/in/aicha-cherif/",
+          website: "https://www.aichacherif.com/",
           role: "مخرجة · كاتبة",
           base: "نيويورك",
           bio: "مخرجة مقيمة في نيويورك، تجد في الحكاية وسيلةً للتنقيب في البُنى العاطفية التي تشكّل انتماءنا بعضنا إلى بعض. عُرض فيلمها الوثائقي HEAT ضمن برنامج Tenement Stories في Film Forum، وكانت أصغر المخرجين المشاركين. وهي زميلة برنامج Sundance x Adobe Ignite لعام 2026.",

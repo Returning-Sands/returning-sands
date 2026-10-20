@@ -373,6 +373,8 @@ export const en = {
         {
           name: "Basma Khalifa",
           photo: "/team/basma-khalifa.jpg",
+          linkedin: "https://www.linkedin.com/in/basma-khalifa-47009830/",
+          website: "https://www.basmakhalifa.com/",
           role: "Executive Producer",
           base: "London",
           bio: "A Sudanese creative and founder of Zola Studios, making character-driven stories that centre underrepresented voices. Her debut feature reached over 10 million viewers and earned a Newcomer of the Year nomination at the Edinburgh TV Festival.",
@@ -380,6 +382,8 @@ export const en = {
         {
           name: "Aicha Cherif",
           photo: "/team/aicha-cherif.jpg",
+          linkedin: "https://www.linkedin.com/in/aicha-cherif/",
+          website: "https://www.aichacherif.com/",
           role: "Director · Writer",
           base: "New York",
           bio: "A New York-based director drawn to storytelling as a means of excavation, and to the emotional architectures that shape how we belong to one another. Her documentary HEAT screened in Film Forum’s Tenement Stories retrospective, where she was the youngest director. She is a 2026 Sundance x Adobe Ignite Fellow.",
