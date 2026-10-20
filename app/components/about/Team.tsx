@@ -45,7 +45,7 @@ export function Team({ t }: { t: SiteContent["about"]["team"] }) {
                 delay={i * 100}
               >
                 {p.photo && (
-                  <Headshot src={p.photo} name={p.name} className="w-full max-w-[240px] mb-4" sizes="240px" />
+                  <Headshot src={p.photo} name={p.name} className="w-full max-w-[240px] mx-auto mb-4" sizes="240px" />
                 )}
                 <h3 className="font-display text-2xl sm:text-3xl leading-tight">{p.name}</h3>
                 <p className="text-sm text-ink/65 leading-relaxed">{p.role}</p>

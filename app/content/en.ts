@@ -390,7 +390,7 @@ export const en = {
         { name: "Jenna Khalil", photo: "/team/jenna-khalil.jpg", role: "Cairo Impact Coordinator", linkedin: "https://www.linkedin.com/in/jenna-khalil/" },
         { name: "Afra Elagab", photo: "/team/afra-elagab.jpg", role: "Oral Historian" },
         { name: "Anisa Estrada", photo: "/team/anisa-estrada.jpg", role: "Researcher", linkedin: "https://www.linkedin.com/in/anisa-estrada-9a23b22b1/" },
-        { name: "Cillian Lavelle", photo: "/team/cillian-lavelle.jpg", role: "Finance and Operations", email: "cillian@returningsands.org", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
+        { name: "Cillian Lavelle", photo: "/team/cillian-lavelle.jpg", role: "Director, Finance and Operations", email: "cillian@returningsands.org", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
         { name: "Michael Isaak", photo: "/team/michael-isaak.jpg", role: "Researcher" },
       ],
     },

@@ -353,7 +353,7 @@ export const ar: DeepPartial<SiteContent> = {
         { name: "جنى خليل", photo: "/team/jenna-khalil.jpg", role: "منسقة الأثر · القاهرة", linkedin: "https://www.linkedin.com/in/jenna-khalil/" },
         { name: "عفراء العقب", photo: "/team/afra-elagab.jpg", role: "مؤرخة التاريخ الشفوي" },
         { name: "أنيسة إسترادا", photo: "/team/anisa-estrada.jpg", role: "باحثة", linkedin: "https://www.linkedin.com/in/anisa-estrada-9a23b22b1/" },
-        { name: "كيليان لافيل", photo: "/team/cillian-lavelle.jpg", role: "المالية والعمليات", email: "cillian@returningsands.org", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
+        { name: "كيليان لافيل", photo: "/team/cillian-lavelle.jpg", role: "مدير المالية والعمليات", email: "cillian@returningsands.org", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
         { name: "مايكل إسحاق", photo: "/team/michael-isaak.jpg", role: "باحث" },
       ],
     },
