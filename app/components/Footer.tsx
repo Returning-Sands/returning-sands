@@ -3,9 +3,9 @@ import type { Locale, PageKey, SiteContent } from "../content";
 import { pagePath } from "../routes";
 import { LangSwitch } from "../LangSwitch";
 import { PerfSeam } from "../Stamp";
-import { SocialLinks } from "./primitives";
+import { Mark, SocialLinks } from "./primitives";
 
-/** Site footer, shared by every page. Text wordmark only, no logo image. */
+/** Site footer, shared by every page: stamp logo, wordmark, page links in two columns. */
 export function Footer({
   t,
   locale,
@@ -21,6 +21,9 @@ export function Footer({
       <PerfSeam dark />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-16 grid gap-10 md:grid-cols-12">
         <div className="md:col-span-6 flex flex-col gap-4">
+          <Link href={pagePath(locale, "home")} aria-label={t.brand.name} className="self-start">
+            <Mark tone="white" height={84} />
+          </Link>
           <p className="font-display text-3xl text-sand-50">
             <span lang="en">{t.brand.name}</span>
             <span className="text-sand-300 mx-3" aria-hidden>·</span>
@@ -30,7 +33,8 @@ export function Footer({
         </div>
         <div className="md:col-span-3">
           <p className="kicker text-sand-300 mb-3">{f.navigateKicker}</p>
-          <ul className="space-y-2 text-sand-100/80">
+          {/* Two columns, three rows, so the list isn't one long stack. */}
+          <ul className="grid grid-cols-2 gap-x-8 gap-y-2 text-sand-100/80">
             {f.links.map((l) => (
               <li key={l.key}>
                 <Link
