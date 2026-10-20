@@ -68,22 +68,17 @@ export function GalleryTeaser({
           ))}
           {Array.from({ length: placeholders }, (_, k) => (
             <Reveal as="li" key={`placeholder-${k}`} className="reveal" delay={(shown.length + k) * 80}>
-              <a
-                href={instagramHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t.instagramButton}
-                className="group relative flex aspect-square items-center justify-center overflow-hidden rounded-2xl border border-ink/10 bg-sand-50"
-              >
+              {/* Static logo, no frame or link, until there is a fourth post. */}
+              <div className="flex aspect-square items-center justify-center">
                 <Image
                   src="/brand/RS_logo_main_blk.svg"
                   alt={brandName}
                   width={240}
                   height={150}
                   unoptimized
-                  className="w-3/5 h-auto opacity-85 transition-transform duration-700 group-hover:scale-[1.04]"
+                  className="w-3/5 h-auto opacity-85"
                 />
-              </a>
+              </div>
             </Reveal>
           ))}
         </ul>
