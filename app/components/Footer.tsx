@@ -19,8 +19,10 @@ export function Footer({
   return (
     <footer className="relative overflow-hidden bg-nile-900 text-sand-100">
       <PerfSeam dark />
-      <div className="mx-auto max-w-7xl px-6 sm:px-10 py-16 grid gap-10 md:grid-cols-12">
-        <div className="md:col-span-6 flex flex-col gap-4">
+      {/* Three equal columns: brand, pages, follow. Each of the last two opens
+          with a small heading so their tops line up. */}
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 py-16 grid gap-12 md:grid-cols-3 md:gap-10">
+        <div className="flex flex-col gap-4">
           <Link href={pagePath(locale, "home")} aria-label={t.brand.name} className="self-start">
             <Mark tone="white" height={84} />
           </Link>
@@ -31,8 +33,8 @@ export function Footer({
           </p>
           <p className="text-sand-100/70 max-w-sm leading-relaxed">{f.blurb}</p>
         </div>
-        <div className="md:col-span-3">
-          <p className="kicker text-sand-300 mb-3">{f.navigateKicker}</p>
+        <div className="md:justify-self-center">
+          <p className="kicker text-sand-300 mb-4">{f.navigateKicker}</p>
           {/* Two columns, three rows, so the list isn't one long stack. */}
           <ul className="grid grid-cols-2 gap-x-8 gap-y-2 text-sand-100/80">
             {f.links.map((l) => (
@@ -48,8 +50,11 @@ export function Footer({
             ))}
           </ul>
         </div>
-        <div className="md:col-span-3 flex flex-col gap-4">
+        <div className="md:justify-self-end flex flex-col items-start gap-4">
+          <p className="kicker text-sand-300">{t.about.contact.followHeading}</p>
           <SocialLinks t={t.social} />
+          {/* items-start keeps the Arabic link from aligning to the far edge
+              (it carries dir="rtl", which would right-align it in the column). */}
           <LangSwitch locale={locale} page={current} label={t.langSwitch} />
         </div>
       </div>
