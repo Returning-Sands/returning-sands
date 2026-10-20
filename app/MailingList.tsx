@@ -103,7 +103,7 @@ export function MailingListForm({
           placeholder={text.placeholder}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className={`flex-1 rounded-full border px-5 py-2.5 text-sm outline-none transition-colors ${input}`}
+          className={`min-w-0 flex-1 rounded-full border px-5 py-2.5 text-sm outline-none transition-colors ${input}`}
         />
         <button
           type="submit"

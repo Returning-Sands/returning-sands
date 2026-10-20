@@ -1,4 +1,4 @@
-import type { SiteContent } from "../../content";
+﻿import type { SiteContent } from "../../content";
 import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
 import { ThanksBanner } from "../../Thanks";
@@ -15,9 +15,11 @@ export function DonateSection({ t }: { t: SiteContent }) {
       <div className="mx-auto max-w-7xl px-6 sm:px-10 py-16 sm:py-24">
         <ThanksBanner text={t.thanks} />
 
-        <div className="grid gap-6 md:grid-cols-2">
+        {/* min-w-0 on the cards: grid items otherwise grow to their widest
+            unbreakable run, which pushed the Arabic cards past a phone screen. */}
+        <div className="grid gap-6 md:grid-cols-2 [&>*]:min-w-0">
           <Reveal className="reveal" delay={80}>
-            <div className="h-full rounded-2xl border border-sand-100/15 bg-sand-50/[0.04] p-8 sm:p-10 flex flex-col">
+            <div className="h-full min-w-0 break-words rounded-2xl border border-sand-100/15 bg-sand-50/[0.04] p-8 sm:p-10 flex flex-col">
               <p className="kicker text-sand-300 mb-3">{us.kicker}</p>
               <h2 className="font-display text-3xl mb-4">{us.heading}</h2>
               <p className="text-sand-100/75 leading-relaxed mb-8 flex-1">{us.tagline}</p>
@@ -38,7 +40,7 @@ export function DonateSection({ t }: { t: SiteContent }) {
           </Reveal>
 
           <Reveal className="reveal" delay={160}>
-            <div className="h-full rounded-2xl border border-sand-100/15 bg-sand-50/[0.04] p-8 sm:p-10 flex flex-col">
+            <div className="h-full min-w-0 break-words rounded-2xl border border-sand-100/15 bg-sand-50/[0.04] p-8 sm:p-10 flex flex-col">
               <p className="kicker text-sand-300 mb-3">{uk.kicker}</p>
               <h2 className="font-display text-3xl mb-4">{uk.heading}</h2>
               {uk.links.stripe || uk.bank ? (
