@@ -59,7 +59,7 @@ export const en = {
     kicker: "A Sudanese Cultural Heritage Campaign · 2026 to 2027",
     titleLead: "Returning",
     titleEmphasis: "Sands",
-    byline: "A campaign and documentary by Paris Quetzal Sistilli, Yusef Bushara, and Camilla Marchese González",
+    byline: "A campaign and documentary by Paris Quetzal Sistilli, Yusef Bushara, and Camilla Marchese",
   },
 
   nav: {
@@ -345,6 +345,7 @@ export const en = {
       producers: [
         {
           name: "Paris Quetzal Sistilli",
+          photo: "/team/paris-quetzal-sistilli.jpg",
           role: "Producer · Co-Founder",
           base: "New York",
           email: "paris@returningsands.org",
@@ -353,6 +354,7 @@ export const en = {
         },
         {
           name: "Yusef Bushara",
+          photo: "/team/yusef-bushara.jpg",
           role: "Producer · Co-Founder",
           base: "London",
           email: "yusef@returningsands.org",
@@ -360,7 +362,8 @@ export const en = {
           bio: "A Sudanese-Bermudian editor, writer, and researcher in global literatures and publishing. His debut poetry collection, Good News, came out in 2025. Degrees from Sciences Po, the University of Hong Kong, and SOAS.",
         },
         {
-          name: "Camilla Marchese González",
+          name: "Camilla Marchese",
+          photo: "/team/camilla-marchese.jpg",
           role: "Producer · Co-Founder",
           base: "New York",
           email: "camilla@returningsands.org",
@@ -369,23 +372,26 @@ export const en = {
         },
         {
           name: "Basma Khalifa",
+          photo: "/team/basma-khalifa.jpg",
           role: "Executive Producer",
           base: "London",
-          bio: "A Sudanese creative and founder of Zola Studios, making character-driven stories that centre underrepresented voices. Her debut feature reached over 30 million viewers and earned a Newcomer of the Year nomination at the Edinburgh TV Festival.",
+          bio: "A Sudanese creative and founder of Zola Studios, making character-driven stories that centre underrepresented voices. Her debut feature reached over 10 million viewers and earned a Newcomer of the Year nomination at the Edinburgh TV Festival.",
         },
         {
           name: "Aicha Cherif",
+          photo: "/team/aicha-cherif.jpg",
           role: "Director · Writer",
-          bio: "Director and writer of Returning Sands, and a 2026 Sundance x Adobe Ignite Fellow. Through the film she explores memory and belonging from her own experience of displacement.",
+          base: "New York",
+          bio: "A New York-based director drawn to storytelling as a means of excavation, and to the emotional architectures that shape how we belong to one another. Her documentary HEAT screened in Film Forum’s Tenement Stories retrospective, where she was the youngest director. She is a 2026 Sundance x Adobe Ignite Fellow.",
         },
       ],
       coreTeamHeading: "Core team",
       coreTeam: [
-        { name: "Jenna Khalil", role: "Cairo Impact Coordinator", linkedin: "https://www.linkedin.com/in/jenna-khalil/" },
-        { name: "Afra Elagab", role: "Oral Historian" },
-        { name: "Anisa Estrada", role: "Researcher · Historic Preservation", linkedin: "https://www.linkedin.com/in/anisa-estrada-9a23b22b1/" },
-        { name: "Cillian Lavelle", role: "Director, Finance & Operations", email: "cillian@returningsands.org", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
-        { name: "Micheal Isaak", role: "Researcher" },
+        { name: "Jenna Khalil", photo: "/team/jenna-khalil.jpg", role: "Cairo Impact Coordinator", linkedin: "https://www.linkedin.com/in/jenna-khalil/" },
+        { name: "Afra Elagab", photo: "/team/afra-elagab.jpg", role: "Oral Historian" },
+        { name: "Anisa Estrada", photo: "/team/anisa-estrada.jpg", role: "Researcher", linkedin: "https://www.linkedin.com/in/anisa-estrada-9a23b22b1/" },
+        { name: "Cillian Lavelle", photo: "/team/cillian-lavelle.jpg", role: "Finance Coordinator", email: "cillian@returningsands.org", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
+        { name: "Micheal Isaak", photo: "/team/micheal-isaak.jpg", role: "Researcher" },
       ],
     },
     partners: {
@@ -429,7 +435,7 @@ export const en = {
         },
         {
           role: "Producer",
-          name: "Camilla Marchese González",
+          name: "Camilla Marchese",
           buttonLabel: "Email Camilla",
           email: "camilla@returningsands.org",
           city: "New York",

@@ -1,8 +1,18 @@
+import Image from "next/image";
 import type { SiteContent } from "../../content";
 import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
 import { SectionHeading } from "../primitives";
 import { PersonLinks } from "./PersonLinks";
+
+/** Arch-topped headshot, the same shape the deck uses. */
+function Headshot({ src, name, className = "", sizes }: { src: string; name: string; className?: string; sizes: string }) {
+  return (
+    <div className={`relative aspect-[4/5] overflow-hidden rounded-t-full rounded-b-xl bg-ink/10 ${className}`}>
+      <Image src={src} alt={name} fill sizes={sizes} className="object-cover" />
+    </div>
+  );
+}
 
 /** Producers grid, then the core team in small film frames. */
 export function Team({ t }: { t: SiteContent["about"]["team"] }) {
@@ -34,6 +44,9 @@ export function Team({ t }: { t: SiteContent["about"]["team"] }) {
                 className={`bg-sand-50 p-8 sm:p-10 flex flex-col gap-3 transition-colors hover:bg-sand-100 reveal ${lastRowOfTwo ? "lg:col-span-3" : "lg:col-span-2"} ${lastOddOnTablet ? "sm:col-span-2" : ""}`}
                 delay={i * 100}
               >
+                {p.photo && (
+                  <Headshot src={p.photo} name={p.name} className="w-full max-w-[240px] mb-4" sizes="240px" />
+                )}
                 <h3 className="font-display text-2xl sm:text-3xl leading-tight">{p.name}</h3>
                 <p className="text-sm text-ink/65 leading-relaxed">{p.role}</p>
                 <p className="text-sm text-ink/60 leading-relaxed">{p.bio}</p>
@@ -48,10 +61,11 @@ export function Team({ t }: { t: SiteContent["about"]["team"] }) {
 
         <div className="mt-14">
           <Reveal as="h3" className="font-display text-3xl mb-6 reveal">{t.coreTeamHeading}</Reveal>
-          <ul className="grid sm:grid-cols-3 lg:grid-cols-5 gap-6">
+          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
             {t.coreTeam.map((p, i) => (
               <Reveal as="li" key={p.name} className="film-frame film-frame-sm reveal" delay={i * 80}>
                 <div className="film-frame-inner">
+                  {p.photo && <Headshot src={p.photo} name={p.name} className="w-full mb-4" sizes="(max-width: 640px) 45vw, 200px" />}
                   <p className="font-display text-xl mb-1">{p.name}</p>
                   <p className="text-sm text-ink/65 leading-relaxed">{p.role}</p>
                   <div className="mt-3">

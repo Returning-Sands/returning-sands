@@ -55,7 +55,7 @@ export const ar: DeepPartial<SiteContent> = {
     kicker: "حملة لحماية التراث الثقافي السوداني · 2026 إلى 2027",
     titleLead: "عودة",
     titleEmphasis: "الرمال",
-    byline: "حملة وفيلم وثائقي من إنتاج باريس كيتزال سيستيلي ويوسف بشارة وكاميلا ماركيزي غونزاليس",
+    byline: "حملة وفيلم وثائقي من إنتاج باريس كيتزال سيستيلي ويوسف بشارة وكاميلا ماركيزي",
   },
 
   nav: {
@@ -308,6 +308,7 @@ export const ar: DeepPartial<SiteContent> = {
       producers: [
         {
           name: "باريس كيتزال سيستيلي",
+          photo: "/team/paris-quetzal-sistilli.jpg",
           role: "منتجة · شريكة مؤسسة",
           base: "نيويورك",
           email: "paris@returningsands.org",
@@ -316,6 +317,7 @@ export const ar: DeepPartial<SiteContent> = {
         },
         {
           name: "يوسف بشارة",
+          photo: "/team/yusef-bushara.jpg",
           role: "منتج · شريك مؤسس",
           base: "لندن",
           email: "yusef@returningsands.org",
@@ -323,7 +325,8 @@ export const ar: DeepPartial<SiteContent> = {
           bio: "محرر وكاتب وباحث سوداني-برمودي في الآداب العالمية والنشر. صدر ديوانه الشعري الأول Good News في 2025. شهادات من Sciences Po وجامعة هونغ كونغ وSOAS.",
         },
         {
-          name: "كاميلا ماركيزي غونزاليس",
+          name: "كاميلا ماركيزي",
+          photo: "/team/camilla-marchese.jpg",
           role: "منتجة · شريكة مؤسسة",
           base: "نيويورك",
           email: "camilla@returningsands.org",
@@ -332,23 +335,26 @@ export const ar: DeepPartial<SiteContent> = {
         },
         {
           name: "بسمة خليفة",
+          photo: "/team/basma-khalifa.jpg",
           role: "منتجة منفذة",
           base: "لندن",
-          bio: "مبدعة سودانية ومؤسسة Zola Studios، تصنع قصصًا تقوم على الشخصيات وتقدّم الأصوات غير الممثَّلة. وصل فيلمها الطويل الأول إلى أكثر من 30 مليون مشاهد ورُشّحت لجائزة الوافد الجديد للعام في مهرجان إدنبرة التلفزيوني.",
+          bio: "مبدعة سودانية ومؤسسة Zola Studios، تصنع قصصًا تقوم على الشخصيات وتقدّم الأصوات غير الممثَّلة. وصل فيلمها الطويل الأول إلى أكثر من 10 ملايين مشاهد ورُشّحت لجائزة الوافد الجديد للعام في مهرجان إدنبرة التلفزيوني.",
         },
         {
           name: "عائشة شريف",
+          photo: "/team/aicha-cherif.jpg",
           role: "مخرجة · كاتبة",
-          bio: "مخرجة فيلم «عودة الرمال» وكاتبته، وزميلة برنامج Sundance x Adobe Ignite لعام 2026. تستكشف في الفيلم الذاكرة والانتماء انطلاقًا من تجربتها الشخصية مع النزوح.",
+          base: "نيويورك",
+          bio: "مخرجة مقيمة في نيويورك، تجد في الحكاية وسيلةً للتنقيب في البُنى العاطفية التي تشكّل انتماءنا بعضنا إلى بعض. عُرض فيلمها الوثائقي HEAT ضمن برنامج Tenement Stories في Film Forum، وكانت أصغر المخرجين المشاركين. وهي زميلة برنامج Sundance x Adobe Ignite لعام 2026.",
         },
       ],
       coreTeamHeading: "الفريق الأساسي",
       coreTeam: [
-        { name: "جنى خليل", role: "منسقة الأثر · القاهرة", linkedin: "https://www.linkedin.com/in/jenna-khalil/" },
-        { name: "عفراء العقب", role: "مؤرخة التاريخ الشفوي" },
-        { name: "أنيسة إسترادا", role: "باحثة · الحفاظ على التراث التاريخي", linkedin: "https://www.linkedin.com/in/anisa-estrada-9a23b22b1/" },
-        { name: "كيليان لافيل", role: "مدير المالية والعمليات", email: "cillian@returningsands.org", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
-        { name: "مايكل إسحاق", role: "باحث" },
+        { name: "جنى خليل", photo: "/team/jenna-khalil.jpg", role: "منسقة الأثر · القاهرة", linkedin: "https://www.linkedin.com/in/jenna-khalil/" },
+        { name: "عفراء العقب", photo: "/team/afra-elagab.jpg", role: "مؤرخة التاريخ الشفوي" },
+        { name: "أنيسة إسترادا", photo: "/team/anisa-estrada.jpg", role: "باحثة", linkedin: "https://www.linkedin.com/in/anisa-estrada-9a23b22b1/" },
+        { name: "كيليان لافيل", photo: "/team/cillian-lavelle.jpg", role: "منسّق الشؤون المالية", email: "cillian@returningsands.org", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
+        { name: "مايكل إسحاق", photo: "/team/micheal-isaak.jpg", role: "باحث" },
       ],
     },
     partners: {
@@ -376,7 +382,7 @@ export const ar: DeepPartial<SiteContent> = {
       people: [
         { role: "منتجة", name: "باريس كيتزال سيستيلي", buttonLabel: "راسل باريس", email: "paris@returningsands.org", city: "نيويورك", linkedin: "https://www.linkedin.com/in/paris-quetzal-sistilli-960b341b2/" },
         { role: "منتج", name: "يوسف بشارة", buttonLabel: "راسل يوسف", email: "yusef@returningsands.org", city: "لندن", linkedin: "https://www.linkedin.com/in/yusefbushara/" },
-        { role: "منتجة", name: "كاميلا ماركيزي غونزاليس", buttonLabel: "راسل كاميلا", email: "camilla@returningsands.org", city: "نيويورك", linkedin: "https://www.linkedin.com/in/camilla-marchese-gonzalez/" },
+        { role: "منتجة", name: "كاميلا ماركيزي", buttonLabel: "راسل كاميلا", email: "camilla@returningsands.org", city: "نيويورك", linkedin: "https://www.linkedin.com/in/camilla-marchese-gonzalez/" },
       ],
     },
   },

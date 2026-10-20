@@ -34,6 +34,8 @@ export type ScheduleRow = { readonly label: string; readonly value: string };
 
 export type Producer = {
   readonly name: string;
+  /** Non-translatable. Headshot in public/team, 4:5 portrait. */
+  readonly photo?: string;
   readonly role: string;
   /** City. Omit if not confirmed. */
   readonly base?: string;
@@ -46,6 +48,8 @@ export type Producer = {
 
 export type CoreTeamMember = {
   readonly name: string;
+  /** Non-translatable. Headshot in public/team, 4:5 portrait. */
+  readonly photo?: string;
   readonly role: string;
   /** Non-translatable. Omit if not public. */
   readonly email?: string;
