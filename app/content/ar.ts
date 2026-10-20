@@ -55,7 +55,7 @@ export const ar: DeepPartial<SiteContent> = {
     kicker: "حملة لحماية التراث الثقافي السوداني · 2026 إلى 2027",
     titleLead: "عودة",
     titleEmphasis: "الرمال",
-    byline: "حملة وفيلم وثائقي من إنتاج باريس كيتزال سيستيلي ويوسف بشارة وكاميلا ماركيزي",
+    byline: "حملة وفيلم وثائقي من إنتاج باريس كيتزال سيستيلي ويوسف بشارة وكاميلا ماركيزي غونزاليس",
   },
 
   nav: {
@@ -325,7 +325,7 @@ export const ar: DeepPartial<SiteContent> = {
           bio: "محرر وكاتب وباحث سوداني-برمودي في الآداب العالمية والنشر. صدر ديوانه الشعري الأول Good News في 2025. شهادات من Sciences Po وجامعة هونغ كونغ وSOAS.",
         },
         {
-          name: "كاميلا ماركيزي",
+          name: "كاميلا ماركيزي غونزاليس",
           photo: "/team/camilla-marchese.jpg",
           role: "منتجة · شريكة مؤسسة",
           base: "نيويورك",
@@ -353,8 +353,8 @@ export const ar: DeepPartial<SiteContent> = {
         { name: "جنى خليل", photo: "/team/jenna-khalil.jpg", role: "منسقة الأثر · القاهرة", linkedin: "https://www.linkedin.com/in/jenna-khalil/" },
         { name: "عفراء العقب", photo: "/team/afra-elagab.jpg", role: "مؤرخة التاريخ الشفوي" },
         { name: "أنيسة إسترادا", photo: "/team/anisa-estrada.jpg", role: "باحثة", linkedin: "https://www.linkedin.com/in/anisa-estrada-9a23b22b1/" },
-        { name: "كيليان لافيل", photo: "/team/cillian-lavelle.jpg", role: "منسّق الشؤون المالية", email: "cillian@returningsands.org", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
-        { name: "مايكل إسحاق", photo: "/team/micheal-isaak.jpg", role: "باحث" },
+        { name: "كيليان لافيل", photo: "/team/cillian-lavelle.jpg", role: "المالية والعمليات", email: "cillian@returningsands.org", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
+        { name: "مايكل إسحاق", photo: "/team/michael-isaak.jpg", role: "باحث" },
       ],
     },
     partners: {
@@ -382,7 +382,7 @@ export const ar: DeepPartial<SiteContent> = {
       people: [
         { role: "منتجة", name: "باريس كيتزال سيستيلي", buttonLabel: "راسل باريس", email: "paris@returningsands.org", city: "نيويورك", linkedin: "https://www.linkedin.com/in/paris-quetzal-sistilli-960b341b2/" },
         { role: "منتج", name: "يوسف بشارة", buttonLabel: "راسل يوسف", email: "yusef@returningsands.org", city: "لندن", linkedin: "https://www.linkedin.com/in/yusefbushara/" },
-        { role: "منتجة", name: "كاميلا ماركيزي", buttonLabel: "راسل كاميلا", email: "camilla@returningsands.org", city: "نيويورك", linkedin: "https://www.linkedin.com/in/camilla-marchese-gonzalez/" },
+        { role: "منتجة", name: "كاميلا ماركيزي غونزاليس", buttonLabel: "راسل كاميلا", email: "camilla@returningsands.org", city: "نيويورك", linkedin: "https://www.linkedin.com/in/camilla-marchese-gonzalez/" },
       ],
     },
   },

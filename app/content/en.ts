@@ -59,7 +59,7 @@ export const en = {
     kicker: "A Sudanese Cultural Heritage Campaign · 2026 to 2027",
     titleLead: "Returning",
     titleEmphasis: "Sands",
-    byline: "A campaign and documentary by Paris Quetzal Sistilli, Yusef Bushara, and Camilla Marchese",
+    byline: "A campaign and documentary by Paris Quetzal Sistilli, Yusef Bushara, and Camilla Marchese González",
   },
 
   nav: {
@@ -362,7 +362,7 @@ export const en = {
           bio: "A Sudanese-Bermudian editor, writer, and researcher in global literatures and publishing. His debut poetry collection, Good News, came out in 2025. Degrees from Sciences Po, the University of Hong Kong, and SOAS.",
         },
         {
-          name: "Camilla Marchese",
+          name: "Camilla Marchese González",
           photo: "/team/camilla-marchese.jpg",
           role: "Producer · Co-Founder",
           base: "New York",
@@ -390,8 +390,8 @@ export const en = {
         { name: "Jenna Khalil", photo: "/team/jenna-khalil.jpg", role: "Cairo Impact Coordinator", linkedin: "https://www.linkedin.com/in/jenna-khalil/" },
         { name: "Afra Elagab", photo: "/team/afra-elagab.jpg", role: "Oral Historian" },
         { name: "Anisa Estrada", photo: "/team/anisa-estrada.jpg", role: "Researcher", linkedin: "https://www.linkedin.com/in/anisa-estrada-9a23b22b1/" },
-        { name: "Cillian Lavelle", photo: "/team/cillian-lavelle.jpg", role: "Finance Coordinator", email: "cillian@returningsands.org", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
-        { name: "Micheal Isaak", photo: "/team/micheal-isaak.jpg", role: "Researcher" },
+        { name: "Cillian Lavelle", photo: "/team/cillian-lavelle.jpg", role: "Finance and Operations", email: "cillian@returningsands.org", linkedin: "https://www.linkedin.com/in/cillian-lavelle/" },
+        { name: "Michael Isaak", photo: "/team/michael-isaak.jpg", role: "Researcher" },
       ],
     },
     partners: {
@@ -435,7 +435,7 @@ export const en = {
         },
         {
           role: "Producer",
-          name: "Camilla Marchese",
+          name: "Camilla Marchese González",
           buttonLabel: "Email Camilla",
           email: "camilla@returningsands.org",
           city: "New York",
