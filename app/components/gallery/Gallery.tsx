@@ -60,14 +60,14 @@ export function InstagramBlock({ t, href }: { t: Gallery; href: string }) {
           </a>
         </Reveal>
         {t.instagramPosts.length > 0 && (
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {t.instagramPosts.map((p, i) => (
               <Reveal as="li" key={p.href} className="reveal" delay={i * 90}>
                 <a
                   href={p.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative block aspect-square overflow-hidden rounded-2xl bg-white shadow-sm"
+                  className="group relative block aspect-[4/5] overflow-hidden rounded-2xl bg-white shadow-sm"
                 >
                   <Image
                     src={p.image}

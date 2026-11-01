@@ -230,11 +230,11 @@ export const ar: DeepPartial<SiteContent> = {
             cta: null,
           },
           {
-            title: "عرض عام تفاعلي",
+            title: "ليلة من الأرشيف والصوت والثقافة السودانية",
             stamp: "RS_PN_ABB_NYC_white",
-            date: "منتصف نوفمبر 2026",
-            venue: null,
-            description: "مع تجمعات فنية سودانية في نيويورك: أداء حيّ وعمل فني تركيبي يصنعه الجمهور.",
+            date: "السبت 14 نوفمبر 2026 · تُفتح الأبواب 6:30 مساءً",
+            venue: "⁦The People’s Forum, 320 W 37th St, New York, NY 10018⁩",
+            description: "مع «البيت بيتكم» (Al-Bait Baitkom): عروض حيّة لفنانين سودانيين، وأرشفة مجتمعية، وكولاج حيّ يشارك فيه جميع الحضور. التبرعات مرحّب بها عند الباب، ويذهب ريع الفعالية كاملًا لدعم الفيلم الوثائقي.",
             cta: null,
           },
           {
@@ -414,6 +414,11 @@ export const ar: DeepPartial<SiteContent> = {
     instagramIntro: "أحدث المنشورات من @returningsands.",
     instagramButton: "تابعوا @returningsands",
     instagramPosts: [
+      {
+        href: "https://www.instagram.com/p/De8JX7mEefl/",
+        image: "/instagram/De8JX7mEefl.jpg",
+        alt: "ملصق: «البيت بيتكم» تقدّم «عودة الرمال»، ليلة من الأرشيف والصوت والثقافة السودانية، The People’s Forum في نيويورك، السبت 14 نوفمبر، 6:30 مساءً",
+      },
       {
         href: "https://www.instagram.com/p/Dd67U-WuAT8/",
         image: "/instagram/Dd67U-WuAT8.jpg",

@@ -261,12 +261,11 @@ export const en = {
             cta: null,
           },
           {
-            title: "Interactive Public Showcase",
+            title: "A Night of Sudanese Archives, Sound and Culture",
             stamp: "RS_PN_ABB_NYC_white",
-            date: "Mid-Nov 2026",
-            venue: null,
-            description:
-              "With NYC-based Sudanese arts collectives: performance and a live community-made art installation.",
+            date: "Sat, Nov 14, 2026 · Doors 6:30pm",
+            venue: "The People’s Forum, 320 W 37th St, New York, NY 10018",
+            description: "With Al-Bait Baitkom: live performances by Sudanese artists, community archiving, and a live collage every guest can add to. Donations welcome at the door; all proceeds support the documentary.",
             cta: null,
           },
           {
@@ -500,6 +499,11 @@ export const en = {
     instagramIntro: "Recent posts from @returningsands.",
     instagramButton: "Follow @returningsands",
     instagramPosts: [
+      {
+        href: "https://www.instagram.com/p/De8JX7mEefl/",
+        image: "/instagram/De8JX7mEefl.jpg",
+        alt: "Poster: Al-Bait Baitkom presents Returning Sands, a night of Sudanese archives, sound and culture, The People’s Forum, New York, Saturday 14 November, 6:30pm",
+      },
       {
         href: "https://www.instagram.com/p/Dd67U-WuAT8/",
         image: "/instagram/Dd67U-WuAT8.jpg",

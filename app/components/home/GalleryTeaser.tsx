@@ -54,7 +54,7 @@ export function GalleryTeaser({
                 href={p.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative block aspect-square overflow-hidden rounded-2xl bg-white shadow-sm"
+                className="group relative block aspect-[4/5] overflow-hidden rounded-2xl bg-white shadow-sm"
               >
                 <Image
                   src={p.image}
@@ -69,7 +69,7 @@ export function GalleryTeaser({
           {Array.from({ length: placeholders }, (_, k) => (
             <Reveal as="li" key={`placeholder-${k}`} className="reveal" delay={(shown.length + k) * 80}>
               {/* Static logo, no frame or link, until there is a fourth post. */}
-              <div className="flex aspect-square items-center justify-center">
+              <div className="flex aspect-[4/5] items-center justify-center">
                 <Image
                   src="/brand/RS_logo_main_blk.svg"
                   alt={brandName}
