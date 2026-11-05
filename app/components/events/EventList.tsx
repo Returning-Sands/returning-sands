@@ -1,7 +1,7 @@
 import type { SiteContent } from "../../content";
 import { Reveal } from "../../Reveal";
 import { PerfSeam } from "../../Stamp";
-import { Arrow, BrandStamp, btn } from "../primitives";
+import { Arrow, BrandStamp, ExternalArrow, btn } from "../primitives";
 
 type Events = SiteContent["events"];
 type Item = Events["cities"][number]["items"][number];
@@ -49,10 +49,24 @@ export function EventList({ t }: { t: Events }) {
                       {it.venue ?? t.venueTba}
                     </p>
                     <p className="text-sand-100/80 text-sm leading-relaxed flex-1">{it.description}</p>
-                    <a href={cta.href} className={`${btn.lightOutline} text-sm self-start mt-2`}>
-                      {cta.label}
-                      <Arrow />
-                    </a>
+                    {/* A real RSVP/ticket link opens in a new tab and is filled, so it
+                        stands out from the "email us" fallback on other events. */}
+                    {it.cta ? (
+                      <a
+                        href={cta.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`${btn.lightFilled} text-sm self-start mt-2`}
+                      >
+                        {cta.label}
+                        <ExternalArrow />
+                      </a>
+                    ) : (
+                      <a href={cta.href} className={`${btn.lightOutline} text-sm self-start mt-2`}>
+                        {cta.label}
+                        <Arrow />
+                      </a>
+                    )}
                   </Reveal>
                 );
               })}

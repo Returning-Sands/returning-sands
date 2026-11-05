@@ -263,10 +263,10 @@ export const en = {
           {
             title: "A Night of Sudanese Archives, Sound and Culture",
             stamp: "RS_PN_ABB_NYC_white",
-            date: "Sat, Nov 14, 2026 · Doors 6:30pm",
+            date: "Sat, Nov 14, 2026 · 6:30 to 9pm",
             venue: "The People’s Forum, 320 W 37th St, New York, NY 10018",
-            description: "With Al-Bait Baitkom: live performances by Sudanese artists, community archiving, and a live collage every guest can add to. Donations welcome at the door; all proceeds support the documentary.",
-            cta: null,
+            description: "With Al-Bait Baitkom: live performances by Sudanese artists, community archiving, and a live collage every guest can add to. Tickets are a donation (recommended $10), and all proceeds support the documentary.",
+            cta: { label: "RSVP and tickets", href: "https://www.viewcy.com/event/returning_sands" },
           },
           {
             title: "Exhibition",
