@@ -20,7 +20,7 @@ export function Hero({
   locale: Locale;
 }) {
   return (
-    <section className="relative overflow-hidden bg-white text-ink">
+    <section className="relative overflow-hidden bg-sand-100 text-ink grain">
       <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-10 pt-36 sm:pt-44 pb-2 flex flex-col items-center text-center">
         {/* Plex Mono is wide (every letter 0.6em), so it runs smaller than
             the serif did to keep "Returning Sands" on one line from tablets up. */}

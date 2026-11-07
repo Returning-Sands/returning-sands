@@ -358,7 +358,7 @@ export const en = {
           base: "London",
           email: "yusef@returningsands.org",
           linkedin: "https://www.linkedin.com/in/yusefbushara/",
-          bio: "A Sudanese-Bermudian editor, writer, and researcher in global literatures and publishing. His debut poetry collection, Good News, came out in 2025. Degrees from Sciences Po, the University of Hong Kong, and SOAS.",
+          bio: "A Sudanese-Bermudian editor, writer and researcher specialising in global literatures and publishing. Based in London, he is a non-fiction editorial assistant at Jacaranda Books, and in 2025 he released his debut poetry collection, Good News. Yusef studied Middle Eastern politics at Sciences Po, earned an MA in English Literature from the University of Hong Kong, and holds a master’s in Comparative Literature from SOAS University of London.",
         },
         {
           name: "Camilla Marchese González",
@@ -367,7 +367,7 @@ export const en = {
           base: "New York",
           email: "camilla@returningsands.org",
           linkedin: "https://www.linkedin.com/in/camilla-marchese-gonzalez/",
-          bio: "A Guatemalan-Italian writer and filmmaker drawn to storytelling as a means of preservation. Her short films have screened at DOC/NYC, Hamptons, Woodstock, and Athens International Film Festival.",
+          bio: "A Guatemalan-Italian writer and filmmaker drawn to global storytelling. She studied English and Film at Barnard College and earned an MFA in Creative Writing from The New School. She co-produced the documentary Si La Isla Quiere (Island Willing), and the short films she has written and produced have screened at DOC NYC, Hamptons International Film Festival, Woodstock Film Festival, Hawaiʻi International Film Festival and Athena Film Festival. She grew up in Antigua Guatemala and is now based in Brooklyn.",
         },
         {
           name: "Basma Khalifa",
