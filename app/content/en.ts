@@ -410,6 +410,7 @@ export const en = {
         { name: "SUDAAK", href: "https://sudaak.org/", logo: "/partners/sudaak.png" },
         { name: "Sudan Human Rights Hub", href: "https://sudanhrh.org/", logo: "/partners/sudan-human-rights-hub.png" },
         { name: "Kalam Aflam", href: "https://www.instagram.com/kalamaflam.fr/", logo: "/partners/kalam-aflam.png" },
+        { name: "The Sudanist", href: "https://thesudanist.com/", logo: "/partners/the-sudanist.png" },
       ],
     },
     contact: {

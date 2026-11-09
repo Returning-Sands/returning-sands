@@ -374,6 +374,7 @@ export const ar: DeepPartial<SiteContent> = {
         { name: "سوداك (SUDAAK)", href: "https://sudaak.org/", logo: "/partners/sudaak.png" },
         { name: "Sudan Human Rights Hub", href: "https://sudanhrh.org/", logo: "/partners/sudan-human-rights-hub.png" },
         { name: "كلام أفلام", href: "https://www.instagram.com/kalamaflam.fr/", logo: "/partners/kalam-aflam.png" },
+        { name: "The Sudanist", href: "https://thesudanist.com/", logo: "/partners/the-sudanist.png" },
       ],
     },
     contact: {
