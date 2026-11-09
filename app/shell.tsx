@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond, Noto_Naskh_Arabic, IBM_Plex_Mono } from "next/font/google";
+import { Inter, Cormorant_Garamond, Noto_Naskh_Arabic, IBM_Plex_Mono, Spline_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getContent, type Locale } from "./content";
@@ -35,6 +35,14 @@ const mono = IBM_Plex_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   weight: ["400"],
+  display: "swap",
+});
+
+// Headings and the home title: Spline Sans (chosen from the Nov 2026 font previews).
+const display = Spline_Sans({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -95,7 +103,7 @@ export function RootShell({
     <html
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
-      className={`${sans.variable} ${serif.variable} ${mono.variable} ${arabic.variable} h-full antialiased`}
+      className={`${sans.variable} ${serif.variable} ${mono.variable} ${display.variable} ${arabic.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-sand-50 text-ink">
         {children}
