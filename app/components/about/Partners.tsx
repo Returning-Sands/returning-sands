@@ -34,9 +34,20 @@ export function Partners({ t }: { t: SiteContent["about"]["partners"] }) {
         <Reveal className="reveal-lg mb-10">
           <SectionHeading heading={t.heading} id="partners" />
         </Reveal>
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {t.items.map((p, i) => (
-            <Reveal as="li" key={p.name} className="rounded-2xl border border-ink/10 bg-sand-50/60 reveal" delay={i * 60}>
+        {/* Grid of half/third-width tiles on a 4/6-column track, so a short last
+            row can be centred: a lone tile on tablets, two tiles on desktop. */}
+        <ul className="grid sm:grid-cols-4 lg:grid-cols-6 gap-3">
+          {t.items.map((p, i) => {
+            const n = t.items.length;
+            const centreSm = n % 2 === 1 && i === n - 1 ? "sm:col-start-2" : "";
+            const centreLg = n % 3 === 2 && i === n - 2 ? "lg:col-start-2" : n % 3 === 1 && i === n - 1 ? "lg:col-start-3" : "lg:col-start-auto";
+            return (
+            <Reveal
+              as="li"
+              key={p.name}
+              className={`rounded-2xl border border-ink/10 bg-sand-50/60 reveal sm:col-span-2 ${centreSm} ${centreLg}`}
+              delay={i * 60}
+            >
               {p.href ? (
                 <a
                   href={p.href}
@@ -54,7 +65,8 @@ export function Partners({ t }: { t: SiteContent["about"]["partners"] }) {
                 </div>
               )}
             </Reveal>
-          ))}
+            );
+          })}
         </ul>
       </div>
     </section>
